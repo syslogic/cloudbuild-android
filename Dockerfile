@@ -23,7 +23,7 @@ EXPOSE 5037
 RUN ${ANDROID_HOME}/platform-tools/adb start-server
 
 # run the Gradle wrapper (optional; just testing while building the container)
-RUN ./gradlew :connectedAndroidTest
+RUN ./gradlew :assembleDebug
 
 # default post build script
 RUN chmod +x ./scripts/pre_cloudbuild.sh && ./scripts/post_cloudbuild.sh
