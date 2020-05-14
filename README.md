@@ -10,11 +10,39 @@
 
  - Import to [Cloud Source Repositories](https://cloud.google.com/source-repositories) and setup a build trigger there.
  - After having build it, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
- - The container should then be referenced in another Android project's source repository's `Dockerfile`.
+ - The container should then be referenced in another Android project's source repository's `cloudbuild.yaml`.
+
+For example (yet untested):
+````
+# cloudbuild.yaml
+steps:
+# Set a persistent volume according to https://cloud.google.com/cloud-build/docs/build-config (search for volumes)
+- name: 'ubuntu'
+  volumes:
+  - name: 'vol1'
+    path: '/persistent_volume'
+  args: ['cp', '-a', '.', '/persistent_volume']
+
+# Build APK with Gradle Image from mounted /persistent_volume using name: vol1
+- name: 'gcr.io/cloud-builders/docker'
+  volumes:
+  - name: 'vol1'
+    path: '/persistent_volume'
+  args: ['run', '-v', 'vol1:/home/app', '--rm', 'gcr.io/$PROJECT_ID/cloudbuild/android-builder', '/bin/sh', '-c', 'cd /home/app && ./gradlew clean assembleDebug']
+
+# Push the APK Output from vol1 to your GCS Bucket with Short Commit SHA.
+- name: 'gcr.io/cloud-builders/gsutil'
+  volumes:
+  - name: 'vol1'
+    path: '/persistent_volume'
+  args: ['cp', '/persistent_volume/app/build/outputs/apk/debug/app-debug.apk', 'gs://$PROJECT_ID-builds/app-debug-$SHORT_SHA.apk']
+
+timeout: 1200s
+````
 
 # Also see
 
- - Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
+ - GitHub Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
 
- - [Google Cloud Build](https://github.com/GoogleCloudBuild) (official) on GitHub.
+ - GitHub [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
 
