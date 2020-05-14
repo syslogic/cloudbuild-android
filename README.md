@@ -9,7 +9,7 @@
 # How to use it?
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build-trigger there.
- - One can also connect GitHub as an external repository:
+ - One can also connect GitHub as an external repository (please use your own fork and not this repository):
 ![Screenshot 01](https://github.com/syslogic/cloudbuild-android-builder/raw/master/screenshots/screenshot_01.png)
 
 - After having build once, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
