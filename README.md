@@ -9,7 +9,10 @@
 # How to use it?
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build trigger there.
- - After having build it, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
+ - This even works directly from GitHub:
+![Screenshot 01](https://github.com/syslogic/cloudbuild-android-builder/raw/master/screenshots/screenshot_01.png)
+
+- After having build it, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
  - The container should then be referenced in another Android project's source repository's `cloudbuild.yaml`.
 
 For example (yet untested):
@@ -45,4 +48,3 @@ timeout: 1200s
  - GitHub Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
 
  - GitHub [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
-
