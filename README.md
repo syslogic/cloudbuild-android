@@ -20,25 +20,25 @@ For example (based on this [community tutorial](https://cloud.google.com/communi
 # cloudbuild.yaml
 steps:
 # Set a persistent volume according to https://cloud.google.com/cloud-build/docs/build-config (search for volumes)
-- name: 'cloudbuild'
+- name: eu.gcr.io/$PROJECT_ID/cloudbuild
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
   args: ['cp', '-a', '.', '/persistent_volume']
 
-# Build APK with Gradle Image from mounted /persistent_volume using name: vol1
-- name: 'gcr.io/cloud-builders/docker'
+# Build APK with image from mounted /persistent_volume using name: vol1
+- name: gcr.io/cloud-builders/docker
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
-  args: ['run', '-v', 'vol1:/workspace', '--rm', 'gcr.io/$PROJECT_ID/cloudbuild/android-builder', '/bin/sh', '-c', 'cd /workspace && ./gradlew build']
+  args: ['run', '-v', 'vol1:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && chmod +x ./gradlew && ./gradlew build']
 
 # Push the APK Output from vol1 to your GCS Bucket with Short Commit SHA.
-- name: 'gcr.io/cloud-builders/gsutil'
+- name: gcr.io/cloud-builders/gsutil
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
-  args: ['cp', '/persistent_volume/workspace/mobile/build/outputs/apk/debug/app-debug.apk', 'gs://$BUCKET_NAME/app-debug-$SHORT_SHA.apk']
+  args: ['cp', '/persistent_volume/workspace/mobile/build/outputs/apk/debug/mobile-debug.apk', 'gs://artifacts.$PROJECT_ID.appspot.com/android/app-debug-$SHORT_SHA.apk']
 
 timeout: 1200s
 ````
