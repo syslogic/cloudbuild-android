@@ -31,7 +31,7 @@ steps:
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
-  args: ['run', '-v', 'vol1:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && chmod +x ./gradlew && ./gradlew assembleDebug']
+  args: ['run', '-v', 'vol1:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && chmod +x ./gradlew && ./gradlew mobile:assembleDebug']
 
 # Push the APK Output from vol1 to your GCS Bucket with Short Commit SHA.
 - name: gcr.io/cloud-builders/gsutil
