@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Cloud Build Example</string>
+    <string name="app_name" translatable="false">Android Builder Example App</string>
+    <string name="app_url" translatable="false">https://github.com/syslogic/cloudbuild-android-builder</string>
 </resources>
