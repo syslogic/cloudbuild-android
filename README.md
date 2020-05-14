@@ -15,7 +15,7 @@
 - After having built it, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
  - The container can then be referenced in another Android project's source repository's `cloudbuild.yaml`.
 
-For example (yet untested):
+For example (based on this [example](https://cloud.google.com/community/tutorials/building-android-apk-with-cloud-build-gradle-docker-image), yet untested):
 ````
 # cloudbuild.yaml
 steps:
