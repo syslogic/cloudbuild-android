@@ -12,7 +12,7 @@
  - One can also connect GitHub as an external repository (please use your own fork and not this repository):
 ![Screenshot 01](https://github.com/syslogic/cloudbuild-android-builder/raw/master/screenshots/screenshot_01.png)
 
-- After having built once, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
+- After having built it, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
  - The container can then be referenced in another Android project's source repository's `cloudbuild.yaml`.
 
 For example (yet untested):
