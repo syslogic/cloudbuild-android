@@ -28,14 +28,14 @@ steps:
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
-  args: ['run', '-v', 'vol1:/home/app', '--rm', 'gcr.io/$PROJECT_ID/cloudbuild/android-builder', '/bin/sh', '-c', 'cd /home/app && ./gradlew clean assembleDebug']
+  args: ['run', '-v', 'vol1:/workspace', '--rm', 'gcr.io/$PROJECT_ID/cloudbuild/android-builder', '/bin/sh', '-c', 'cd /workspace && ./gradlew build']
 
 # Push the APK Output from vol1 to your GCS Bucket with Short Commit SHA.
 - name: 'gcr.io/cloud-builders/gsutil'
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
-  args: ['cp', '/persistent_volume/app/build/outputs/apk/debug/app-debug.apk', 'gs://$PROJECT_ID-builds/app-debug-$SHORT_SHA.apk']
+  args: ['cp', '/persistent_volume/workspace/mobile/build/outputs/apk/debug/app-debug.apk', 'gs://$BUCKET_NAME/app-debug-$SHORT_SHA.apk']
 
 timeout: 1200s
 ````
