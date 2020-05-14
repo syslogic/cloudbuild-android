@@ -8,8 +8,8 @@
 
 # How to use it?
 
- - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build trigger there.
- - This even works directly from GitHub:
+ - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build-trigger there.
+ - And can also setup GitHub as external repository, as this screenshot shows:
 ![Screenshot 01](https://github.com/syslogic/cloudbuild-android-builder/raw/master/screenshots/screenshot_01.png)
 
 - After having build it, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
