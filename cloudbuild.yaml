@@ -4,13 +4,15 @@
 #
 
 steps:
-- name: 'gcr.io/cloud-builders/docker'
-  args:
-  - 'build'
-  - '--tag=gcr.io/$PROJECT_ID/cloudbuild:android-builder'
-  - '.'
-  waitFor: ['-']
-  
-images:
-- 'gcr.io/$PROJECT_ID/cloudbuild:android-builder'
+  - name: gcr.io/cloud-builders/docker
+    args: [ 'build', '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:android-builder', '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:$COMMIT_SHA', '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest', '.' ]
+    env:
+      - 'BUILD=$BUILD_ID'
+      - 'PROJECT=$PROJECT_ID'
+      - 'REV=$REVISION_ID'
+    waitFor: ['-']
 
+images:
+  - 'eu.gcr.io/$PROJECT_ID/cloudbuild:android-builder'
+  - 'eu.gcr.io/$PROJECT_ID/cloudbuild:$COMMIT_SHA'
+  - 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest'
