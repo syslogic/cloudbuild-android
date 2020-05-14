@@ -17,7 +17,7 @@ For example (yet untested):
 # cloudbuild.yaml
 steps:
 # Set a persistent volume according to https://cloud.google.com/cloud-build/docs/build-config (search for volumes)
-- name: 'ubuntu'
+- name: 'android-builder'
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
