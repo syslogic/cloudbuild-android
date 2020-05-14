@@ -1,2 +1,3 @@
 include ":mobile"
-rootProject.name = "CloudRun"
+rootProject.name = "CloudBuild"
+
