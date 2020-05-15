@@ -22,7 +22,8 @@ RUN wget -q https://dl.google.com/android/repository/platform-tools-latest-linux
 EXPOSE 5037
 RUN ${ANDROID_HOME}/platform-tools/adb start-server
 
-# run the Gradle wrapper (optional; just testing while building the container)
+# run the Gradle wrapper once
+# fetches the SDK components & dependencies as defined in the build.gradle
 RUN ./gradlew build
 
 # default post build script

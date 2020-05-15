@@ -3,4 +3,4 @@ local.properties
 /.gradle/
 /build/
 /.idea/
-
+/.nb-gradle/
