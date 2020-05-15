@@ -50,7 +50,8 @@ steps:
 timeout: 1200s
 ````
 
-b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccessor` for the service account:
+b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccessor` for the service account.
+File `keystore.properties` is useless, unless one would also inject `/root/.android/*.keystore` for code signing.
 ````
 - name: gcr.io/cloud-builders/gcloud
   id: 'gcloud-secrets'
@@ -85,11 +86,15 @@ c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.crypto
   volumes:
     - name: data
       path: /persistent_volume
+
+- name: gcr.io/cloud-builders/docker
+  id: 'gradle-build'
+  waitFor: ['cloudkms-decode']
+...
 ````
 
 # Conclusion
 
-- File `keystore.properties` is useless, unless one would also inject `/root/.android/*.keystore` for code signing.
 - Utilizing Firebase App Distribution as the final build step might also be an option.
 
 # Also see
