@@ -80,10 +80,10 @@ And a step which runs `gcloud kms decrypt`:
   args:
     - '-c'
     - |
-      gcloud kms decrypt --ciphertext-file=encrypted/keystore.properties.enc --plaintext-file=/persistent_volume/keystore.properties --location=global --keyring=android-$PROJECT_ID --key=android-gradle
-      gcloud kms decrypt --ciphertext-file=encrypted/google-service-account.json.enc --plaintext-file=/persistent_volume/mobile/google-service-account.json --location=global --keyring=android-$PROJECT_ID --key=android-gradle
-      gcloud kms decrypt --ciphertext-file=encrypted/debug.keystore.enc --plaintext-file=/root/android/debug.keystore --location=global --keyring=android-$PROJECT_ID --key=android-gradle
-      gcloud kms decrypt --ciphertext-file=encrypted/release.keystore.enc --plaintext-file=/root/android/release.keystore.enc --location=global --keyring=android-$PROJECT_ID --key=android-gradle
+      gcloud kms decrypt --ciphertext-file=encrypted/keystore.properties.enc --plaintext-file=/persistent_volume/keystore.properties --location=global --keyring=android-gradle --key=android-$PROJECT_ID
+      gcloud kms decrypt --ciphertext-file=encrypted/google-service-account.json.enc --plaintext-file=/persistent_volume/mobile/google-service-account.json --location=global --keyring=android-gradle --key=android-$PROJECT_ID
+      gcloud kms decrypt --ciphertext-file=encrypted/debug.keystore.enc --plaintext-file=/root/android/debug.keystore --location=global --keyring=android-gradle --key=android-$PROJECT_ID
+      gcloud kms decrypt --ciphertext-file=encrypted/release.keystore.enc --plaintext-file=/root/android/release.keystore.enc --location=global --keyring=android-gradle --key=android-$PROJECT_ID
   volumes:
     - name: data
       path: /persistent_volume
