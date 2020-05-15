@@ -37,7 +37,6 @@ else
     WRAPPER_PROPERTIES=/workspace/gradle/wrapper/gradle-wrapper.properties
     mv ${WRAPPER_PROPERTIES} ${WRAPPER_PROPERTIES}.tmp
     awk '{ if (NR == 6) print "distributionUrl=https\://services.gradle.org/distributions/gradle-${ANDROID_GRADLE_VERSION}-bin.zip"; else print $0}' ${WRAPPER_PROPERTIES}.tmp > ${WRAPPER_PROPERTIES}
-    cat ${WRAPPER_PROPERTIES}
     rm ${WRAPPER_PROPERTIES}.tmp
 fi
 
