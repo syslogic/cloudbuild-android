@@ -44,7 +44,7 @@ steps:
 timeout: 1200s
 ````
 
-b) In order to inject secrect files at build-time requires IAM `roles/secretmanager.secretAccessor` for the CloudBuild service account):
+b) In order to inject files at build-time requires IAM `roles/secretmanager.secretAccessor` for the CloudBuild service account):
 ````
 - name: gcr.io/cloud-builders/gcloud
   id: 'gcloud-secrets'
