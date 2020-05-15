@@ -17,25 +17,39 @@
 # cloudbuild.yaml
 
 steps:
+
 - name: eu.gcr.io/$PROJECT_ID/cloudbuild
+  id: 'pull-image'
   args: ['cp', '-a', '.', '/persistent_volume']
   volumes:
   - name: data
     path: /persistent_volume
 
+#- name: gcr.io/cloud-builders/gcloud
+#  id: 'gcloud-secrets'
+#  entrypoint: 'bash'
+#  args: [ '-c', 'gcloud secrets versions access latest --secret=keystore-properties > /persistent_volume/keystore.properties' ]
+#  volumes:
+#  - name: data
+#    path: /persistent_volume
+
 - name: gcr.io/cloud-builders/docker
+  id: 'gradle-build'
+  waitFor: ['gcloud-secrets']
   volumes:
   - name: data
     path: /persistent_volume
-  args: ['run', '-v', 'data:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && ./gradlew mobile:assembleDebug && mv mobile/build/outputs/apk/debug/mobile-debug.apk mobile/build/outputs/apk/debug/mobile-debug-$SHORT_SHA.apk']
+  args: ['run', '-v', 'data:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && ls -la && ./gradlew mobile:assembleDebug && mv mobile/build/outputs/apk/debug/mobile-debug.apk mobile/build/outputs/apk/debug/mobile-debug-$SHORT_SHA.apk']
 
 - name: gcr.io/cloud-builders/gsutil
+  id: 'gsutil-artifacts'
   args: ['cp', '/persistent_volume/mobile/build/outputs/apk/debug/mobile-debug-$SHORT_SHA.apk', 'gs://eu.artifacts.$PROJECT_ID.appspot.com/android/']
   volumes:
   - name: data
     path: /persistent_volume
 
 timeout: 1200s
+
 
 ````
 
