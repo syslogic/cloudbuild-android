@@ -68,13 +68,10 @@ b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccesso
 # Conclusion
 
 - File `keystore.properties` is useless, unless one would also inject `/root/.android/*.keystore` for code signing.
-
-- Cloud KMS could possibly provide debug & release keystore; eg with `roles/cloudkms.signer`. 
-
+- Cloud KMS could possibly provide debug & release keystore; eg. with `roles/cloudkms.signer`. 
 - Utilizing Firebase App Distribution might also be an option.
 
 # Also see
 
  - GitHub Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
-
  - GitHub [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
