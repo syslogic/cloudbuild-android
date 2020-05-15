@@ -15,6 +15,9 @@ android {
         testBuildType "debug"
         multiDexEnabled true
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
