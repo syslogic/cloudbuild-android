@@ -3,11 +3,12 @@
  - It builds a Docker container from [Cloud Source Repositories](https://cloud.google.com/source-repositories) with [Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
  - It then publishes the container image as `eu.gcr.io/$PROJECT_ID/cloudbuild` to the [Container Registry](https://console.cloud.google.com/gcr/images).
  - Since the `Dockerfile` runs `./gradlew build`, the API level specified in the `build.gradle` gets installed.
- - It has: OpenJDK8, Gradle wrapper, Android command-line & platform tools installed (no AVD).
+ - It has OpenJDK8, Gradle wrapper, Android command-line & platform tools (no AVD).
 
 # How to use it?
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
+ ![Screenshot 01]()
  - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild`.
  - This container can then be pulled in another Android project's source repository's `cloudbuild.yaml`.
 
@@ -17,7 +18,7 @@ These usage examples assume that you already have the image in your project's pr
 
 Hostname `eu.gcr.io` (also bucket name `eu.artifacts`) can be replaced with `us.gcr.io` or `gcr.io`.
 
-a) This uploads the built APK file to `gs://eu.artifacts.$PROJECT_ID.appspot.com/android/`:
+a) This uploads debug APK files to `gs://eu.artifacts.$PROJECT_ID.appspot.com/android/`:
 
 ````
 # cloudbuild.yaml

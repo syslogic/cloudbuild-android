@@ -4,22 +4,35 @@
 
 steps:
 - name: gcr.io/cloud-builders/docker
-  id: 'docker-build'
+  id: 'docker-cloudbuild-android'
   env:
     - 'BUILD=$BUILD_ID'
     - 'PROJECT=$PROJECT_ID'
     - 'REV=$REVISION_ID'
   args: [
     'build',
-    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:android-builder',
-    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:$COMMIT_SHA',
+
+    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:android',
+    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:${COMMIT_SHA}',
     '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest',
+
+    # these are used for variable substitutions (as shown in screenshot_01.png):
+    # https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values
+    #'--build-arg', 'ANDROID_SDK_VERSION=${_ANDROID_SDK_VERSION}',
+    #'--build-arg', 'ANDROID_NDK_VERSION=${_ANDROID_NDK_VERSION}',
+    #'--build-arg', 'GRADLE_VERSION=${_GRADLE_VERSION}',
+
+    # these are the same, but with static values (no trigger configuration required)
     '--build-arg', 'ANDROID_SDK_VERSION=6200805',
+    #'--build-arg', 'ANDROID_NDK_VERSION=r21b',
+    '--build-arg', 'GRADLE_VERSION=5.6.4',
+
+    # enable cloudbuild network
     '--network', 'cloudbuild',
     '.'
   ]
 
 images:
-- 'eu.gcr.io/$PROJECT_ID/cloudbuild:android-builder'
-- 'eu.gcr.io/$PROJECT_ID/cloudbuild:$COMMIT_SHA'
+- 'eu.gcr.io/$PROJECT_ID/cloudbuild:android'
+- 'eu.gcr.io/$PROJECT_ID/cloudbuild:${COMMIT_SHA}'
 - 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest'
