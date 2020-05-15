@@ -81,7 +81,7 @@ c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.crypto
     - |
       gcloud kms decrypt --ciphertext-file=encrypted/keystore.properties.enc --plaintext-file=/persistent_volume/keystore.properties --location=global --keyring=android-$PROJECT_ID --key=android-gradle
       gcloud kms decrypt --ciphertext-file=encrypted/google-service-account.json.enc --plaintext-file=/persistent_volume/mobile/google-service-account.json --location=global --keyring=android-$PROJECT_ID --key=android-gradle
-      gcloud kms decrypt --ciphertext-file=encrypted/debug.keystore.enc --plaintext-file=/root/android/debug.keystore --location=global --keyring=$PROJECT_ID --key=android-gradle
+      gcloud kms decrypt --ciphertext-file=encrypted/debug.keystore.enc --plaintext-file=/root/android/debug.keystore --location=global --keyring=android-$PROJECT_ID --key=android-gradle
       gcloud kms decrypt --ciphertext-file=encrypted/release.keystore.enc --plaintext-file=/root/android/release.keystore.enc --location=global --keyring=android-$PROJECT_ID --key=android-gradle
   volumes:
     - name: data
