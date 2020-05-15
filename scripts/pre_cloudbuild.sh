@@ -30,7 +30,7 @@ else
     # https://developer.android.com/studio/command-line/sdkmanager.html
 fi
 
-# change Gradle wrapper version; eg. 5.6.4 to 6.4.1
+# change Gradle wrapper version; eg. from version 5.6.4 to 6.4.1
 if [ "x$GRADLE_VERSION" = "x" ] ; then
     echo _GRADLE_VERSION not provided, using the default version. ;
 else
