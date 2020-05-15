@@ -2,7 +2,7 @@
 
  - It builds a Docker container from [Cloud Source Repositories](https://cloud.google.com/source-repositories) with [Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
 
- - It then publishes this container as `gcr.io/$PROJECT_ID/cloudbuild/android-builder` to the [Container Registry](https://console.cloud.google.com/gcr/images).
+ - It then publishes this container as `eu.gcr.io/$PROJECT_ID/cloudbuild` to the [Container Registry](https://console.cloud.google.com/gcr/images).
 
  - This container has OpenJDK 8, Gradle wrapper, Android command-line & platform tools installed (no AVD yet).
 
