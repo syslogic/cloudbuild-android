@@ -27,15 +27,15 @@ steps:
 
 - name: gcr.io/cloud-builders/docker
   volumes:
-    - name: data
-      path: /persistent_volume
+  - name: data
+    path: /persistent_volume
   args: ['run', '-v', 'data:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && ./gradlew mobile:assembleDebug && mv mobile/build/outputs/apk/debug/mobile-debug.apk mobile/build/outputs/apk/debug/mobile-debug-$SHORT_SHA.apk']
 
 - name: gcr.io/cloud-builders/gsutil
   args: ['cp', '/persistent_volume/mobile/build/outputs/apk/debug/mobile-debug-$SHORT_SHA.apk', 'gs://eu.artifacts.$PROJECT_ID.appspot.com/android/']
   volumes:
-    - name: data
-      path: /persistent_volume
+  - name: data
+    path: /persistent_volume
 
 timeout: 1200s
 
