@@ -17,8 +17,7 @@ else
     rm ${CLI_TOOLS_ZIPFILE}
 fi
 
-# install Android NDK; TODO: using SDK Manager might be better:
-# https://developer.android.com/studio/command-line/sdkmanager.html
+#install Android NDK
 if [ "x$ANDROID_NDK_VERSION" = "x" ] ; then
     echo _ANDROID_NDK_VERSION not provided ;
 else
@@ -26,6 +25,9 @@ else
     wget -q https://dl.google.com/android/repository/${ANDROID_NDK_ZIPFILE}
     unzip -qq ${ANDROID_NDK_ZIPFILE} -d ${ANDROID_HOME}
     rm ${ANDROID_NDK_ZIPFILE}
+
+    # TODO: install Android NDK using SDK Manager
+    # https://developer.android.com/studio/command-line/sdkmanager.html
 fi
 
 # change Gradle wrapper version
@@ -35,6 +37,7 @@ else
     WRAPPER_PROPERTIES=/workspace/gradle/wrapper/gradle-wrapper.properties
     mv ${WRAPPER_PROPERTIES} ${WRAPPER_PROPERTIES}.tmp
     awk '{ if (NR == 6) print "distributionUrl=https\://services.gradle.org/distributions/gradle-${ANDROID_GRADLE_VERSION}-bin.zip"; else print $0}' ${WRAPPER_PROPERTIES}.tmp > ${WRAPPER_PROPERTIES}
+    # cat ${WRAPPER_PROPERTIES}
     rm ${WRAPPER_PROPERTIES}.tmp
 fi
 
