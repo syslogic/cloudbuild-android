@@ -35,7 +35,7 @@ steps:
 
 - name: gcr.io/cloud-builders/docker
   id: 'gradle-build'
-  waitFor: ['gcloud-secrets']
+#  waitFor: ['gcloud-secrets']
   volumes:
   - name: data
     path: /persistent_volume
