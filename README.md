@@ -65,10 +65,29 @@ b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccesso
 ...
 ````
 
+c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.cryptoKeyEncrypterDecrypter` for the CloudBuild service account:
+ ![Cloud Build - Screenshot 02](https://raw.githubusercontent.com/syslogic/cloudbuild-android-builder/master/screenshots/screenshot_02.png)
+
+````
+- name: gcr.io/cloud-builders/gcloud
+  id: 'cloudkms-decode'
+  entrypoint: 'bash'
+  waitFor: ['pull-image']
+  args:
+    - '-c'
+    - |
+      gcloud kms decrypt --ciphertext-file=encrypted/keystore.properties.enc --plaintext-file=/persistent_volume/keystore.properties --location=global --keyring=android-$PROJECT_ID --key=android-gradle
+      gcloud kms decrypt --ciphertext-file=encrypted/google-service-account.json.enc --plaintext-file=/persistent_volume/mobile/google-service-account.json --location=global --keyring=android-$PROJECT_ID --key=android-gradle
+      gcloud kms decrypt --ciphertext-file=encrypted/debug.keystore.enc --plaintext-file=/root/android/debug.keystore --location=global --keyring=$PROJECT_ID --key=android-gradle
+      gcloud kms decrypt --ciphertext-file=encrypted/release.keystore.enc --plaintext-file=/root/android/release.keystore.enc --location=global --keyring=android-$PROJECT_ID --key=android-gradle
+  volumes:
+    - name: data
+      path: /persistent_volume
+````
+
 # Conclusion
 
 - File `keystore.properties` is useless, unless one would also inject `/root/.android/*.keystore` for code signing.
-- Cloud KMS would be better to decrypt files; this requires `roles/cloudkms.cryptoKeyEncrypterDecrypter`. 
 - Utilizing Firebase App Distribution as the final build step might also be an option.
 
 # Also see
