@@ -60,7 +60,7 @@ b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccesso
 
 - name: gcr.io/cloud-builders/docker
   id: 'gradle-build'
-#  waitFor: ['gcloud-secrets']
+  waitFor: ['gcloud-secrets']
 ...
 ````
 
