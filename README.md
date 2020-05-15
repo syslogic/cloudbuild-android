@@ -9,10 +9,12 @@
 # How to use it?
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [triggers](https://console.cloud.google.com/cloud-build/triggers) there.
- - After having built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild`.
- - The container can then be referenced in another Android project's source repository's `cloudbuild.yaml`.
- - For example, this uploads the built APK file to `gs://eu.artifacts.$PROJECT_ID.appspot.com/android/`:
+ - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild`.
+ - The container can be referenced in another Android project's source repository's `cloudbuild.yaml`.
 
+# Usage examples
+
+a) This uploads the built APK file to `gs://eu.artifacts.$PROJECT_ID.appspot.com/android/`:
 ````
 # cloudbuild.yaml
 
@@ -40,8 +42,22 @@ steps:
     path: /persistent_volume
 
 timeout: 1200s
+````
 
+b) In order to inject secrect files (this requires IAM `roles/secretmanager.secretAccessor` for the CloudBuild service account):
+````
+- name: gcr.io/cloud-builders/gcloud
+  id: 'gcloud-secrets'
+  entrypoint: 'bash'
+  args: [ '-c', 'gcloud secrets versions access latest --secret=keystore-properties > /persistent_volume/keystore.properties' ]
+  volumes:
+  - name: data
+    path: /persistent_volume
 
+- name: gcr.io/cloud-builders/docker
+  id: 'gradle-build'
+#  waitFor: ['gcloud-secrets']
+...
 ````
 
 # Also see
