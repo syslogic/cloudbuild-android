@@ -30,14 +30,12 @@ else
     # https://developer.android.com/studio/command-line/sdkmanager.html
 fi
 
-# change Gradle wrapper version
+# change Gradle wrapper version; eg. 5.6.4 to 6.4.1
 if [ "x$GRADLE_VERSION" = "x" ] ; then
     echo _GRADLE_VERSION not provided, using the default version. ;
 else
     WRAPPER_PROPERTIES=/workspace/gradle/wrapper/gradle-wrapper.properties
-    mv ${WRAPPER_PROPERTIES} ${WRAPPER_PROPERTIES}.tmp
-    awk '{ if (NR == 6) print "distributionUrl=https\://services.gradle.org/distributions/gradle-${ANDROID_GRADLE_VERSION}-bin.zip"; else print $0}' ${WRAPPER_PROPERTIES}.tmp > ${WRAPPER_PROPERTIES}
-    rm ${WRAPPER_PROPERTIES}.tmp
+    sed -i -e "s/5\.6\.4/${GRADLE_VERSION}/g" ${WRAPPER_PROPERTIES}
 fi
 
 chmod +x ./gradlew
