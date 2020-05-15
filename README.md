@@ -21,7 +21,6 @@ For example:
 
 steps:
 - name: eu.gcr.io/$PROJECT_ID/cloudbuild
-  entrypoint: 'bash'
   args: ['cp', '-a', '.', '/persistent_volume']
   volumes:
   - name: 'vol1'
