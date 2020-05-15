@@ -9,7 +9,7 @@
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
  - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild`.
- - It can then be referenced in another Android project's source repository's `cloudbuild.yaml`.
+ - This container can then be pulled in another Android project's source repository's `cloudbuild.yaml`.
 
 # Usage examples
 
