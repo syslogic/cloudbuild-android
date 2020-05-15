@@ -15,32 +15,31 @@
 - After having built it, a new container should show up below `gcr.io/$PROJECT_ID/cloudbuild/android-builder`.
  - The container can then be referenced in another Android project's source repository's `cloudbuild.yaml`.
 
-For example (based on this [community tutorial](https://cloud.google.com/community/tutorials/building-android-apk-with-cloud-build-gradle-docker-image), yet untested):
+For example:
 ````
 # cloudbuild.yaml
+
 steps:
-# Set a persistent volume according to https://cloud.google.com/cloud-build/docs/build-config (search for volumes)
 - name: eu.gcr.io/$PROJECT_ID/cloudbuild
+  entrypoint: 'bash'
+  args: ['cp', '-a', '.', '/persistent_volume']
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
-  args: ['cp', '-a', '.', '/persistent_volume']
 
-# Build APK with image from mounted /persistent_volume using name: vol1
 - name: gcr.io/cloud-builders/docker
   volumes:
   - name: 'vol1'
     path: '/persistent_volume'
-  args: ['run', '-v', 'vol1:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && chmod +x ./gradlew && ./gradlew mobile:assembleDebug']
+  args: ['run', '-v', 'vol1:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && ./scripts/pre_cloudbuild.sh && ./gradlew mobile:assembleDebug && ./scripts/post_cloudbuild.sh && mv mobile/build/outputs/apk/debug/mobile-debug.apk /workspace/mobile-debug-$SHORT_SHA.apk']
 
-# Push the APK Output from vol1 to your GCS Bucket with Short Commit SHA.
-- name: gcr.io/cloud-builders/gsutil
-  volumes:
-  - name: 'vol1'
-    path: '/persistent_volume'
-  args: ['cp', '/persistent_volume/workspace/mobile/build/outputs/apk/debug/mobile-debug.apk', 'gs://artifacts.$PROJECT_ID.appspot.com/android/app-debug-$SHORT_SHA.apk']
+artifacts:
+  objects:
+    location: 'gs://artifacts.$PROJECT_ID.appspot.com/android/'
+    paths: [ '/workspace/mobile-debug-$SHORT_SHA.apk' ]
 
 timeout: 1200s
+
 ````
 
 # Also see
