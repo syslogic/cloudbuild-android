@@ -44,7 +44,7 @@ steps:
 timeout: 1200s
 ````
 
-b) In order to inject secrect files (this requires IAM `roles/secretmanager.secretAccessor` for the CloudBuild service account):
+b) In order to inject secrect files at build-time requires IAM `roles/secretmanager.secretAccessor` for the CloudBuild service account):
 ````
 - name: gcr.io/cloud-builders/gcloud
   id: 'gcloud-secrets'
@@ -59,6 +59,10 @@ b) In order to inject secrect files (this requires IAM `roles/secretmanager.secr
 #  waitFor: ['gcloud-secrets']
 ...
 ````
+
+# Conclusion
+
+- Cloud KMS could possibly provide debug & release keystore - because the passphrases are rather useless, unless one would also inject `/root/.android/*.keystore` for the code signing.
 
 # Also see
 
