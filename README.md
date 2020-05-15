@@ -1,16 +1,15 @@
 # What it does?
 
  - It builds a Docker container from [Cloud Source Repositories](https://cloud.google.com/source-repositories) with [Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
-
  - It then publishes the container image as `eu.gcr.io/$PROJECT_ID/cloudbuild` to the [Container Registry](https://console.cloud.google.com/gcr/images).
-
- - This container has OpenJDK 8, Gradle wrapper, Android command-line & platform tools installed (no AVD yet).
+ - Since the `Dockerfile` runs `./gradlew build`, the API level specified in the `build.gradle` gets installed.
+ - It has: OpenJDK8, Gradle wrapper, Android command-line & platform tools installed (no AVD).
 
 # How to use it?
 
- - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [triggers](https://console.cloud.google.com/cloud-build/triggers) there.
+ - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
  - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild`.
- - The container can be referenced in another Android project's source repository's `cloudbuild.yaml`.
+ - It can then be referenced in another Android project's source repository's `cloudbuild.yaml`.
 
 # Usage examples
 
