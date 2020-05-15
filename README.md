@@ -25,17 +25,8 @@ steps:
   - name: data
     path: /persistent_volume
 
-#- name: gcr.io/cloud-builders/gcloud
-#  id: 'gcloud-secrets'
-#  entrypoint: 'bash'
-#  args: [ '-c', 'gcloud secrets versions access latest --secret=keystore-properties > /persistent_volume/keystore.properties' ]
-#  volumes:
-#  - name: data
-#    path: /persistent_volume
-
 - name: gcr.io/cloud-builders/docker
   id: 'gradle-build'
-#  waitFor: ['gcloud-secrets']
   volumes:
   - name: data
     path: /persistent_volume
