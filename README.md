@@ -71,6 +71,7 @@ c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.crypto
 
  ![Cloud Build - Screenshot 02](https://github.com/syslogic/cloudbuild-android/raw/master/screenshots/screenshot_02.png)
 
+And a step which runs `gcloud kms decrypt`:
 ````
 - name: gcr.io/cloud-builders/gcloud
   id: 'cloudkms-decode'
