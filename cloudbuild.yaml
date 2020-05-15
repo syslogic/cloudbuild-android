@@ -1,24 +1,25 @@
 # cloudbuild.yaml
 # In this directory, run the following command to build this builder.
 # $ gcloud builds submit . --config=cloudbuild.yaml
-#
 
 steps:
-  - name: gcr.io/cloud-builders/docker
-    args: [
-      'build',
-      '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:android-builder',
-      '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:$COMMIT_SHA',
-      '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest',
-      '.'
-    ]
-    env:
-      - 'BUILD=$BUILD_ID'
-      - 'PROJECT=$PROJECT_ID'
-      - 'REV=$REVISION_ID'
-    waitFor: ['-']
+- name: gcr.io/cloud-builders/docker
+  id: 'docker-build'
+  env:
+    - 'BUILD=$BUILD_ID'
+    - 'PROJECT=$PROJECT_ID'
+    - 'REV=$REVISION_ID'
+  args: [
+    'build',
+    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:android-builder',
+    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:$COMMIT_SHA',
+    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest',
+    '--build-arg', 'ANDROID_SDK_VERSION=6200805',
+    '--network', 'cloudbuild',
+    '.'
+  ]
 
 images:
-  - 'eu.gcr.io/$PROJECT_ID/cloudbuild:android-builder'
-  - 'eu.gcr.io/$PROJECT_ID/cloudbuild:$COMMIT_SHA'
-  - 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest'
+- 'eu.gcr.io/$PROJECT_ID/cloudbuild:android-builder'
+- 'eu.gcr.io/$PROJECT_ID/cloudbuild:$COMMIT_SHA'
+- 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest'
