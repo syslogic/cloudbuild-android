@@ -8,6 +8,7 @@
 # How to use it?
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
+
  ![Cloud Build - Screenshot 01](https://raw.githubusercontent.com/syslogic/cloudbuild-android-builder/master/screenshots/screenshot_01.png)
  - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild`.
  - This container can then be pulled in another Android project's source repository's `cloudbuild.yaml`.
@@ -49,7 +50,7 @@ steps:
 timeout: 1200s
 ````
 
-b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccessor` for the CloudBuild service account:
+b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccessor` for the service account:
 ````
 - name: gcr.io/cloud-builders/gcloud
   id: 'gcloud-secrets'
@@ -65,7 +66,8 @@ b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccesso
 ...
 ````
 
-c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.cryptoKeyEncrypterDecrypter` for the CloudBuild service account:
+c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.cryptoKeyEncrypterDecrypter` for the service account:
+
  ![Cloud Build - Screenshot 02](https://raw.githubusercontent.com/syslogic/cloudbuild-android-builder/master/screenshots/screenshot_02.png)
 
 ````
