@@ -69,7 +69,7 @@ File `keystore.properties` is useless, unless one would also inject `/root/.andr
 
 c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.cryptoKeyEncrypterDecrypter` for the service account:
 
- ![Cloud Build - Screenshot 02](https://raw.githubusercontent.com/syslogic/cloudbuild-android-builder/master/screenshots/screenshot_02.png)
+ ![Cloud Build - Screenshot 02](https://github.com/syslogic/cloudbuild-android/raw/master/screenshots/screenshot_02.png)
 
 ````
 - name: gcr.io/cloud-builders/gcloud
