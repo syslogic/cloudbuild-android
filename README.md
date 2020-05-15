@@ -13,7 +13,12 @@
 
 # Usage examples
 
+These usage examples assume that you already have the image in your project's private container registry.
+
+Hostname `eu.gcr.io` (also bucket name `eu.artifacts`) can be replaced with `us.gcr.io` or `gcr.io`.
+
 a) This uploads the built APK file to `gs://eu.artifacts.$PROJECT_ID.appspot.com/android/`:
+
 ````
 # cloudbuild.yaml
 
