@@ -62,7 +62,7 @@ b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccesso
 
 # Conclusion
 
-- Injecting `keystore.properties` is rather useless, unless one would also inject `/root/.android/*.keystore` for the code signing.
+- Injecting `keystore.properties` is useless, unless one would also inject `/root/.android/*.keystore` for the code signing.
 
 - Cloud KMS could possibly provide debug & release keystore. 
 
