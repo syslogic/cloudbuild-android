@@ -76,33 +76,64 @@ c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.crypto
 And a step which runs `gcloud kms decrypt` (there are scripts in the `/scripts` directy, for encrypting the [`*.enc`](https://github.com/syslogic/cloudbuild-android/tree/master/credentials) files):
 
 ````
-- name: 'gcr.io/cloud-builders/gcloud'
+- name: gcr.io/cloud-builders/gcloud
   id: 'kms-decode'
   entrypoint: 'bash'
-  waitFor: ['pull-image']
+  waitFor: ['docker-pull']
   args:
     - '-c'
     - |
-      mkdir -p /root/.android
+      mkdir -p /persistent_volume/.android
       gcloud kms decrypt --ciphertext-file=credentials/keystore.properties.enc --plaintext-file=/persistent_volume/keystore.properties --location=global --keyring=android-gradle --key=default
+      gcloud kms decrypt --ciphertext-file=credentials/google-service-account.json.enc --plaintext-file=/persistent_volume/credentials/google-service-account.json --location=global --keyring=android-gradle --key=default
       gcloud kms decrypt --ciphertext-file=credentials/google-services.json.enc --plaintext-file=/persistent_volume/mobile/google-services.json --location=global --keyring=android-gradle --key=default
-      gcloud kms decrypt --ciphertext-file=credentials/debug.keystore.enc --plaintext-file=/root/.android/debug.keystore --location=global --keyring=android-gradle --key=default
-      gcloud kms decrypt --ciphertext-file=credentials/release.keystore.enc --plaintext-file=/root/.android/release.keystore --location=global --keyring=android-gradle --key=default
+      gcloud kms decrypt --ciphertext-file=credentials/debug.keystore.enc --plaintext-file=/persistent_volume/.android/debug.keystore --location=global --keyring=android-gradle --key=default
+      gcloud kms decrypt --ciphertext-file=credentials/release.keystore.enc --plaintext-file=/persistent_volume/.android/release.keystore --location=global --keyring=android-gradle --key=default
       rm -v ./credentials/*.enc
   volumes:
     - name: data
       path: /persistent_volume
 
 - name: gcr.io/cloud-builders/docker
-  id: 'gradle-build'
+  id: 'firebase-distribution'
   waitFor: ['kms-decode']
-  ...
+  env: [
+     'BUILD_NUMBER=$BUILD_ID'
+  ]
+  volumes:
+    - name: data
+      path: /persistent_volume
+  args: ['run', '-v', 'data:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && ls -la && ./gradlew mobile:assembleRelease mobile:appDistributionUploadRelease']
+
+timeout: 1200s
+
+````
+The output:
+
+````
+Step #2 - "publish-firebase-distribution": > Task :mobile:appDistributionUploadRelease
+Step #2 - "publish-firebase-distribution": Using APK path in the outputs directory: /workspace/mobile/build/outputs/apk/release/mobile-release.apk.
+Step #2 - "publish-firebase-distribution": Uploading APK to Firebase App Distribution...
+Step #2 - "publish-firebase-distribution": Getting appId from output of google services plugin
+Step #2 - "publish-firebase-distribution": Using service credentials file specified by the serviceCredentialsFile property in your app's build.gradle file: /workspace/credentials/google-service-account.json
+Step #2 - "publish-firebase-distribution": This APK has not been uploaded before.
+Step #2 - "publish-firebase-distribution": Uploading the APK.
+Step #2 - "publish-firebase-distribution": Uploaded APK successfully 202
+Step #2 - "publish-firebase-distribution": Added release notes successfully 200
+Step #2 - "publish-firebase-distribution": Added testers/groups successfully 200
+Step #2 - "publish-firebase-distribution": App Distribution upload finished successfully!
+Step #2 - "publish-firebase-distribution": 
+Step #2 - "publish-firebase-distribution": BUILD SUCCESSFUL in 1m 42s
+Step #2 - "publish-firebase-distribution": 28 actionable tasks: 28 executed
+Finished Step #2 - "publish-firebase-distribution"
+PUSH
+DONE
 
 ````
 
-# Conclusion
+# Contributions
 
-- Firebase App Distribution is support by the Cloud Build service account, when assigning the "Firebase App Distribution Admin" role.
+Please notice the "Sponsor" button above.
 
 # Also see
 
