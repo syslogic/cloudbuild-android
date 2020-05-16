@@ -58,4 +58,6 @@ dependencies {
 
 if(project.file('google-services.json').exists()) {
     apply plugin: "com.google.gms.google-services"
+} else {
+    logger.warn('file google-services.json is missing.')
 }

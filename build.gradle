@@ -10,6 +10,8 @@ if(rootProject.file('version.properties').exists()) {
     project.ext.set('compileSdkVersion',   new Integer(version['compileSdkVersion']))
     project.ext.set('targetSdkVersion',    new Integer(version['targetSdkVersion']))
     project.ext.set('minSdkVersion',       new Integer(version['minSdkVersion']))
+} else {
+    logger.warn('file version.properties is missing.')
 }
 
 // Keystore Settings, loaded from keystore.properties
@@ -22,6 +24,8 @@ if(rootProject.file('keystore.properties').exists()) {
     project.ext.set('releaseKeystorePass', keystore['releaseKeystorePass'])
     project.ext.set('releaseKeyAlias',     keystore['releaseKeyAlias'])
     project.ext.set('releaseKeyPass',      keystore['releaseKeyPass'])
+} else {
+    logger.warn('file keystore.properties is missing.')
 }
 
 // Build Script
