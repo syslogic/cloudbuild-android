@@ -21,7 +21,7 @@ These usage examples assume that you already have the image in your project's pr
 
 Hostname `eu.gcr.io` (also bucket name `eu.artifacts`) can be replaced with `us.gcr.io` or `gcr.io`.
 
-a) This uploads debug APK files to `gs://eu.artifacts.$PROJECT_ID.appspot.com/android/`:
+a) This uploads debug APK files with `gsutil` to `gs://eu.artifacts.$PROJECT_ID.appspot.com/android/`:
 
 ````
 # cloudbuild.yaml
