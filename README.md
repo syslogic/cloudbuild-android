@@ -76,6 +76,17 @@ c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.crypto
 And a step which runs `gcloud kms decrypt` (there are scripts in the `/scripts` directy, for encrypting the [`*.enc`](https://github.com/syslogic/cloudbuild-android/tree/master/credentials) files):
 
 ````
+# cloudbuild.yaml
+
+steps:
+
+- name: eu.gcr.io/$PROJECT_ID/cloudbuild
+  id: 'docker-pull'
+  args: ['cp', '-a', '.', '/persistent_volume']
+  volumes:
+  - name: data
+    path: /persistent_volume
+
 - name: gcr.io/cloud-builders/gcloud
   id: 'kms-decode'
   entrypoint: 'bash'
