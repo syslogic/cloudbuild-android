@@ -125,7 +125,7 @@ DONE
 
 # Contributions
 
-Please notice the "Sponsor" button above.
+Please notice the "[❤️ Sponsor](https://www.paypal.me/syslogic)" button above.
 
 # Also see
 
