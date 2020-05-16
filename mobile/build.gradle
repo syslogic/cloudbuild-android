@@ -15,19 +15,35 @@ android {
         testBuildType "debug"
         multiDexEnabled true
     }
-    lintOptions {
-        abortOnError false
-    }
-    buildTypes {
-        debug {
 
+    signingConfigs {
+        debug {
+            storeFile rootProject.file(".android${File.separator}debug.keystore")
+            storePassword rootProject.ext.get('debugKeystorePass')
+            keyAlias rootProject.ext.get('debugKeyAlias')
+            keyPassword rootProject.ext.get('debugKeyPass')
         }
         release {
+            storeFile rootProject.file(".android${File.separator}release.keystore")
+            storePassword rootProject.ext.get('releaseKeystorePass')
+            keyAlias rootProject.ext.get('releaseKeyAlias')
+            keyPassword rootProject.ext.get('releaseKeyPass')
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
             firebaseAppDistribution {
-                releaseNotesFile = "../credentials/release_notes.txt"
-                testersFile = "../credentials/testers.txt"
+                serviceCredentialsFile = rootProject.file("credentials/google-service-account.json")
+                releaseNotesFile = rootProject.file("credentials/release_notes.txt")
+                testersFile = rootProject.file("credentials/testers.txt")
             }
         }
+    }
 }
 
 dependencies {
