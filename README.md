@@ -74,23 +74,25 @@ c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.crypto
 And a step which runs `gcloud kms decrypt`:
 ````
 - name: gcr.io/cloud-builders/gcloud
-  id: 'cloudkms-decode'
+  id: 'kms-decode'
   entrypoint: 'bash'
   waitFor: ['pull-image']
   args:
     - '-c'
     - |
-      gcloud kms decrypt --ciphertext-file=encrypted/keystore.properties.enc --plaintext-file=/persistent_volume/keystore.properties --location=global --keyring=android-gradle --key=android-$PROJECT_ID
-      gcloud kms decrypt --ciphertext-file=encrypted/google-service-account.json.enc --plaintext-file=/persistent_volume/mobile/google-service-account.json --location=global --keyring=android-gradle --key=android-$PROJECT_ID
-      gcloud kms decrypt --ciphertext-file=encrypted/debug.keystore.enc --plaintext-file=/root/android/debug.keystore --location=global --keyring=android-gradle --key=android-$PROJECT_ID
-      gcloud kms decrypt --ciphertext-file=encrypted/release.keystore.enc --plaintext-file=/root/android/release.keystore.enc --location=global --keyring=android-gradle --key=android-$PROJECT_ID
+      mkdir -p /root/.android
+      gcloud kms decrypt --ciphertext-file=credentials/keystore.properties.enc --plaintext-file=/persistent_volume/keystore.properties --location=global --keyring=android-gradle --key=default
+      gcloud kms decrypt --ciphertext-file=credentials/google-services.json.enc --plaintext-file=/persistent_volume/mobile/google-services.json.enc --location=global --keyring=android-gradle --key=default
+      gcloud kms decrypt --ciphertext-file=credentials/debug.keystore.enc --plaintext-file=/root/.android/debug.keystore --location=global --keyring=android-gradle --key=default
+      gcloud kms decrypt --ciphertext-file=credentials/release.keystore.enc --plaintext-file=/root/.android/release.keystore --location=global --keyring=android-gradle --key=default
+      rm -v ./credentials/*.enc
   volumes:
     - name: data
       path: /persistent_volume
 
 - name: gcr.io/cloud-builders/docker
   id: 'gradle-build'
-  waitFor: ['cloudkms-decode']
+  waitFor: ['kms-decode']
 ...
 ````
 
