@@ -4,43 +4,46 @@ apply plugin: "com.google.firebase.firebase-perf"
 
 android {
     defaultConfig {
-        applicationId rootProject.ext.get("applicationId")
-        targetSdkVersion rootProject.ext.get("targetSdkVersion")
-        compileSdkVersion rootProject.ext.get("compileSdkVersion")
-        minSdkVersion rootProject.ext.get("minSdkVersion")
-        versionName rootProject.ext.get("versionName")
-        versionCode rootProject.ext.get("versionCode")
-
+        if(rootProject.file('version.properties').exists()) {
+            applicationId rootProject.ext.get("applicationId")
+            targetSdkVersion rootProject.ext.get("targetSdkVersion")
+            compileSdkVersion rootProject.ext.get("compileSdkVersion")
+            minSdkVersion rootProject.ext.get("minSdkVersion")
+            versionName rootProject.ext.get("versionName")
+            versionCode rootProject.ext.get("versionCode")
+        }
         // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testBuildType "debug"
         multiDexEnabled true
     }
 
-    signingConfigs {
-        debug {
-            storeFile rootProject.file(".android${File.separator}debug.keystore")
-            storePassword rootProject.ext.get('debugKeystorePass')
-            keyAlias rootProject.ext.get('debugKeyAlias')
-            keyPassword rootProject.ext.get('debugKeyPass')
+    if(rootProject.file('keystore.properties').exists()) {
+        signingConfigs {
+            debug {
+                storeFile rootProject.file(".android${File.separator}debug.keystore")
+                storePassword rootProject.ext.get('debugKeystorePass')
+                keyAlias rootProject.ext.get('debugKeyAlias')
+                keyPassword rootProject.ext.get('debugKeyPass')
+            }
+            release {
+                storeFile rootProject.file(".android${File.separator}release.keystore")
+                storePassword rootProject.ext.get('releaseKeystorePass')
+                keyAlias rootProject.ext.get('releaseKeyAlias')
+                keyPassword rootProject.ext.get('releaseKeyPass')
+            }
         }
-        release {
-            storeFile rootProject.file(".android${File.separator}release.keystore")
-            storePassword rootProject.ext.get('releaseKeystorePass')
-            keyAlias rootProject.ext.get('releaseKeyAlias')
-            keyPassword rootProject.ext.get('releaseKeyPass')
-        }
-    }
 
-    buildTypes {
-        debug {
-            signingConfig signingConfigs.debug
-        }
-        release {
-            signingConfig signingConfigs.release
-            firebaseAppDistribution {
-                serviceCredentialsFile = rootProject.file("credentials/google-service-account.json")
-                releaseNotesFile = rootProject.file("credentials/release_notes.txt")
-                testersFile = rootProject.file("credentials/testers.txt")
+        buildTypes {
+            debug {
+                signingConfig signingConfigs.debug
+            }
+            release {
+                signingConfig signingConfigs.release
+                firebaseAppDistribution {
+                    serviceCredentialsFile = rootProject.file("credentials/google-service-account.json")
+                    releaseNotesFile = rootProject.file("credentials/release_notes.txt")
+                    testersFile = rootProject.file("credentials/testers.txt")
+                }
             }
         }
     }
@@ -53,4 +56,6 @@ dependencies {
     implementation "androidx.navigation:navigation-ui:2.2.2"
 }
 
-apply plugin: "com.google.gms.google-services"
+if(project.file('google-services.json').exists()) {
+    apply plugin: "com.google.gms.google-services"
+}
