@@ -3,6 +3,7 @@ apply plugin: "com.google.firebase.appdistribution"
 apply plugin: "com.google.firebase.firebase-perf"
 
 android {
+    
     defaultConfig {
         if(rootProject.file('version.properties').exists()) {
             applicationId rootProject.ext.get("applicationId")
@@ -15,6 +16,10 @@ android {
         // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testBuildType "debug"
         multiDexEnabled true
+    }
+
+    lintOptions {
+        abortOnError false
     }
 
     if(rootProject.file('keystore.properties').exists()) {
