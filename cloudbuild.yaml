@@ -4,14 +4,14 @@
 
 steps:
 - name: gcr.io/cloud-builders/docker
-  id: 'docker-cloudbuild-android'
+  id: 'cloudbuild-android'
   env:
     - 'BUILD=$BUILD_ID'
     - 'PROJECT=$PROJECT_ID'
     - 'REV=$REVISION_ID'
   args: [
     'build',
-    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:${COMMIT_SHA}',
+    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:${SHORT_SHA}',
     '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:latest',
 
     # these are used for variable substitutions (as shown in screenshot_01.png):
@@ -31,5 +31,5 @@ steps:
   ]
 
 images:
-- 'eu.gcr.io/$PROJECT_ID/cloudbuild:${COMMIT_SHA}'
-- 'eu.gcr.io/$PROJECT_ID/cloudbuild:latest'
+- 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:${SHORT_SHA}'
+- 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:latest'
