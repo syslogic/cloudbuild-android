@@ -18,6 +18,16 @@ android {
     lintOptions {
         abortOnError false
     }
+    buildTypes {
+        debug {
+
+        }
+        release {
+            firebaseAppDistribution {
+                releaseNotesFile = "../credentials/release_notes.txt"
+                testersFile = "../credentials/testers.txt"
+            }
+        }
 }
 
 dependencies {
@@ -26,3 +36,5 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:2.2.2"
     implementation "androidx.navigation:navigation-ui:2.2.2"
 }
+
+apply plugin: "com.google.gms.google-services"
