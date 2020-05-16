@@ -131,3 +131,6 @@ Please notice the [`❤️ Sponsor`](https://www.paypal.me/syslogic) button abov
 
  - GitHub Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
  - GitHub [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
+ 
+ ![cloud build status](https://storage.googleapis.com/automatize-ci-badges/builds/cloud-build-badge/branches/master.svg)
+ 
