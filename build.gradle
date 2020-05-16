@@ -1,5 +1,17 @@
 // project-wide `build.gradle`
 
+// Version Settings, loaded from version.properties
+if(rootProject.file('version.properties').exists()) {
+    def version = new Properties()
+    version.load(new FileInputStream(rootProject.file('version.properties')))
+    project.ext.set('applicationId',       version['applicationId'])
+    project.ext.set('versionName',         version['versionName'])
+    project.ext.set('versionCode',         new Integer(version['versionCode']))
+    project.ext.set('compileSdkVersion',   new Integer(version['compileSdkVersion']))
+    project.ext.set('targetSdkVersion',    new Integer(version['targetSdkVersion']))
+    project.ext.set('minSdkVersion',       new Integer(version['minSdkVersion']))
+}
+
 // Keystore Settings, loaded from keystore.properties
 if(rootProject.file('keystore.properties').exists()) {
     def keystore = new Properties()
