@@ -1,7 +1,7 @@
 # What it does?
 
 - It builds a Docker container from [Cloud Source Repositories](https://cloud.google.com/source-repositories) with [Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
-- It then publishes the container image as `eu.gcr.io/$PROJECT_ID/cloudbuild` to the [Container Registry](https://console.cloud.google.com/gcr/images).
+- It then publishes the container image as `eu.gcr.io/$PROJECT_ID/cloudbuild-android` to the [Container Registry](https://console.cloud.google.com/gcr/images).
 - Since the `Dockerfile` runs `./gradlew build`, the API level specified in the `build.gradle` gets installed.
 - It has OpenJDK8, Gradle wrapper, Android command-line & platform tools (no AVD).
 - It supports Cloud KMS encryption for access credentials.
@@ -12,7 +12,7 @@
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
 
  ![Cloud Build - Screenshot 01](https://raw.githubusercontent.com/syslogic/cloudbuild-android-builder/master/screenshots/screenshot_01.png)
- - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild`.
+ - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild-android`.
  - This container can be used <b>in another</b> Android project (or another Git branch) `cloudbuild.yaml`, in order not to build it every time. See the examples below.
 
 # Usage examples
@@ -28,7 +28,7 @@ a) This uploads debug APK files with `gsutil` to `gs://eu.artifacts.$PROJECT_ID.
 
 steps:
 
-- name: eu.gcr.io/$PROJECT_ID/cloudbuild
+- name: eu.gcr.io/$PROJECT_ID/cloudbuild-android
   id: 'docker-pull'
   args: ['cp', '-a', '.', '/persistent_volume']
   volumes:
@@ -62,7 +62,7 @@ The first step mounts volume `data`. The second step runs `gcloud kms decrypt` (
 
 steps:
 
-- name: eu.gcr.io/$PROJECT_ID/cloudbuild
+- name: eu.gcr.io/$PROJECT_ID/cloudbuild-android
   id: 'docker-pull'
   args: ['cp', '-a', '.', '/persistent_volume']
   volumes:
