@@ -29,7 +29,7 @@ a) This uploads debug APK files to `gs://eu.artifacts.$PROJECT_ID.appspot.com/an
 steps:
 
 - name: eu.gcr.io/$PROJECT_ID/cloudbuild
-  id: 'pull-image'
+  id: 'docker-pull'
   args: ['cp', '-a', '.', '/persistent_volume']
   volumes:
   - name: data
@@ -43,7 +43,7 @@ steps:
   args: ['run', '-v', 'data:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && ls -la && ./gradlew mobile:assembleDebug && mv mobile/build/outputs/apk/debug/mobile-debug.apk mobile/build/outputs/apk/debug/$REPO_NAME-$SHORT_SHA-debug.apk && ls -la mobile/build/outputs/apk/debug/$REPO_NAME-$SHORT_SHA-debug.apk']
 
 - name: gcr.io/cloud-builders/gsutil
-  id: 'publish-artifacts'
+  id: 'publish-gsutil'
   args: ['cp', '/persistent_volume/mobile/build/outputs/apk/debug/$REPO_NAME-$SHORT_SHA-debug.apk', 'gs://eu.artifacts.$PROJECT_ID.appspot.com/android/']
   volumes:
   - name: data
@@ -52,24 +52,7 @@ steps:
 timeout: 1200s
 ````
 
-b) Injecting files at build-time requires IAM `roles/secretmanager.secretAccessor` for the service account.
-File `keystore.properties` is useless, unless one would also inject `/root/.android/*.keystore` for code signing.
-````
-- name: gcr.io/cloud-builders/gcloud
-  id: 'gcloud-secrets'
-  entrypoint: 'bash'
-  args: [ '-c', 'gcloud secrets versions access latest --secret=keystore-properties > /persistent_volume/keystore.properties' ]
-  volumes:
-  - name: data
-    path: /persistent_volume
-
-- name: gcr.io/cloud-builders/docker
-  id: 'gradle-build'
-  waitFor: ['gcloud-secrets']
-...
-````
-
-c) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.cryptoKeyEncrypterDecrypter` for the service account:
+b) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.cryptoKeyEncrypterDecrypter` for the service account:
 
  ![Cloud Build - Screenshot 02](https://github.com/syslogic/cloudbuild-android/raw/master/screenshots/screenshot_02.png)
 
