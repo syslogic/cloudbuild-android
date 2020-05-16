@@ -17,7 +17,7 @@ else
     rm ${CLI_TOOLS_ZIPFILE}
 fi
 
-#install Android NDK
+# install Android NDK
 if [ "x$ANDROID_NDK_VERSION" = "x" ] ; then
     echo _ANDROID_NDK_VERSION not provided, skipping install. ;
 else
