@@ -17,7 +17,7 @@
 
 # Usage examples
 
-These usage examples assume that you already have the image in your project's private container registry.
+These examples assume that you already have the image in your project's private container registry.
 
 Hostname `eu.gcr.io` (also bucket name `eu.artifacts`) can be replaced with `us.gcr.io` or `gcr.io`.
 
