@@ -122,24 +122,23 @@ timeout: 1200s
 The output:
 
 ````
-Step #2 - "publish-firebase-distribution": > Task :mobile:appDistributionUploadRelease
-Step #2 - "publish-firebase-distribution": Using APK path in the outputs directory: /workspace/mobile/build/outputs/apk/release/mobile-release.apk.
-Step #2 - "publish-firebase-distribution": Uploading APK to Firebase App Distribution...
-Step #2 - "publish-firebase-distribution": Getting appId from output of google services plugin
-Step #2 - "publish-firebase-distribution": Using service credentials file specified by the serviceCredentialsFile property in your app's build.gradle file: /workspace/credentials/google-service-account.json
-Step #2 - "publish-firebase-distribution": This APK has not been uploaded before.
-Step #2 - "publish-firebase-distribution": Uploading the APK.
-Step #2 - "publish-firebase-distribution": Uploaded APK successfully 202
-Step #2 - "publish-firebase-distribution": Added release notes successfully 200
-Step #2 - "publish-firebase-distribution": Added testers/groups successfully 200
-Step #2 - "publish-firebase-distribution": App Distribution upload finished successfully!
-Step #2 - "publish-firebase-distribution": 
-Step #2 - "publish-firebase-distribution": BUILD SUCCESSFUL in 1m 42s
-Step #2 - "publish-firebase-distribution": 28 actionable tasks: 28 executed
-Finished Step #2 - "publish-firebase-distribution"
+Step #2 - "firebase-distribution": > Task :mobile:appDistributionUploadRelease
+Step #2 - "firebase-distribution": Using APK path in the outputs directory: /workspace/mobile/build/outputs/apk/release/mobile-release.apk.
+Step #2 - "firebase-distribution": Uploading APK to Firebase App Distribution...
+Step #2 - "firebase-distribution": Getting appId from output of google services plugin
+Step #2 - "firebase-distribution": Using service credentials file specified by the serviceCredentialsFile property in your app's build.gradle file: /workspace/credentials/google-service-account.json
+Step #2 - "firebase-distribution": This APK has not been uploaded before.
+Step #2 - "firebase-distribution": Uploading the APK.
+Step #2 - "firebase-distribution": Uploaded APK successfully 202
+Step #2 - "firebase-distribution": Added release notes successfully 200
+Step #2 - "firebase-distribution": Added testers/groups successfully 200
+Step #2 - "firebase-distribution": App Distribution upload finished successfully!
+Step #2 - "firebase-distribution": 
+Step #2 - "firebase-distribution": BUILD SUCCESSFUL in 1m 42s
+Step #2 - "firebase-distribution": 28 actionable tasks: 28 executed
+Finished Step #2 - firebase-distribution"
 PUSH
 DONE
-
 ````
 
 # Contributions
