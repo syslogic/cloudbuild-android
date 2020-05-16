@@ -4,7 +4,7 @@
 - It then publishes the container image as `eu.gcr.io/$PROJECT_ID/cloudbuild` to the [Container Registry](https://console.cloud.google.com/gcr/images).
 - Since the `Dockerfile` runs `./gradlew build`, the API level specified in the `build.gradle` gets installed.
 - It has OpenJDK8, Gradle wrapper, Android command-line & platform tools (no AVD).
-- It suppots code singing with Cloud KMS keyring.
+- It supports Cloud KMS encyption for code signing.
 - It it prepared for Firebase App Distribution.
 
 # How to use it?
