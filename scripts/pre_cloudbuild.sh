@@ -2,18 +2,6 @@
 # uses https://developer.android.com/studio/command-line/sdkmanager.html
 # written 2020 by Martin Zeitler
 
-# install Android platform tools (has the sdkmanager)
-PLATFORM_TOOLS_ZIPFILE=platform-tools-latest-linux.zip
-wget -q https://dl.google.com/android/repository/${PLATFORM_TOOLS_ZIPFILE}
-unzip -qq ${PLATFORM_TOOLS_ZIPFILE} -d ${ANDROID_HOME}
-rm ${PLATFORM_TOOLS_ZIPFILE}
-
-ls -la ${ANDROID_HOME}
-alias sdkmanager='${ANDROID_HOME}/tools/bin/sdkmanager'
-
-sdkmanager --list
-sdkmanager "platform-tools" "platforms;android-29"
-
 # install Android command-line tools
 # https://developer.android.com/studio#command-tools
 if [ "x$ANDROID_SDK_VERSION" = "x" ] ; then
@@ -24,6 +12,18 @@ else
     unzip -qq ${CLI_TOOLS_ZIPFILE} -d ${ANDROID_HOME}
     rm ${CLI_TOOLS_ZIPFILE}
 fi
+
+ls -la ${ANDROID_HOME}
+alias sdkmanager='${ANDROID_HOME}/tools/bin/sdkmanager'
+
+sdkmanager --list
+sdkmanager "platform-tools" "platforms;android-29"
+
+# install Android platform tools
+PLATFORM_TOOLS_ZIPFILE=platform-tools-latest-linux.zip
+wget -q https://dl.google.com/android/repository/${PLATFORM_TOOLS_ZIPFILE}
+unzip -qq ${PLATFORM_TOOLS_ZIPFILE} -d ${ANDROID_HOME}
+rm ${PLATFORM_TOOLS_ZIPFILE}
 
 # install Android NDK
 if [ "x$ANDROID_NDK_VERSION" = "x" ] ; then
@@ -45,6 +45,16 @@ else
     WRAPPER_PROPERTIES=/workspace/gradle/wrapper/gradle-wrapper.properties
     sed -i -e "s/5\.6\.4/${GRADLE_VERSION}/g" ${WRAPPER_PROPERTIES}
 fi
+
+# cleanup build directory
+rm -R /workspace/.github
+rm -R /workspace/credentials
+rm -R /workspace/screenshots
+rm /workspace/.gitignore
+rm /workspace/cloudbuild.yaml
+rm /workspace/Dockerfile
+rm /workspace/README.md
+rm /workspace/LICENSE
 
 chmod +x ./gradlew
 ls -la
