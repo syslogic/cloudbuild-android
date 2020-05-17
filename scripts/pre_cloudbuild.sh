@@ -13,7 +13,7 @@ else
     rm ${CLI_TOOLS_ZIPFILE}
 fi
 
-ls -la ${ANDROID_HOME}
+ls -la ${ANDROID_HOME}/tools/bin
 alias sdkmanager='${ANDROID_HOME}/tools/bin/sdkmanager'
 
 sdkmanager --list
