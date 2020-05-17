@@ -15,30 +15,18 @@ fi
 
 # accept licenses
 yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses >/dev/null
+
 ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --list
-
-# update command line tools
-${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "cmdline-tools;latest"
-#${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools" "platforms;android-29"
+${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools"
+#${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platforms;android-29"
 ls -la ${ANDROID_HOME}
-
-# install Android platform tools
-PLATFORM_TOOLS_ZIPFILE=platform-tools-latest-linux.zip
-wget -q https://dl.google.com/android/repository/${PLATFORM_TOOLS_ZIPFILE}
-unzip -qq ${PLATFORM_TOOLS_ZIPFILE} -d ${ANDROID_HOME}
-rm ${PLATFORM_TOOLS_ZIPFILE}
 
 # install Android NDK
 if [ "x$ANDROID_NDK_VERSION" = "x" ] ; then
     echo _ANDROID_NDK_VERSION not provided, skipping install. ;
 else
-    ANDROID_NDK_ZIPFILE=android-ndk-${ANDROID_NDK_VERSION}-linux-x86_64.zip
-    wget -q https://dl.google.com/android/repository/${ANDROID_NDK_ZIPFILE}
-    unzip -qq ${ANDROID_NDK_ZIPFILE} -d ${ANDROID_HOME}
-    rm ${ANDROID_NDK_ZIPFILE}
-
-    # TODO: better install Android NDK using SDK Manager
-    # https://developer.android.com/studio/command-line/sdkmanager.html
+    ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "ndk;${ANDROID_NDK_VERSION}"
+    ls -la ${ANDROID_HOME}/ndk-bundle
 fi
 
 # change Gradle wrapper version; eg. from version 5.6.4 to 6.4.1
