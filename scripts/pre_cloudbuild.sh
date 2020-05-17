@@ -2,7 +2,7 @@
 # uses https://developer.android.com/studio/command-line/sdkmanager.html
 # written 2020 by Martin Zeitler
 
-# install Android command-line tools
+# install Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
 if [ "x$ANDROID_SDK_VERSION" = "x" ] ; then
     echo _ANDROID_SDK_VERSION not provided, skipping install. ;
@@ -13,6 +13,9 @@ else
     rm ${CLI_TOOLS_ZIPFILE}
 fi
 
+
+yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
+${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools" "platforms;android-29"
 ${ANDROID_HOME}/tools/bin/sdkmanager --list
 ${ANDROID_HOME}/tools/bin/sdkmanager "platform-tools" "platforms;android-29"
 ls -la ${ANDROID_HOME}
