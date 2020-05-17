@@ -13,7 +13,7 @@ else
     rm ${CLI_TOOLS_ZIPFILE}
 fi
 
-export PATH='${ANDROID_HOME}/tools/bin/sdkmanager:$PATH'
+export PATH='${ANDROID_HOME}/tools/bin:$PATH'
 sdkmanager --list
 sdkmanager "platform-tools" "platforms;android-29"
 ls -la ${ANDROID_HOME}
