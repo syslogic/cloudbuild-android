@@ -5,7 +5,7 @@
 - It has OpenJDK8, Android `sdkmanager`, Gradle wrapper.
 - It also has an Android application for testing purposes.
 - It supports publishing to Bucket & Firebase App Distribution.
-- It supports Cloud KMS encryption for access credentials.
+- It supports Cloud KMS encryption for the access credentials.
 
 # How to use it?
 
