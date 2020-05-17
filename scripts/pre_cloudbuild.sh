@@ -1,10 +1,18 @@
 #!/bin/bash
+# uses https://developer.android.com/studio/command-line/sdkmanager.html
+# written 2020 by Martin Zeitler
 
-# install Android platform tools
+# install Android platform tools (has the sdkmanager)
 PLATFORM_TOOLS_ZIPFILE=platform-tools-latest-linux.zip
 wget -q https://dl.google.com/android/repository/${PLATFORM_TOOLS_ZIPFILE}
 unzip -qq ${PLATFORM_TOOLS_ZIPFILE} -d ${ANDROID_HOME}
 rm ${PLATFORM_TOOLS_ZIPFILE}
+
+ls -la ${ANDROID_HOME}
+alias sdkmanager='${ANDROID_HOME}/tools/bin/sdkmanager'
+
+sdkmanager --list
+sdkmanager "platform-tools" "platforms;android-29"
 
 # install Android command-line tools
 # https://developer.android.com/studio#command-tools
