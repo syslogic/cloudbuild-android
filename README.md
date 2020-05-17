@@ -15,12 +15,15 @@
  
  - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild-android`.
  - This container can be used <b>in another</b> Android project (or another Git branch) `cloudbuild.yaml`, in order not to build it every time.
- - When the `Dockerfile` runs `./gradlew build`, the API level & build-tools specified in the `build.gradle` get installed.
- - When the `Dockerfile` runs `./gradlew`, only the Gradle wrapper gets installed.
+ 
+ An important difference is, that:
+ 
+ - when the `Dockerfile` runs `./gradlew build`, the components and dependencies in the `build.gradle` get pre-installed.
+ - when the `Dockerfile` runs `./gradlew`, only the Gradle wrapper gets pre-installed (this is the current situation).
 
 # Variable Substitutions
 
-Meanwhile one can install packages with the `sdkmanager`, when passing variables.<br/>
+Meanwhile one can install packages with the `sdkmanager`, when passing variable `_SDK_PACKAGES`.<br/>
 At the moment these are statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
  - `_GRADLE_VERSION` ~ `5.6.4`
