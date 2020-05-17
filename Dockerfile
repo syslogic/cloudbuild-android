@@ -11,13 +11,15 @@ ARG GRADLE_VERSION
 COPY . /workspace
 WORKDIR /workspace
 
-# default pre build script
-RUN ./scripts/pre_build.sh
-
 # ADB :5037
 EXPOSE 5037
 
-# run the Gradle wrapper once
+# default pre build script
+RUN ./scripts/pre_build.sh
+
+# run the Gradle wrapper once (it needs to download)
+RUN ./gradlew
+
 # fetches the SDK components & dependencies as defined in the build.gradle
 # meanwhile this is optional, because the sdkmanager is being used instad.
 # RUN ./gradlew build
