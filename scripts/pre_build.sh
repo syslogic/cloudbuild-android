@@ -1,7 +1,7 @@
 #!/bin/bash
 # pre-build; written 2020 by Martin Zeitler
 
-# cleanup build directory
+# Cleanup build directory
 rm -R /workspace/.github
 rm -R /workspace/credentials
 rm -R /workspace/screenshots
@@ -10,9 +10,10 @@ rm /workspace/cloudbuild.yaml
 rm /workspace/Dockerfile
 rm /workspace/README.md
 rm /workspace/LICENSE
-# ls -la
+echo "Build Directory Listing:"
+ls -la
 
-# install Android command-line tools (has sdkmanager)
+# Install Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
 # https://developer.android.com/studio/command-line/sdkmanager.html
 if [ "x$ANDROID_SDK_VERSION" = "x" ] ; then
@@ -23,34 +24,37 @@ wget -q https://dl.google.com/android/repository/${CLI_TOOLS_ZIPFILE}
 unzip -qq ${CLI_TOOLS_ZIPFILE} -d ${ANDROID_HOME}
 rm ${CLI_TOOLS_ZIPFILE}
 
-# accept Android SDK licenses
+# Android SDK licenses
 yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses >/dev/null
+
+# List Packages
 #${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --list
 
-# always install Android Platform Tools
+# Android Platform Tools (always install)
 PACKAGES="platform-tools"
 
-# install Android SDK Platform
+# Android SDK Platform
 if [ "x$ANDROID_SDK_PLATFORM" = "x" ] ; then
     echo _ANDROID_SDK_PLATFORM not provided, skipping install. ;
 else
     PACKAGES="${PACKAGES} platforms;android-${ANDROID_SDK_PLATFORM}"
 fi
 
-# install Android SDK Build-Tools
+# Android SDK Build-Tools
 if [ "x$BUILD_TOOLS_VERSION" = "x" ] ; then
     echo _BUILD_TOOLS_VERSION not provided, skipping install. ;
 else
     PACKAGES="${PACKAGES} build-tools;${BUILD_TOOLS_VERSION}"
 fi
 
-# install Android NDK
+# Android NDK
 if [ "x$ANDROID_NDK_VERSION" = "x" ] ; then
     echo _ANDROID_NDK_VERSION not provided, skipping install. ;
 else
     PACKAGES="${PACKAGES} ndk;${ANDROID_NDK_VERSION}"
 fi
 
+# Installing all packages at once, in order to query the repository only once
 echo "${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install ${PACKAGES}"
 ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install $PACKAGES
 
