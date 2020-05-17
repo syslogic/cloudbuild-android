@@ -1,6 +1,5 @@
 #!/bin/bash
-# uses https://developer.android.com/studio/command-line/sdkmanager.html
-# written 2020 by Martin Zeitler
+# pre-build; written 2020 by Martin Zeitler
 
 # install Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
@@ -13,14 +12,22 @@ else
     rm ${CLI_TOOLS_ZIPFILE}
 fi
 
-# accept licenses
+# accept Android SDK licenses
+# https://developer.android.com/studio/command-line/sdkmanager.html
 yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses >/dev/null
-
-# install Android platform tools (with sdkmanager)
 #${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --list
+
+# install Android platform tools
 ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools"
 
-# install Android NDK (with sdkmanager)
+# install Android SDK Platform
+if [ "x$ANDROID_SDK_PLATFORM" = "x" ] ; then
+    echo _ANDROID_SDK_PLATFORM not provided, skipping install. ;
+else
+    ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platforms;android-${ANDROID_SDK_PLATFORM}"
+fi
+
+# install Android NDK
 if [ "x$ANDROID_NDK_VERSION" = "x" ] ; then
     echo _ANDROID_NDK_VERSION not provided, skipping install. ;
 else
