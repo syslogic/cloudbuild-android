@@ -13,11 +13,10 @@ else
     rm ${CLI_TOOLS_ZIPFILE}
 fi
 
-ls -la ${ANDROID_HOME}/tools/bin
-alias sdkmanager='${ANDROID_HOME}/tools/bin/sdkmanager'
-
+export PATH='${ANDROID_HOME}/tools/bin/sdkmanager:$PATH'
 sdkmanager --list
 sdkmanager "platform-tools" "platforms;android-29"
+ls -la ${ANDROID_HOME}
 
 # install Android platform tools
 PLATFORM_TOOLS_ZIPFILE=platform-tools-latest-linux.zip
