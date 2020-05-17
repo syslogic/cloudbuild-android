@@ -10,10 +10,7 @@ COPY . /workspace
 WORKDIR /workspace
 
 # default pre build script
-RUN chmod +x ./scripts/pre_cloudbuild.sh && ./scripts/pre_cloudbuild.sh
-
-# accept Android SDK licenses
-RUN chmod +x ./scripts/license_accepter.sh && ./scripts/license_accepter.sh ${ANDROID_HOME}
+RUN chmod +x ./scripts/pre_build.sh && ./scripts/pre_build.sh
 
 # start ADB server (optional; just testing while building the container)
 EXPOSE 5037
@@ -24,4 +21,4 @@ EXPOSE 5037
 RUN ./gradlew build
 
 # default post build script
-RUN chmod +x ./scripts/pre_cloudbuild.sh && ./scripts/post_cloudbuild.sh
+RUN chmod +x ./scripts/pre_build.sh && ./scripts/post_build.sh
