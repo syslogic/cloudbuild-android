@@ -2,11 +2,8 @@
 FROM openjdk:8 as builder
 LABEL description="CloudBuild for Android SDK/NDK" version="1.0.1" maintainer="Martin Zeitler" repository="https://github.com/syslogic/cloudbuild-android"
 ENV ANDROID_HOME /opt/android-sdk
-ARG ANDROID_SDK_VERSION
-ARG ANDROID_SDK_PLATFORM
-ARG BUILD_TOOLS_VERSION
-ARG ANDROID_NDK_VERSION
 ARG GRADLE_VERSION
+ARG SDK_PACKAGES
 
 COPY . /workspace
 WORKDIR /workspace
