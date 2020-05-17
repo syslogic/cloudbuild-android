@@ -12,14 +12,15 @@ COPY . /workspace
 WORKDIR /workspace
 
 # default pre build script
-RUN chmod +x ./scripts/pre_build.sh && ./scripts/pre_build.sh
+RUN ./scripts/pre_build.sh
 
 # ADB :5037
 EXPOSE 5037
 
 # run the Gradle wrapper once
 # fetches the SDK components & dependencies as defined in the build.gradle
-RUN ./gradlew build
+# meanwhile this is optional, because the sdkmanager is being used instad.
+# RUN ./gradlew build
 
 # default post build script
-RUN chmod +x ./scripts/pre_build.sh && ./scripts/post_build.sh
+RUN ./scripts/post_build.sh
