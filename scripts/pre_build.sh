@@ -32,10 +32,10 @@ yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
 PACKAGES="platform-tools"
 
 # Android SDK Packages
-if [ "x${SDK_PACKAGES}" = "x" ] ; then
+if [ "x$SDK_PACKAGES" = "x" ] ; then
     echo _SDK_PACKAGES not provided by build trigger, installing ${PACKAGES}.
 else
-    PACKAGES=${SDK_PACKAGES}
+    PACKAGES=$SDK_PACKAGES
 fi
 
 # Installing all packages at once, in order to query the repository only once
