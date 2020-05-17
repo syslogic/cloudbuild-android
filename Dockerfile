@@ -1,6 +1,6 @@
 # CloudBuild Dockerfile for building with Android SDK/NDK
 FROM openjdk:8 as builder
-LABEL description="CloudBuild for Android SDK/NDK" version="1.0.1" maintainer="Martin Zeitler" repository="https://github.com/syslogic/cloudbuild-android"
+LABEL description="Cloud Build - Android SDK Builder" version="1.0.2" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 ENV ANDROID_HOME /opt/android-sdk
 ARG GRADLE_VERSION
 ARG SDK_PACKAGES

@@ -25,7 +25,7 @@ rm ${CLI_TOOLS_ZIPFILE}
 # https://developer.android.com/studio/command-line/sdkmanager.html
 yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses >/dev/null
 
-# List Packages
+# List Android SDK Packages
 #${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --list
 
 # Android Platform Tools (always install)
