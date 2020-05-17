@@ -19,7 +19,7 @@
 
 # Variable Substitutions
 
-Meanwhile one can install packages with the `sdkmanager`, when passing variables.
+Meanwhile one can install packages with the `sdkmanager`, when passing variables.<br/>
 At the moment these are statically set in `cloudbuild.yaml`, but the code is there.
 
  - `_ANDROID_NDK_VERSION` ~ `21.1.6352462`
