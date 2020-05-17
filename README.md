@@ -4,8 +4,8 @@
 - It then publishes the container image as `eu.gcr.io/$PROJECT_ID/cloudbuild-android` to the [Container Registry](https://console.cloud.google.com/gcr/images).
 - It has OpenJDK8, Android `sdkmanager`, Gradle wrapper.
 - It also has an Android application for testing purposes.
-- It supports Cloud KMS encryption for access credentials.
 - It supports publishing to Bucket & Firebase App Distribution.
+- It supports Cloud KMS encryption for access credentials.
 
 # How to use it?
 
