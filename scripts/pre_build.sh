@@ -3,8 +3,6 @@
 CLI_TOOLS_VERSION=6200805
 CLI_TOOLS_ZIPFILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
 
-echo ${GOOGLE_APPLICATION_CREDENTIALS}
-
 # A) Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
 wget -q https://dl.google.com/android/repository/${CLI_TOOLS_ZIPFILE}
