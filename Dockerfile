@@ -2,14 +2,17 @@
 FROM openjdk:8 as builder
 LABEL description="Cloud Build - Android SDK Builder" version="1.0.2" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 ENV ANDROID_HOME /opt/android-sdk
-ARG GRADLE_VERSION
-ARG SDK_PACKAGES
+ARG GRADLE_WRAPPER_VERSION
+ARG ANDROID_SDK_PACKAGES
 
 COPY . /workspace
 WORKDIR /workspace
 
 # ADB :5037
 EXPOSE 5037
+
+# default pre build cleanup script
+RUN ./scripts/pre_cleanup.sh
 
 # default pre build script
 RUN ./scripts/pre_build.sh

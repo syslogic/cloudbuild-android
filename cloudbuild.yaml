@@ -1,6 +1,4 @@
 # cloudbuild.yaml
-# In this directory, run the following command to build this builder.
-# $ gcloud builds submit . --config=cloudbuild.yaml
 
 steps:
 - name: gcr.io/cloud-builders/docker
@@ -14,16 +12,16 @@ steps:
     '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:${SHORT_SHA}',
     '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:latest',
 
-    # These are used for variable substitutions (as shown in screenshot_01.png):
+    # These are used for Cloud Build variable substitutions (as shown in screenshot_01.png):
     # https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values
-    #'--build-arg', 'GRADLE_VERSION=${_GRADLE_VERSION}',
-    #'--build-arg', 'SDK_PACKAGES="${_SDK_PACKAGES"}',
-
+    #'--build-arg', 'ANDROID_SDK_PACKAGES="${_ANDROID_SDK_PACKAGES"}',
+    #'--build-arg', 'GRADLE_WRAPPER_VERSION=${_GRADLE_WRAPPER_VERSION}',
+    
     # The same, but with static values (no build-trigger configuration required)
-    # When commenting these out, one has to run `./gradlew build` to fetch them
-    '--build-arg', 'GRADLE_VERSION=5.6.4',
-    # '--build-arg', 'SDK_PACKAGES=platform-tools platforms;android-29 build-tools;28.0.3 ndk;21.1.6352462',
-    '--build-arg', 'SDK_PACKAGES=platform-tools platforms;android-29 build-tools;28.0.3',
+    # When commenting these out, one has to run `./gradlew build` to fetch components
+    # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-29 build-tools;28.0.3 ndk;21.1.6352462',
+    '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-29 build-tools;28.0.3',
+    '--build-arg', 'GRADLE_WRAPPER_VERSION=5.6.4',
 
     # enable cloudbuild network
     '--network', 'cloudbuild',
