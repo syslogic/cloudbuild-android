@@ -141,10 +141,10 @@ Please notice the [`❤ Sponsor`](https://www.paypal.me/syslogic) button above.
 
  # Status
  
- ![cloud build status](https://storage.googleapis.com/automatize-ci-badges/builds/cloud-build-badge/branches/master.svg)
+ ![Cloud Build Status](https://storage.googleapis.com/automatize-ci-badges/builds/cloud-build-badge/branches/master.svg)
  
 # Also see
-
- - GitHub Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
- - GitHub [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
+ - Blog [Simplify your CI process with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
+ - Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
+ - [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
  
