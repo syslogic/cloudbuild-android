@@ -13,8 +13,6 @@ android {
             versionName rootProject.ext.get("versionName")
             versionCode rootProject.ext.get("versionCode")
         }
-        // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testBuildType "debug"
         multiDexEnabled true
     }
 
