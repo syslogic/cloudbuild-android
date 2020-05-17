@@ -16,17 +16,15 @@ fi
 # accept licenses
 yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses >/dev/null
 
-${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --list
+# install Android platform tools (with sdkmanager)
+#${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --list
 ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools"
-#${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platforms;android-29"
-ls -la ${ANDROID_HOME}
 
-# install Android NDK
+# install Android NDK (with sdkmanager)
 if [ "x$ANDROID_NDK_VERSION" = "x" ] ; then
     echo _ANDROID_NDK_VERSION not provided, skipping install. ;
 else
     ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "ndk;${ANDROID_NDK_VERSION}"
-    ls -la ${ANDROID_HOME}/ndk-bundle
 fi
 
 # change Gradle wrapper version; eg. from version 5.6.4 to 6.4.1
