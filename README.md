@@ -23,12 +23,12 @@
 
 # Variable Substitutions
 
-Meanwhile one can install packages with the `sdkmanager`, when passing variable `_SDK_PACKAGES`.<br/>
+One can pre-install packages with the `sdkmanager`, when passing variable `_SDK_PACKAGES`.<br/>
 At the moment these are statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
- - `_GRADLE_VERSION` ~ `5.6.4`
  - `_SDK_PACKAGES` ~ `platform-tools platforms;android-29 build-tools;28.0.3`
-
+ - `_GRADLE_WRAPPER_VERSION` ~ `5.6.4`
+ 
 # Usage examples
 
 These examples assume that you already have the image in your project's private container registry.
