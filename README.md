@@ -23,8 +23,9 @@
 
 # Variable Substitutions
 
-One can pre-install packages with the `sdkmanager`, when passing variable `_ANDROID_SDK_PACKAGES`.<br/>
-At the moment these are statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
+One can pre-install SDK packages with the `sdkmanager`, when passing `_ANDROID_SDK_PACKAGES`.<br/>
+One can change the version of the Gradle wrapper, when passing `_GRADLE_WRAPPER_VERSION`.<br/>
+At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-29 build-tools;28.0.3`
  - `_GRADLE_WRAPPER_VERSION` ~ `5.6.4`
