@@ -10,6 +10,9 @@
 # How to use it?
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
+ 
+  ![Cloud Build - Screenshot 01](https://raw.githubusercontent.com/syslogic/cloudbuild-android-builder/master/screenshots/screenshot_01.png)
+ 
  - After having successfully built it, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild-android`.
  - This container can be used <b>in another</b> Android project (or another Git branch) `cloudbuild.yaml`, in order not to build it every time.
  - When the `Dockerfile` runs `./gradlew build`, the API level & build-tools specified in the `build.gradle` get installed.
