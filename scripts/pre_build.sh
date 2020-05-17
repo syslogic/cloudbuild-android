@@ -27,6 +27,13 @@ else
     ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platforms;android-${ANDROID_SDK_PLATFORM}"
 fi
 
+# install Android build tools
+if [ "x$BUILD_TOOLS_VERSION" = "x" ] ; then
+    echo _BUILD_TOOLS_VERSION not provided, skipping install. ;
+else
+    ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "build-tools;${BUILD_TOOLS_VERSION}"
+fi
+
 # install Android NDK
 if [ "x$ANDROID_NDK_VERSION" = "x" ] ; then
     echo _ANDROID_NDK_VERSION not provided, skipping install. ;
