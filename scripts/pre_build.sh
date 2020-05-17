@@ -56,7 +56,7 @@ else
     ${PACKAGES}+=" ndk;${ANDROID_NDK_VERSION}"
 fi
 
-${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} ${PACKAGES}
+${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install ${PACKAGES}
 
 # change Gradle wrapper version; eg. from version 5.6.4 to 6.4.1
 if [ "x$GRADLE_VERSION" = "x" ] ; then
