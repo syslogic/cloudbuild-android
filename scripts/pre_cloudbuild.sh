@@ -13,11 +13,13 @@ else
     rm ${CLI_TOOLS_ZIPFILE}
 fi
 
+# accept licenses
+yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses >/dev/null
+${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --list
 
-yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --licenses
-${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools" "platforms;android-29"
-${ANDROID_HOME}/tools/bin/sdkmanager --list
-${ANDROID_HOME}/tools/bin/sdkmanager "platform-tools" "platforms;android-29"
+# update command line tools
+${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "cmdline-tools;latest"
+#${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platform-tools" "platforms;android-29"
 ls -la ${ANDROID_HOME}
 
 # install Android platform tools
