@@ -1,6 +1,17 @@
 #!/bin/bash
 # pre-build; written 2020 by Martin Zeitler
 
+# cleanup build directory
+rm -R /workspace/.github
+rm -R /workspace/credentials
+rm -R /workspace/screenshots
+rm /workspace/.gitignore
+rm /workspace/cloudbuild.yaml
+rm /workspace/Dockerfile
+rm /workspace/README.md
+rm /workspace/LICENSE
+
+
 # install Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
 if [ "x$ANDROID_SDK_VERSION" = "x" ] ; then
@@ -27,7 +38,7 @@ else
     ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} "platforms;android-${ANDROID_SDK_PLATFORM}"
 fi
 
-# install Android build tools
+# install Android SDK Build-Tools
 if [ "x$BUILD_TOOLS_VERSION" = "x" ] ; then
     echo _BUILD_TOOLS_VERSION not provided, skipping install. ;
 else
@@ -49,15 +60,5 @@ else
     sed -i -e "s/5\.6\.4/${GRADLE_VERSION}/g" ${WRAPPER_PROPERTIES}
 fi
 
-# cleanup build directory
-rm -R /workspace/.github
-rm -R /workspace/credentials
-rm -R /workspace/screenshots
-rm /workspace/.gitignore
-rm /workspace/cloudbuild.yaml
-rm /workspace/Dockerfile
-rm /workspace/README.md
-rm /workspace/LICENSE
-
-chmod +x ./gradlew
+#chmod +x ./gradlew
 ls -la
