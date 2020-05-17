@@ -18,13 +18,10 @@
 # Variable Substitutions
 
 Meanwhile one can install packages with the `sdkmanager`, when passing variables.<br/>
-At the moment these are statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml#L17), but the code is there.
+At the moment these are statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
- - `_ANDROID_NDK_VERSION` ~ `21.1.6352462`
- - `_ANDROID_SDK_PLATFORM` ~ `29`
- - `_ANDROID_SDK_VERSION` ~ `6200805` 
- - `_BUILD_TOOLS_VERSION` ~ `28.0.3`
  - `_GRADLE_VERSION` ~ `5.6.4`
+ - `_SDK_PACKAGES` ~ `platform-tools platforms;android-29 build-tools;28.0.3`
 
 # Usage examples
 
