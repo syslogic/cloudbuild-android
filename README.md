@@ -137,7 +137,7 @@ DONE
 
 # Status
  
- ![Cloud Build Status](https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg)
+ ![Cloud Build Status](https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg?sanitize=1)
  
 # Contributions
 
