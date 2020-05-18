@@ -137,7 +137,7 @@ DONE
 
 # Build Status
  
-<a href="https://github.com/syslogic/cloudbuild-badges" target="_blank"><img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg"></a>
+<img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg">
  
 # Contributions
 
