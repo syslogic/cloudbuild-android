@@ -137,7 +137,7 @@ DONE
 
 # Build Status
  
-<img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg">
+<img src="https://storage.cloud.google.com/cloudbuild-badges/cloudbuild-android-master.svg" />
  
 # Contributions
 
