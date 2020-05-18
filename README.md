@@ -135,9 +135,9 @@ PUSH
 DONE
 ````
 
-# Status
+# Build Status
  
- ![Cloud Build Status](https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg?sanitize=1)
+<a href="https://github.com/syslogic/cloudbuild-badges" target="_blank"><img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg"></a>
  
 # Contributions
 
