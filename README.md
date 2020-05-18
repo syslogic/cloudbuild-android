@@ -141,7 +141,7 @@ DONE
 
 # Contributions
 
-Please notice the [`❤ Sponsor`](https://www.paypal.me/syslogic) button above.
+Please notice the [`❤️ Sponsor`](https://www.paypal.me/syslogic) button above.
 
 # Also see
  - Blog [Simplify your CI process with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
