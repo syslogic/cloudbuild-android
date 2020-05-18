@@ -136,9 +136,9 @@ DONE
 ````
 
 # Build Status
- 
 
- 
+<img src="https://storage.cloud.google.com/cloudbuild-badges/cloudbuild-android-master.svg" />
+
 # Contributions
 
 Please notice the [`❤ Sponsor`](https://www.paypal.me/syslogic) button above.
