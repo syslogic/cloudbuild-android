@@ -112,7 +112,7 @@ steps:
     'run',
     '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild',
     '-v', 'data:/workspace',
-    '/bin/sh', '-c', 'cd /workspace && ls -la && ./gradlew mobile:assembleRelease mobile:appDistributionUploadRelease'
+    '/bin/sh', '-c', 'cd /workspace && ./gradlew mobile:assembleRelease mobile:appDistributionUploadRelease'
   ]
 
 timeout: 1200s
