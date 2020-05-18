@@ -108,7 +108,12 @@ steps:
   volumes:
     - name: data
       path: /persistent_volume
-  args: ['run', '-v', 'data:/workspace', '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild', '/bin/sh', '-c', 'cd /workspace && ls -la && ./gradlew mobile:assembleRelease mobile:appDistributionUploadRelease']
+  args: [
+    'run',
+    '--rm', 'eu.gcr.io/$PROJECT_ID/cloudbuild',
+    '-v', 'data:/workspace',
+    '/bin/sh', '-c', 'cd /workspace && ls -la && ./gradlew mobile:assembleRelease mobile:appDistributionUploadRelease'
+  ]
 
 timeout: 1200s
 
