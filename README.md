@@ -102,9 +102,8 @@ steps:
 - name: gcr.io/cloud-builders/docker
   id: 'firebase-distribution'
   waitFor: ['kms-decode']
-  env: [
-     'BUILD_NUMBER=$BUILD_ID'
-  ]
+  env:
+    - 'BUILD_NUMBER=$BUILD_ID'
   volumes:
     - name: data
       path: /persistent_volume
