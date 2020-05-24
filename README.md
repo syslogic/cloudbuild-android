@@ -1,11 +1,14 @@
-# What it does?
+# cloudbuild-android
+<img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg" />
+
+## What it does?
 
 - It builds a Docker container from [Google Cloud Source Repositories](https://cloud.google.com/source-repositories) or [GitHub](https://github.com/marketplace/google-cloud-build) with [Google Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
 - It publishes the container image as `eu.gcr.io/$PROJECT_ID/cloudbuild-android` to the project's [Container Registry](https://console.cloud.google.com/gcr/images).
 - It has OpenJDK 8, Android `sdkmanager`, Gradle wrapper, as well as an Android application for testing purposes.
 - It supports publishing to Bucket & Firebase App Distribution with Cloud KMS encryption for the access credentials.
 
-# How to use it?
+## How to use it?
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
  
@@ -19,7 +22,7 @@
  - when the `Dockerfile` runs `./gradlew build`, the components and dependencies in the `build.gradle` get pre-installed.
  - when the `Dockerfile` runs `./gradlew`, only the Gradle wrapper gets pre-installed (this is the current situation).
 
-# Variable Substitutions
+## Variable Substitutions
 
 One can pre-install SDK packages with the `sdkmanager`, when passing `_ANDROID_SDK_PACKAGES`.<br/>
 And one can change the version of the Gradle wrapper, when passing `_GRADLE_WRAPPER_VERSION`.<br/>
@@ -28,7 +31,7 @@ At the moment these are both statically set in [`cloudbuild.yaml`](https://githu
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-29 build-tools;28.0.3`
  - `_GRADLE_WRAPPER_VERSION` ~ `5.6.4`
  
-# Usage examples
+## Usage examples
 
 These examples assume that you already have the image in your project's private container registry.
 
@@ -138,16 +141,7 @@ Finished Step #2 - firebase-distribution"
 PUSH
 DONE
 ````
-
-# Build Status
-
-<img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg" />
-
-# Contributions
-
-Please notice the [`❤️ Sponsor`](https://www.paypal.me/syslogic) button above.
-
-# Also see
+## Also see
  - Blog [Simplify your CI process with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
  - Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
  - [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
