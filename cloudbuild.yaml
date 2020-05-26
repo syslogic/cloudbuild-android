@@ -20,7 +20,7 @@ steps:
     # The same, but with static values (no build-trigger configuration required)
     # When commenting these out, one has to run `./gradlew build` to fetch components
     # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-29 build-tools;28.0.3 ndk;21.1.6352462',
-    '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-29 build-tools;28.0.3',
+    '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-29 build-tools;29.0.2',
     '--build-arg', 'GRADLE_WRAPPER_VERSION=5.6.4',
 
     # enable cloudbuild network
