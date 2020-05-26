@@ -1,6 +1,6 @@
 # CloudBuild Dockerfile for building with Android SDK/NDK
 FROM openjdk:8 as builder
-LABEL description="Cloud Build - Android SDK Builder" version="1.0.3" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
+LABEL description="Cloud Build - Android SDK Builder" version="1.0.2" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 ENV ANDROID_HOME /opt/android-sdk
 ARG GRADLE_WRAPPER_VERSION
 ARG ANDROID_SDK_PACKAGES
@@ -11,17 +11,17 @@ WORKDIR /workspace
 EXPOSE 5037
 
 # default pre build cleanup script
-RUN /workspace/scripts/pre_cleanup.sh
+RUN ./scripts/pre_cleanup.sh
 
 # default pre build script
-RUN /workspace/scripts/pre_build.sh
+RUN ./scripts/pre_build.sh
 
 # run the Gradle wrapper once (it needs to download)
-RUN /workspace/gradlew
+RUN ./gradlew
 
 # fetches the SDK components & dependencies as defined in the build.gradle
 # meanwhile this is optional, because the sdkmanager is being used instad.
 # RUN ./gradlew build
 
 # default post build script
-RUN /workspace/scripts/post_build.sh
+RUN ./scripts/post_build.sh
