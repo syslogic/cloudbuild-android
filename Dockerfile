@@ -11,17 +11,17 @@ WORKDIR /workspace
 EXPOSE 5037
 
 # default pre build cleanup script
-RUN ls -ls && ./scripts/pre_cleanup.sh
+RUN /workspace/scripts/pre_cleanup.sh
 
 # default pre build script
-RUN ./scripts/pre_build.sh
+RUN /workspace/scripts/pre_build.sh
 
 # run the Gradle wrapper once (it needs to download)
-RUN ./gradlew
+RUN /workspace/gradlew
 
 # fetches the SDK components & dependencies as defined in the build.gradle
 # meanwhile this is optional, because the sdkmanager is being used instad.
 # RUN ./gradlew build
 
 # default post build script
-RUN ./scripts/post_build.sh
+RUN /workspace/scripts/post_build.sh
