@@ -16,11 +16,11 @@ RUN ./scripts/pre_cleanup.sh
 # default pre build script
 RUN ./scripts/pre_build.sh
 
-# run the Gradle wrapper once (it needs to download)
+# run ./gradlew once in order to install the Gradle wrapper
 RUN ./gradlew
 
-# fetches the SDK components & dependencies as defined in the build.gradle
-# meanwhile this is optional, because the sdkmanager is being used instad.
+# fetches SDK components & dependencies as defined in the build.gradle
+# this is rather optional, because the sdkmanager is being used instad.
 # RUN ./gradlew build
 
 # default post build script
