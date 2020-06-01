@@ -1,6 +1,6 @@
 #!/bin/bash
 # pre-build; written 2020 by Martin Zeitler
-CLI_TOOLS_VERSION=6200805
+CLI_TOOLS_VERSION=6514223
 CLI_TOOLS_ZIPFILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
 
 # A) Android command-line tools (has sdkmanager)
