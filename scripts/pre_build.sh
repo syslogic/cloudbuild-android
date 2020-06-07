@@ -28,13 +28,13 @@ echo "${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install 
 ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install $PACKAGES
 
 
-# B) Change the version in gradle-wrapper.properties; eg. from version 5.6.4 to 6.4.1
+# B) Change the version in gradle-wrapper.properties
 # Cloud Build trigger substitution ${_GRADLE_WRAPPER_VERSION}
 if [ "x$GRADLE_WRAPPER_VERSION" = "x" ] ; then
     echo _GRADLE_WRAPPER_VERSION not provided by build trigger, using the default version. ;
 else
-    if [ "$GRADLE_WRAPPER_VERSION" != "5.6.4" ] ; then
+    if [ "$GRADLE_WRAPPER_VERSION" != "6.1.1" ] ; then
         WRAPPER_PROPERTIES=/workspace/gradle/wrapper/gradle-wrapper.properties
-        sed -i -e "s/5\.6\.4/${GRADLE_WRAPPER_VERSION}/g" ${WRAPPER_PROPERTIES}
+        sed -i -e "s/6\.1\.1/${GRADLE_WRAPPER_VERSION}/g" ${WRAPPER_PROPERTIES}
     fi
 fi

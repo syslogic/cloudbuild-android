@@ -29,8 +29,8 @@ One can pre-install SDK packages with the `sdkmanager`, when passing `_ANDROID_S
 And one can change the version of the Gradle wrapper, when passing `_GRADLE_WRAPPER_VERSION`.<br/>
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
- - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-29 build-tools;29.0.2`
- - `_GRADLE_WRAPPER_VERSION` ~ `5.6.4`
+ - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-29 build-tools;29.0.3`
+ - `_GRADLE_WRAPPER_VERSION` ~ `6.1.1`
  
 ## Usage examples
 
@@ -120,28 +120,6 @@ steps:
 
 timeout: 1200s
 
-````
-The output:
-
-````
-Step #2 - "firebase-distribution": > Task :mobile:appDistributionUploadRelease
-Step #2 - "firebase-distribution": Using APK path in the outputs directory: /workspace/mobile/build/outputs/apk/release/mobile-release.apk.
-Step #2 - "firebase-distribution": Uploading APK to Firebase App Distribution...
-Step #2 - "firebase-distribution": Getting appId from output of google services plugin
-Step #2 - "firebase-distribution": Using service credentials file specified by the serviceCredentialsFile property in your app's build.gradle file: /workspace/credentials/google-service-account.json
-Step #2 - "firebase-distribution": This APK has not been uploaded before.
-Step #2 - "firebase-distribution": Uploading the APK.
-Step #2 - "firebase-distribution": Uploaded APK successfully 202
-Step #2 - "firebase-distribution": Added release notes successfully 200
-Step #2 - "firebase-distribution": Added testers/groups successfully 200
-Step #2 - "firebase-distribution": App Distribution upload finished successfully!
-Step #2 - "firebase-distribution": 
-Step #2 - "firebase-distribution": BUILD SUCCESSFUL in 1m 42s
-Step #2 - "firebase-distribution": 28 actionable tasks: 28 executed
-Finished Step #2 - firebase-distribution"
-PUSH
-DONE
-````
 ## Also see
  - Blog [Simplify your CI process with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
  - Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
