@@ -119,6 +119,7 @@ steps:
   ]
 
 timeout: 1200s
+````
 
 ## Also see
  - Blog [Simplify your CI process with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
