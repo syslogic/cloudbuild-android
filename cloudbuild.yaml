@@ -16,11 +16,11 @@ steps:
     # https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values
     #'--build-arg', 'ANDROID_SDK_PACKAGES="${_ANDROID_SDK_PACKAGES"}',
     #'--build-arg', 'GRADLE_WRAPPER_VERSION=${_GRADLE_WRAPPER_VERSION}',
-    
+
     # The same, but with static values (no build-trigger configuration required)
     # When commenting these out, one has to run `./gradlew build` to fetch components
-    # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-R build-tools;30.0.1 ndk;21.1.6352462',
-    '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-R build-tools;30.0.1',
+    # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-30 build-tools;30.0.1 ndk;21.1.6352462',
+    '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-30 build-tools;30.0.1',
     '--build-arg', 'GRADLE_WRAPPER_VERSION=6.1.1',
 
     # enable cloudbuild network
