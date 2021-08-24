@@ -21,7 +21,7 @@ steps:
     # When commenting these out, one has to run `./gradlew build` to fetch components
     # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-30 build-tools;30.0.3 ndk;21.3.6528147',
     '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-30 build-tools;30.0.3',
-    '--build-arg', 'GRADLE_WRAPPER_VERSION=6.5',
+    '--build-arg', 'GRADLE_WRAPPER_VERSION=7.1.1',
 
     # enable cloudbuild network
     '--network', 'cloudbuild',
