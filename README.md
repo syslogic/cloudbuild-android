@@ -5,11 +5,13 @@
 
 - It builds a Docker container from [Google Cloud Source Repositories](https://cloud.google.com/source-repositories) or [GitHub](https://github.com/marketplace/google-cloud-build) with [Google Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
 - It publishes the image as `eu.gcr.io/$PROJECT_ID/cloudbuild-android` to the project's [Container Registry](https://console.cloud.google.com/gcr/images).
-- It has OpenJDK 8, Android `sdkmanager`, Gradle wrapper, as well as an Android application for testing purposes.
+- It has OpenJDK, Android `sdkmanager`, Gradle wrapper, as well as a simple Android application for testing purposes.
 - It supports publishing to Bucket & Firebase App Distribution with Cloud KMS encryption for the credentials.
 - Android NDK and also Firebase Crashlytics NDK crash reporting can be enabled be uncommenting a few lines.
 
 ## How to use it?
+
+ - This build needs to be built in order to use it. Hosting the built image would be a) less customizable and b) the traffic would be charged.
 
  - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and set up a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
  
