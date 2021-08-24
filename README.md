@@ -11,7 +11,7 @@
 
 ## How to use it?
 
- - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and setup a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
+ - Import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and set up a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
  
   ![Cloud Build - Screenshot 01](https://raw.githubusercontent.com/syslogic/cloudbuild-android-builder/master/screenshots/screenshot_01.png)
  
@@ -30,7 +30,7 @@ And one can change the version of the Gradle wrapper, when passing `_GRADLE_WRAP
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-30 build-tools;30.0.3`
- - `_GRADLE_WRAPPER_VERSION` ~ `6.5`
+ - `_GRADLE_WRAPPER_VERSION` ~ `7.1.1`
  
 ## Usage examples
 
@@ -122,7 +122,7 @@ timeout: 1200s
 ````
 
 ## Also see
- - Blog [Simplify your CI process with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
+ - Blog [Simplify your CI processes with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
  - Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
  - [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
  
