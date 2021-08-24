@@ -1,6 +1,7 @@
 #!/bin/bash
-# pre-build; written 2020 by Martin Zeitler
-CLI_TOOLS_VERSION=6609375
+# pre-build; written 2020-2021 by Martin Zeitler
+# https://developer.android.com/studio#command-tools
+CLI_TOOLS_VERSION=7583922
 CLI_TOOLS_ZIPFILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
 
 # A) Android command-line tools (has sdkmanager)
@@ -33,8 +34,8 @@ ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install $PACKA
 if [ "x$GRADLE_WRAPPER_VERSION" = "x" ] ; then
     echo _GRADLE_WRAPPER_VERSION not provided by build trigger, using the default version. ;
 else
-    if [ "$GRADLE_WRAPPER_VERSION" != "6.1.1" ] ; then
+    if [ "$GRADLE_WRAPPER_VERSION" != "7.1.1" ] ; then
         WRAPPER_PROPERTIES=/workspace/gradle/wrapper/gradle-wrapper.properties
-        sed -i -e "s/6\.1\.1/${GRADLE_WRAPPER_VERSION}/g" ${WRAPPER_PROPERTIES}
+        sed -i -e "s/7\.1\.1/${GRADLE_WRAPPER_VERSION}/g" ${WRAPPER_PROPERTIES}
     fi
 fi
