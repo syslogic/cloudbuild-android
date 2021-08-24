@@ -12,12 +12,12 @@ steps:
     '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:${SHORT_SHA}',
     '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:latest',
 
-    # These are used for Cloud Build variable substitutions (as shown in screenshot_01.png):
+    # These are used by Cloud Build variable substitutions (as shown in screenshot_01.png):
     # https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values
     #'--build-arg', 'ANDROID_SDK_PACKAGES="${_ANDROID_SDK_PACKAGES"}',
     #'--build-arg', 'GRADLE_WRAPPER_VERSION=${_GRADLE_WRAPPER_VERSION}',
 
-    # The same, but with static values (no build-trigger configuration required)
+    # By default, static values are being used (build-trigger configuration not required)
     # When commenting these out, one has to run `./gradlew build` to fetch components
     # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-30 build-tools;30.0.3 ndk;21.3.6528147',
     '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-30 build-tools;30.0.3',
