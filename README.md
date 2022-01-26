@@ -31,8 +31,8 @@ One can pre-install SDK packages with the `sdkmanager`, when passing `_ANDROID_S
 And one can change the version of the Gradle wrapper, when passing `_GRADLE_WRAPPER_VERSION`.<br/>
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
- - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-30 build-tools;30.0.3`
- - `_GRADLE_WRAPPER_VERSION` ~ `7.1.1`
+ - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-32 build-tools;32.0.0`
+ - `_GRADLE_WRAPPER_VERSION` ~ `7.2`
  
 ## Usage examples
 
