@@ -1,5 +1,5 @@
 #!/bin/bash
-# pre-cleanup; written 2020-2021 by Martin Zeitler
+# pre-cleanup; written 2020-2022 by Martin Zeitler
 
 # Cleanup build directory
 rm -R /workspace/.github
@@ -13,3 +13,4 @@ rm /workspace/LICENSE
 
 echo "Build Directory Listing:"
 ls -la
+

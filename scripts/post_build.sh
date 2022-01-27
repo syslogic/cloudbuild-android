@@ -1,5 +1,5 @@
 #!/bin/bash
-# post-build; written 2020-2021 by Martin Zeitler
+# post-build; written 2020-2022 by Martin Zeitler
 
 # Removing the Android application from the container
 shopt -s dotglob
@@ -9,3 +9,4 @@ rm -r /workspace/*
 if [ -d /root/.gradle/caches ]; then
     rm -r /root/.gradle/caches/*
 fi
+
