@@ -7,7 +7,7 @@
 - It publishes the image to the [Container Registry](https://console.cloud.google.com/gcr/images)  as `eu.gcr.io/$PROJECT_ID/cloudbuild-android`.
 - It has OpenJDK, Android `sdkmanager`, Gradle, as well as a simple Android application for testing.
 - It supports publishing to Bucket & Firebase App Distribution with Cloud KMS decryption for credentials.
-- Android NDK and Firebase Crashlytics NDK crash reporting can be enabled be uncommenting a few lines.
+- Android NDK and Firebase Crashlytics NDK crash reporting can be enabled by uncommenting a few lines.
 
 ## How to use it?
 
