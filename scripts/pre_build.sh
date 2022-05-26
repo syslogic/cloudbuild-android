@@ -34,7 +34,7 @@ ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install $PACKA
 if [ "x$GRADLE_WRAPPER_VERSION" = "x" ] ; then
     echo _GRADLE_WRAPPER_VERSION not provided by build trigger, using the default version. ;
 else
-    if [ "$GRADLE_WRAPPER_VERSION" != "7.1.1" ] ; then
+    if [ "$GRADLE_WRAPPER_VERSION" != "7.4.2" ] ; then
         WRAPPER_PROPERTIES=/workspace/gradle/wrapper/gradle-wrapper.properties
         sed -i -e "s/7\.1\.1/${GRADLE_WRAPPER_VERSION}/g" ${WRAPPER_PROPERTIES}
     fi
