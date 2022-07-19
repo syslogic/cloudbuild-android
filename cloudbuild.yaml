@@ -9,8 +9,8 @@ steps:
     - 'REV=$REVISION_ID'
   args: [
     'build',
-    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:${SHORT_SHA}',
-    '-t', 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:latest',
+    '-t', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/ci/android//cloudbuild-android:${SHORT_SHA}',
+    '-t', 'europe-west1-docker.pkg.dev/${PROJECT_ID}/ci/android//cloudbuild-android:latest',
 
     # These are used by Cloud Build variable substitutions (as shown in screenshot_01.png):
     # https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values
@@ -29,5 +29,5 @@ steps:
   ]
 
 images:
-- 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:${SHORT_SHA}'
-- 'eu.gcr.io/$PROJECT_ID/cloudbuild-android:latest'
+- 'europe-west1-docker.pkg.dev/${PROJECT_ID}/ci/android//cloudbuild-android:${SHORT_SHA}'
+- 'europe-west1-docker.pkg.dev/${PROJECT_ID}/ci/android//cloudbuild-android:latest'
