@@ -14,3 +14,5 @@ rm /workspace/LICENSE
 echo "Build Directory Listing:"
 ls -la
 
+echo $ANDROID_SDK_PACKAGES
+echo $GITHUB_ACCESS_TOKEN

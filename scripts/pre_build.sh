@@ -1,7 +1,7 @@
 #!/bin/bash
 # pre-build; written 2020-2022 by Martin Zeitler
 # https://developer.android.com/studio#command-tools
-CLI_TOOLS_VERSION=8512546
+CLI_TOOLS_VERSION=8092744
 CLI_TOOLS_ZIPFILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
 
 # A) Android command-line tools (has sdkmanager)
@@ -39,3 +39,6 @@ else
         sed -i -e "s/7\.1\.1/${GRADLE_WRAPPER_VERSION}/g" ${WRAPPER_PROPERTIES}
     fi
 fi
+
+# clone the https://github.com/ubitransports/apk-archiver.git
+#git clone --branch develop https://ubi-robot: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N@github.com/ubitransports/apk-archiver.git ${ANDROID_HOME}/apk-archiver
