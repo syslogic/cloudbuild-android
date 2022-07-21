@@ -1,0 +1,62 @@
+task archiveApks {
+    def apkOutputs = []
+    def unsignedSuffix = "-unsigned"
+
+    android.applicationVariants.all { variant ->
+        if ('release' != variant.buildType.name) {
+            // No need to check for variant types that we won't upload
+            return
+        }
+        variant.outputs.all { output ->
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
+                apkOutputs.add(output)
+            }
+        }
+    }
+
+    doFirst {
+
+        // Logging purposes
+        def listOfNames = apkOutputs.collect {
+            // If the output contains "unsigned", it means the signatures have been moved outside the project,
+            //  so we need to find an apk whose name doesn't have "-unsigned".
+            it.outputFile.name.replace(unsignedSuffix, "")
+        }
+        logger.lifecycle("Expected APKs :\n${listOfNames.join('\n')}\n")
+
+        def warnCount = 0
+        def successCount = 0
+
+        apkOutputs.forEach { output ->
+
+            def filePath = output.outputFile.toString().replace(unsignedSuffix, "")
+            def fileName = output.outputFile.name.replace(unsignedSuffix, "")
+
+            def appName = fileName.split('-').first()
+            def versionName = output.versionNameOverride
+            def fullArchiveUrl = "${NEXUS_APKS_URL}$appName/$versionName/$fileName"
+
+            def generatedFile = new File(filePath)
+            if (!generatedFile.exists()) {
+                logger.warn("$filePath doesn't exist in output directory.")
+                warnCount++
+                // this 'return' doesn't actually stop the loop, it will continue iterating.
+                return
+            }
+
+            logger.lifecycle("Archiving $fileName to $fullArchiveUrl")
+
+            exec {
+                commandLine "curl", "-f", "-S", "-u", "$USERNAME_NEXUS_UPLOAD:$PASSWORD_NEXUS_UPLOAD", "--upload-file", filePath, fullArchiveUrl
+                ignoreExitValue false
+            }
+
+            logger.lifecycle("$fileName successfuly uploaded to $fullArchiveUrl\n")
+            successCount++
+        }
+
+        if (warnCount == apkOutputs.size() || successCount == 0) {
+            throw new GradleException("ArchiveApks task ended with no successful uploads.")
+        }
+    }
+}

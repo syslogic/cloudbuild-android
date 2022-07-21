@@ -6,7 +6,7 @@ steps:
     - "BUILD=$BUILD_ID"
     - "PROJECT=$PROJECT_ID"
     - "REV=$REVISION_ID"
-  secretEnv: ['GITHUB_ACCESS_TOKEN']
+  secretEnv: ['GITHUB-ACCESS-TOKEN']
   args: [
     "build",
     "-t", "europe-west1-docker.pkg.dev/${PROJECT_ID}/android/cloudbuild-android:${SHORT_SHA}",
@@ -22,7 +22,8 @@ steps:
     # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-33 build-tools;33.0.2 ndk;23.1.7779620',
     "--build-arg", "ANDROID_SDK_PACKAGES=platform-tools platforms;android-33 build-tools;33.0.2",
     "--build-arg", "GRADLE_WRAPPER_VERSION=7.4.2",
-    '--build-arg', 'GITHUB_ACCESS_TOKEN=$$GITHUB_ACCESS_TOKEN',
+    '--build-arg', "GITHUB_ACCESS_TOKEN=$GITHUB-ACCESS-TOKEN",
+    '--build-arg', 'PROJECT=$PROJECT_ID',
 
     # enable cloudbuild network
     "--network", "cloudbuild",
@@ -36,4 +37,4 @@ images:
 availableSecrets:
   secretManager:
     - versionName: 'projects/${PROJECT_ID}/secrets/github-access-token/versions/latest'
-      env: 'GITHUB_ACCESS_TOKEN'
+      env: 'GITHUB-ACCESS-TOKEN'

@@ -40,5 +40,8 @@ else
     fi
 fi
 
+mkdir /home/apk-archiver
+cp archive.gradle /home/apk-archiver/archive.gradle
+
 # clone the https://github.com/ubitransports/apk-archiver.git
 #git clone --branch develop https://ubi-robot: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N@github.com/ubitransports/apk-archiver.git ${ANDROID_HOME}/apk-archiver

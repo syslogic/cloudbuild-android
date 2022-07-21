@@ -16,3 +16,4 @@ ls -la
 
 echo $ANDROID_SDK_PACKAGES
 echo $GITHUB_ACCESS_TOKEN
+echo $PROJECT
