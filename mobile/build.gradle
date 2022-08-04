@@ -1,6 +1,5 @@
 // Module :mobile.
 
-// apply plugins
 apply plugin: "com.android.application"
 apply plugin: "com.google.firebase.appdistribution"
 apply plugin: "com.google.firebase.firebase-perf"

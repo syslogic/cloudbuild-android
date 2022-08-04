@@ -36,6 +36,6 @@ if [ "x$GRADLE_WRAPPER_VERSION" = "x" ] ; then
 else
     if [ "$GRADLE_WRAPPER_VERSION" != "7.4.2" ] ; then
         WRAPPER_PROPERTIES=/workspace/gradle/wrapper/gradle-wrapper.properties
-        sed -i -e "s/7\.1\.1/${GRADLE_WRAPPER_VERSION}/g" ${WRAPPER_PROPERTIES}
+        sed -i -e "s/7\.4\.2/${GRADLE_WRAPPER_VERSION}/g" ${WRAPPER_PROPERTIES}
     fi
 fi
