@@ -1,5 +1,5 @@
 #!/bin/bash
-# post-build; written 2020-2022 by Martin Zeitler
+# post-build; written 2020-2023 by Martin Zeitler
 
 # Removing the Android application from the container
 shopt -s dotglob

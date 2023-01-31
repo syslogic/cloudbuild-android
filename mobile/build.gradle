@@ -1,14 +1,15 @@
-// Module :mobile.
-
-apply plugin: "com.android.application"
-apply plugin: "com.google.firebase.appdistribution"
-apply plugin: "com.google.firebase.firebase-perf"
-apply plugin: "com.google.firebase.crashlytics"
+// Module :mobile
+plugins {
+    id "com.android.application"
+    id "com.google.firebase.appdistribution"
+    id "com.google.firebase.crashlytics"
+}
 
 android {
-
+    namespace 'io.syslogic.cloudbuild'
     defaultConfig {
-        if(rootProject.file('version.properties').exists()) {
+        multiDexEnabled true
+        if (rootProject.file('version.properties').exists()) {
             applicationId rootProject.ext.get("applicationId")
             targetSdkVersion rootProject.ext.get("targetSdkVersion")
             compileSdkVersion rootProject.ext.get("compileSdkVersion")
@@ -16,14 +17,13 @@ android {
             versionName rootProject.ext.get("versionName")
             versionCode rootProject.ext.get("versionCode")
         }
-        multiDexEnabled true
     }
 
-    lintOptions {
+    lint {
         abortOnError false
     }
 
-    if(rootProject.file('keystore.properties').exists()) {
+    if (rootProject.file('keystore.properties').exists()) {
         signingConfigs {
             debug {
                 storeFile rootProject.file(".android${File.separator}debug.keystore")
@@ -65,16 +65,16 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.navigation:navigation-fragment:2.4.2'
-    implementation 'androidx.navigation:navigation-ui:2.4.2'
+    implementation 'androidx.navigation:navigation-fragment:2.5.3'
+    implementation 'androidx.navigation:navigation-ui:2.5.3'
 
-    implementation 'com.google.firebase:firebase-crashlytics:18.2.10'
-    implementation 'com.google.firebase:firebase-crashlytics-ndk:18.2.10'
+    implementation 'com.google.firebase:firebase-crashlytics:18.3.3'
+    // implementation 'com.google.firebase:firebase-crashlytics-ndk:18.3.3'
 }
 
-if(project.file('google-services.json').exists()) {
+if (project.file('google-services.json').exists()) {
     apply plugin: "com.google.gms.google-services"
 } else {
     logger.warn('file google-services.json is missing.')

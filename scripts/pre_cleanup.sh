@@ -1,5 +1,5 @@
 #!/bin/bash
-# pre-cleanup; written 2020-2022 by Martin Zeitler
+# pre-cleanup; written 2020-2023 by Martin Zeitler
 
 # Cleanup build directory
 rm -R /workspace/.github
