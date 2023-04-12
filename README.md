@@ -70,7 +70,7 @@ steps:
 
 timeout: 1200s
 ````
-b) Cloud KMS can be used decrypt files; this requires IAM `roles/cloudkms.cryptoKeyEncrypterDecrypter` for the service account:
+b) Cloud KMS can be used to decrypt credentials; this requires IAM role `roles/cloudkms.cryptoKeyEncrypterDecrypter` for the service account:
 
  ![Cloud Build - Screenshot 02](https://github.com/syslogic/cloudbuild-android/raw/master/screenshots/screenshot_02.png)
 
