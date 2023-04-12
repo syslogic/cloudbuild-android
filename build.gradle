@@ -1,5 +1,14 @@
 // project-wide `build.gradle`
 
+plugins {
+    id 'com.android.application' version "7.4.2" apply false
+    id 'com.android.library' version "7.4.2" apply false
+    id 'androidx.navigation.safeargs' version "2.5.3" apply false
+    id 'com.google.gms.google-services' version "4.3.15" apply false
+    id 'com.google.firebase.crashlytics' version "2.9.4" apply false
+    id 'com.google.firebase.appdistribution' version "4.0.0" apply false
+}
+
 // Keystore Settings, loaded from keystore.properties
 if(rootProject.file('keystore.properties').exists()) {
     def keystore = new Properties()
@@ -12,21 +21,6 @@ if(rootProject.file('keystore.properties').exists()) {
     project.ext.set('releaseKeyPass',      keystore['releaseKeyPass'])
 } else {
     logger.error('> File keystore.properties is missing.')
-}
-
-// Build Script
-buildscript {
-    repositories {
-        google()
-        mavenCentral()
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:7.4.2"
-        classpath "com.google.firebase:firebase-appdistribution-gradle:4.0.0"
-        classpath "com.google.firebase:firebase-crashlytics-gradle:2.9.4"
-        classpath "com.google.gms:google-services:4.3.15"
-    }
 }
 
 // Modules

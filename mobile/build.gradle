@@ -1,8 +1,9 @@
 // Module :mobile
 plugins {
-    id "com.android.application"
-    id "com.google.firebase.appdistribution"
-    id "com.google.firebase.crashlytics"
+    id 'com.android.application'
+    id 'com.google.firebase.appdistribution'
+    id 'com.google.firebase.crashlytics'
+    id 'androidx.navigation.safeargs'
 }
 
 android {
