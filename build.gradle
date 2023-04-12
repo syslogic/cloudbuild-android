@@ -1,21 +1,7 @@
 // project-wide `build.gradle`
 
-// Version Settings, loaded from version.properties
-if (rootProject.file('version.properties').exists()) {
-    def version = new Properties()
-    version.load(new FileInputStream(rootProject.file('version.properties')))
-    project.ext.set('applicationId',       version['applicationId'])
-    project.ext.set('versionName',         version['versionName'])
-    project.ext.set('versionCode',         new Integer(version['versionCode']))
-    project.ext.set('compileSdkVersion',   new Integer(version['compileSdkVersion']))
-    project.ext.set('targetSdkVersion',    new Integer(version['targetSdkVersion']))
-    project.ext.set('minSdkVersion',       new Integer(version['minSdkVersion']))
-} else {
-    logger.warn('file version.properties is missing.')
-}
-
 // Keystore Settings, loaded from keystore.properties
-if (rootProject.file('keystore.properties').exists()) {
+if(rootProject.file('keystore.properties').exists()) {
     def keystore = new Properties()
     keystore.load(new FileInputStream(rootProject.file('keystore.properties')))
     project.ext.set('debugKeystorePass',   keystore['debugKeystorePass'])
@@ -25,7 +11,7 @@ if (rootProject.file('keystore.properties').exists()) {
     project.ext.set('releaseKeyAlias',     keystore['releaseKeyAlias'])
     project.ext.set('releaseKeyPass',      keystore['releaseKeyPass'])
 } else {
-    logger.warn('file keystore.properties is missing.')
+    logger.error('> File keystore.properties is missing.')
 }
 
 // Build Script
@@ -36,8 +22,8 @@ buildscript {
         gradlePluginPortal()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:7.4.1"
-        classpath "com.google.firebase:firebase-appdistribution-gradle:3.2.0"
+        classpath "com.android.tools.build:gradle:7.4.2"
+        classpath "com.google.firebase:firebase-appdistribution-gradle:4.0.0"
         classpath "com.google.firebase:firebase-crashlytics-gradle:2.9.4"
         classpath "com.google.gms:google-services:4.3.15"
     }
@@ -45,12 +31,6 @@ buildscript {
 
 // Modules
 allprojects {
-
-    repositories {
-        mavenLocal()
-        mavenCentral()
-        google()
-    }
 
     // when projects were evaluated
     gradle.projectsEvaluated {

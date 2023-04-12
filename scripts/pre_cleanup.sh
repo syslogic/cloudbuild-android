@@ -13,4 +13,3 @@ rm /workspace/LICENSE
 
 echo "Build Directory Listing:"
 ls -la
-
