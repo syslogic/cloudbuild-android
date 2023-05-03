@@ -32,7 +32,7 @@ And one can change the version of the Gradle wrapper, when passing `_GRADLE_WRAP
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-33 build-tools;33.0.2`
- - `_GRADLE_WRAPPER_VERSION` ~ `7.4.2`
+ - `_GRADLE_WRAPPER_VERSION` ~ `8.0`
  
 ## Usage examples
 

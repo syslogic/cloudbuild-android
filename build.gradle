@@ -1,12 +1,33 @@
 // project-wide `build.gradle`
 
+buildscript {
+    ext {
+        agp_version = '8.0.0'
+        gms_version = '4.3.15'
+        nav_version = '2.5.3'
+        appcompat_version = '1.6.1'
+        appdistribution_version = '4.0.0'
+        crashlytics_version = '2.9.5'
+        perf_version = '1.4.2'
+        junit_version = '4.13.2'
+        test_junit_version = '1.1.5'
+        test_core_version = '1.4.0'
+        test_rules_version = '1.4.0'
+        test_runner_version = '1.4.0'
+        test_monitor_version = '1.6.1'
+        uiautomator_version = '2.2.0'
+        espresso_version = '3.5.1'
+    }
+}
+
 plugins {
-    id 'com.android.application' version "7.4.2" apply false
-    id 'com.android.library' version "7.4.2" apply false
-    id 'androidx.navigation.safeargs' version "2.5.3" apply false
-    id 'com.google.gms.google-services' version "4.3.15" apply false
-    id 'com.google.firebase.crashlytics' version "2.9.4" apply false
-    id 'com.google.firebase.appdistribution' version "4.0.0" apply false
+    id 'com.android.application' version "$agp_version" apply false
+    id 'com.android.library' version "$agp_version" apply false
+    id 'androidx.navigation.safeargs' version "$nav_version" apply false
+    id 'com.google.gms.google-services' version "$gms_version" apply false
+    id 'com.google.firebase.appdistribution' version "$appdistribution_version" apply false
+    id 'com.google.firebase.crashlytics' version "$crashlytics_version" apply false
+    id 'com.google.firebase.firebase-perf' version "$perf_version" apply false
 }
 
 // Keystore Settings, loaded from keystore.properties
