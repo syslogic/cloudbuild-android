@@ -10,9 +10,6 @@ WORKDIR /workspace
 # ADB :5037
 EXPOSE 5037
 
-# default pre build cleanup script
-RUN ./scripts/pre_cleanup.sh
-
 # default pre build script
 RUN ./scripts/pre_build.sh
 
