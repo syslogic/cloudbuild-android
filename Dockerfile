@@ -7,6 +7,10 @@ ARG ANDROID_SDK_PACKAGES
 COPY . /workspace
 WORKDIR /workspace
 
+# install packages
+RUN apk add --no-cache wget
+RUN apk add --no-cache unzip
+
 # ADB :5037
 EXPOSE 5037
 
