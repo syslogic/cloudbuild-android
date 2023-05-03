@@ -12,14 +12,14 @@ RUN pwd
 RUN ls -la
 
 # default pre build script
-RUN ./scripts/pre_build.sh
+RUN /workspace/scripts/pre_build.sh
 
 # run ./gradlew once in order to install the Gradle wrapper
-RUN ./gradlew
+RUN /workspace/gradlew
 
 # fetches SDK components & dependencies as defined in the build.gradle
 # this is rather optional, because `sdkmanager` is being used instead.
 # RUN ./gradlew build
 
 # default post build script
-RUN ./scripts/post_build.sh
+RUN /workspace/scripts/post_build.sh
