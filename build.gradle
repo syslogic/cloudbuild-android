@@ -2,7 +2,7 @@
 
 buildscript {
     ext {
-        agp_version = '8.0.0'
+        agp_version = '8.0.1'
         gms_version = '4.3.15'
         nav_version = '2.5.3'
         appcompat_version = '1.6.1'
@@ -31,7 +31,7 @@ plugins {
 }
 
 // Keystore Settings, loaded from keystore.properties
-if(rootProject.file('keystore.properties').exists()) {
+if (rootProject.file('keystore.properties').exists()) {
     def keystore = new Properties()
     keystore.load(new FileInputStream(rootProject.file('keystore.properties')))
     project.ext.set('debugKeystorePass',   keystore['debugKeystorePass'])

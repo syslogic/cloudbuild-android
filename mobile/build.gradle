@@ -11,10 +11,13 @@ android {
     defaultConfig {
         applicationId 'io.syslogic.cloudbuild'
         namespace 'io.syslogic.cloudbuild'
+        compileSdk 33
+        targetSdk 33
+        minSdk 22
+        setProperty("archivesBaseName", "cloudbuild_" + versionName)
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testBuildType "debug"
         multiDexEnabled true
-        targetSdkVersion 33
-        compileSdkVersion 33
-        minSdkVersion 22
         versionName "1.0.1"
         versionCode 2
     }
