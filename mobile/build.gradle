@@ -22,6 +22,11 @@ android {
         versionCode 2
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
     buildFeatures {
         buildConfig true
         dataBinding true
@@ -68,7 +73,11 @@ android {
     }
 
     lint {
+        lintConfig project.file('lint.xml')
+        checkAllWarnings true
+        warningsAsErrors true
         abortOnError false
+        showAll false
     }
 }
 

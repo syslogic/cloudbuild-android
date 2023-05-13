@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+
+    <!-- Not required for Java projects -->
+    <issue id="KotlinPropertyAccess" severity="ignore"/>
+    <issue id="UnknownNullness" severity="ignore"/>
+
+    <issue id="InvalidPackage">
+        <ignore regexp="kotlinx.coroutines.debug.AgentPremain"/>
+    </issue>
+
+    <issue id="MenuTitle">
+        <ignore path="src/main/res/menu/bottom_nav_menu.xml"/>
+    </issue>
+
+</lint>
