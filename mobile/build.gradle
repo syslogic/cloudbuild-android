@@ -11,8 +11,8 @@ android {
     defaultConfig {
         applicationId 'io.syslogic.cloudbuild'
         namespace 'io.syslogic.cloudbuild'
-        compileSdk 33
-        targetSdk 33
+        compileSdk 34
+        targetSdk 34
         minSdk 22
         setProperty("archivesBaseName", "cloudbuild_" + versionName)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -102,7 +102,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/androidx.test
     // https://developer.android.com/jetpack/androidx/releases/test
-    //noinspection GradleDependency
     androidTestImplementation "androidx.test:core:$test_core_version"
     androidTestImplementation "androidx.test:runner:$test_runner_version"
     androidTestImplementation "androidx.test:rules:$test_rules_version"

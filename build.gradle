@@ -2,19 +2,20 @@
 
 buildscript {
     ext {
-        agp_version = '8.0.1'
+        agp_version = '8.0.2'
+        kotlin_version = '1.8.22'
         gms_version = '4.3.15'
-        nav_version = '2.5.3'
+        nav_version = '2.6.0'
         appcompat_version = '1.6.1'
         appdistribution_version = '4.0.0'
         crashlytics_version = '2.9.5'
         perf_version = '1.4.2'
         junit_version = '4.13.2'
         test_junit_version = '1.1.5'
-        test_core_version = '1.4.0'
-        test_rules_version = '1.4.0'
-        test_runner_version = '1.4.0'
+        test_core_version = '1.5.0'
         test_monitor_version = '1.6.1'
+        test_runner_version = '1.5.2'
+        test_rules_version = '1.5.0'
         uiautomator_version = '2.2.0'
         espresso_version = '3.5.1'
     }
@@ -44,10 +45,19 @@ if (rootProject.file('keystore.properties').exists()) {
     logger.error('> File keystore.properties is missing.')
 }
 
-// Modules
+/** Modules */
 allprojects {
-
-    // when projects were evaluated
+    configurations.all {
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            def requested = details.requested
+            if (requested.group.equals('org.jetbrains.kotlin')) {
+                List<String> list = ['kotlin-stdlib', 'kotlin-stdlib-jdk7', 'kotlin-stdlib-jdk8', 'kotlin-stdlib-common']
+                if (list.contains(requested.name)) {
+                    details.useVersion "$kotlin_version"
+                }
+            }
+        }
+    }
     gradle.projectsEvaluated {
         tasks.withType(JavaCompile) {
             options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
