@@ -122,6 +122,9 @@ steps:
 
 timeout: 1200s
 ````
+## Google Cloud KMS Gradle Plugin
+
+[Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloudkms-gradle-plugin)
 
 ## Also see
  - [Creating a Serverless Mobile Delivery Pipeline](https://cloud.google.com/architecture/creating-serverless-mobile-delivery-pipeline)
