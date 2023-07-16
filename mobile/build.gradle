@@ -6,14 +6,21 @@ plugins {
     id 'androidx.navigation.safeargs'
 }
 
-android {
+// conditionally apply experimental Gradle plugin
+if (new File(getProjectDir().absolutePath.replace("mobile", "buildSrc")).exists()) {
+    apply plugin: 'io.syslogic.cloudkms'
+} else {
+    println "> Cloud KMS Plugin not applied."
+}
 
+android {
+    namespace 'io.syslogic.cloudbuild'
+    buildToolsVersion '34.0.0'
     defaultConfig {
         applicationId 'io.syslogic.cloudbuild'
-        namespace 'io.syslogic.cloudbuild'
+        minSdk 22
         compileSdk 34
         targetSdk 34
-        minSdk 22
         setProperty("archivesBaseName", "cloudbuild_" + versionName)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testBuildType "debug"
