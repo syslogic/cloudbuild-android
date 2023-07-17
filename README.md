@@ -22,7 +22,7 @@
  
  An important difference is, that:
  
- - when the `Dockerfile` runs `./gradlew build`, the components and dependencies in the `build.gradle` get pre-installed.
+ - when the `Dockerfile` runs `./gradlew build`, components and dependencies in `build.gradle` get pre-installed.
  - when the `Dockerfile` runs `./gradlew`, only the Gradle wrapper gets pre-installed (this is the current situation).
 
 ## Variable Substitutions
