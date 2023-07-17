@@ -19,6 +19,13 @@ buildscript {
         uiautomator_version = '2.2.0'
         espresso_version = '3.5.1'
     }
+
+    // conditional remote dependency, when buildSrc is absent
+    if (! new File(getRootDir().absolutePath + "/buildSrc").exists()) {
+        dependencies {
+            classpath 'io.syslogic:google-cloud-kms-gradle-plugin:1.0.7'
+        }
+    }
 }
 
 plugins {
