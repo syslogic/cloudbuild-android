@@ -125,7 +125,7 @@ if (project.file('google-services.json').exists()) {
 
 /** Google Cloud KMS */
 cloudKms {
-    kmsKeyPath = 'projects/ PROJECT_ID /locations/global/keyRings/android-gradle/cryptoKeys/default'
+    kmsKeyPath = System.getenv('CLOUD_KMS_KEY_PATH')
     ciphertextFiles = [
             getRootDir().absolutePath + File.separator + 'credentials/debug.keystore.enc',
             getRootDir().absolutePath + File.separator + 'credentials/release.keystore.enc'
