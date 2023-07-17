@@ -128,6 +128,8 @@ The example uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/go
 
 It does about the same as the above `cloudbuild.yaml` step `kms-decode` does.
 
+eg. `./gradlew mobile:cloudKmsEncrypt  mobile:assembleRelease mobile:appDistributionUploadRelease`.
+
 ## Also see
  - [Creating a Serverless Mobile Delivery Pipeline](https://cloud.google.com/architecture/creating-serverless-mobile-delivery-pipeline)
  - [Simplify your CI processes with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
