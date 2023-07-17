@@ -57,7 +57,7 @@ allprojects {
     configurations.all {
         resolutionStrategy.eachDependency { DependencyResolveDetails details ->
             def requested = details.requested
-            if (requested.group.equals('org.jetbrains.kotlin')) {
+            if (requested.group == 'org.jetbrains.kotlin') {
                 List<String> list = ['kotlin-stdlib', 'kotlin-stdlib-jdk7', 'kotlin-stdlib-jdk8', 'kotlin-stdlib-common']
                 if (list.contains(requested.name)) {
                     details.useVersion "$kotlin_version"
