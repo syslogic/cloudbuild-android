@@ -126,13 +126,17 @@ if (project.file('google-services.json').exists()) {
 
 /** Google Cloud KMS */
 cloudKms {
-    kmsKeyPath = System.getenv('CLOUD_KMS_KEY_PATH')
-    ciphertextFiles = [
-            getRootDir().absolutePath + File.separator + 'credentials/debug.keystore.enc',
-            getRootDir().absolutePath + File.separator + 'credentials/release.keystore.enc'
-    ]
+
+    // The leading underscore is required due to the CloudBuild environment.
+    kmsKeyPath = System.getenv('_CLOUD_KMS_KEY_PATH')
+
     plaintextFiles = [
-            System.getProperty("user.home") + File.separator + ".android" + File.separator + "debug.keystore",
-            System.getProperty("user.home") + File.separator + ".android" + File.separator + "release.keystore"
+            /* 0 */ System.getProperty("user.home") + File.separator + ".android" + File.separator + "debug.keystore",
+            /* 1 */ System.getProperty("user.home") + File.separator + ".android" + File.separator + "release.keystore"
+    ]
+
+    ciphertextFiles = [
+            /* 0 */ getRootDir().absolutePath + File.separator + 'credentials/debug.keystore.enc',
+            /* 1 */ getRootDir().absolutePath + File.separator + 'credentials/release.keystore.enc'
     ]
 }

@@ -33,7 +33,7 @@ At the moment these are both statically set in [`cloudbuild.yaml`](https://githu
 
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-34 build-tools;34.0.0`
  - `_GRADLE_WRAPPER_VERSION` ~ `8.0`
- 
+ - `_CLOUD_KMS_KEY_PATH`
 ## Usage examples
 
 These examples assume that you already have the image in your project's private container registry.
@@ -122,9 +122,9 @@ steps:
 
 timeout: 1200s
 ````
-## Google Cloud KMS Gradle Plugin
+## Gradle Automation
 
-The [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloudkms-gradle-plugin) may be an alternative.
+The example app now uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloudkms-gradle-plugin), which depends on environmental variable `CLOUD_KMS_KEY_PATH`.
 
 ## Also see
  - [Creating a Serverless Mobile Delivery Pipeline](https://cloud.google.com/architecture/creating-serverless-mobile-delivery-pipeline)
