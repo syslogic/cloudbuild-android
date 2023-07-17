@@ -3,6 +3,7 @@ import org.gradle.api.initialization.resolve.RepositoriesMode
 pluginManagement {
     repositories {
         gradlePluginPortal()
+        maven { url 'https://jitpack.io' }
         google()
         mavenCentral()
     }
