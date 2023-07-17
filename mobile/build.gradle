@@ -4,13 +4,7 @@ plugins {
     id 'com.google.firebase.appdistribution'
     id 'com.google.firebase.crashlytics'
     id 'androidx.navigation.safeargs'
-}
-
-// conditionally apply experimental Gradle plugin
-if (new File(getProjectDir().absolutePath.replace("mobile", "buildSrc")).exists()) {
-    apply plugin: 'io.syslogic.cloudkms'
-} else {
-    println "> Cloud KMS Plugin not applied."
+    id 'io.syslogic.cloudkms'
 }
 
 android {
@@ -127,4 +121,17 @@ if (project.file('google-services.json').exists()) {
     apply plugin: "com.google.gms.google-services"
 } else {
     logger.error('> File google-services.json is missing.')
+}
+
+/** Google Cloud KMS */
+cloudKms {
+    kmsKeyPath = 'projects/ PROJECT_ID /locations/global/keyRings/android-gradle/cryptoKeys/default'
+    ciphertextFiles = [
+            getRootDir().absolutePath + File.separator + 'credentials/debug.keystore.enc',
+            getRootDir().absolutePath + File.separator + 'credentials/release.keystore.enc'
+    ]
+    plaintextFiles = [
+            System.getProperty("user.home") + File.separator + ".android" + File.separator + "debug.keystore",
+            System.getProperty("user.home") + File.separator + ".android" + File.separator + "release.keystore"
+    ]
 }
