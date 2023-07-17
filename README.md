@@ -126,7 +126,7 @@ timeout: 1200s
 
 The example uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloud-kms-gradle-plugin), which depends on environmental variable `_CLOUD_KMS_KEY_PATH`.
 
-It does about the same as the `cloudbuild.yaml` step `kms-decode` does.
+It does about the same as the above `cloudbuild.yaml` step `kms-decode` does.
 
 ## Also see
  - [Creating a Serverless Mobile Delivery Pipeline](https://cloud.google.com/architecture/creating-serverless-mobile-delivery-pipeline)
