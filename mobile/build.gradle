@@ -9,7 +9,7 @@ plugins {
 
 android {
     namespace 'io.syslogic.cloudbuild'
-    buildToolsVersion '34.0.0'
+    buildToolsVersion = '34.0.0'
     defaultConfig {
         applicationId 'io.syslogic.cloudbuild'
         minSdk 22
@@ -88,8 +88,8 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
-    implementation 'com.google.firebase:firebase-crashlytics:18.3.7'
-    // implementation 'com.google.firebase:firebase-crashlytics-ndk:18.3.7'
+    implementation 'com.google.firebase:firebase-crashlytics:18.4.0'
+    // implementation 'com.google.firebase:firebase-crashlytics-ndk:18.4.0'
 
     // jUnit
     testImplementation "junit:junit:$junit_version"
