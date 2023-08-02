@@ -1,7 +1,7 @@
 #!/bin/bash
 # pre-build; written 2020-2023 by Martin Zeitler
 # https://developer.android.com/studio#command-tools
-CLI_TOOLS_VERSION=9477386
+CLI_TOOLS_VERSION=10406996
 CLI_TOOLS_ZIPFILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
 
 # A) Android command-line tools (has sdkmanager)
