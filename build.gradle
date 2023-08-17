@@ -5,7 +5,7 @@ buildscript {
         agp_version = '8.1.0'
         kotlin_version = '1.8.22'
         gms_version = '4.3.15'
-        nav_version = '2.6.0'
+        nav_version = '2.7.0'
         appcompat_version = '1.6.1'
         appdistribution_version = '4.0.0'
         crashlytics_version = '2.9.5'
@@ -20,7 +20,7 @@ buildscript {
         espresso_version = '3.5.1'
     }
 
-    // conditional remote dependency, when buildSrc is absent
+    // conditional remote dependency, when directory `buildSrc` is absent
     if (! new File(getRootDir().absolutePath + "/buildSrc").exists()) {
         dependencies {
             classpath 'io.syslogic:google-cloud-kms-gradle-plugin:1.0.8'
