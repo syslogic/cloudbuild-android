@@ -32,8 +32,9 @@ And one can change the version of the Gradle wrapper, when passing `_GRADLE_WRAP
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-34 build-tools;34.0.0`
- - `_GRADLE_WRAPPER_VERSION` ~ `8.0`
+ - `_GRADLE_WRAPPER_VERSION` ~ `8.2`
  - `_CLOUD_KMS_KEY_PATH`
+
 ## Usage examples
 
 These examples assume that you already have the image in your project's private container registry.
