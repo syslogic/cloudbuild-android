@@ -1,7 +1,7 @@
 # CloudBuild Dockerfile for building with Android SDK/NDK
 FROM amazoncorretto:17-alpine as builder
-LABEL description="Cloud Build - Android SDK Builder" version="1.0.9" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
-RUN apk add --no-cache wget unzip sed
+LABEL description="Cloud Build - Android SDK Builder" version="1.1.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
+RUN apk add --no-cache wget unzip sed xxd
 ENV ANDROID_HOME /opt/android-sdk
 ARG GRADLE_WRAPPER_VERSION
 ARG ANDROID_SDK_PACKAGES
