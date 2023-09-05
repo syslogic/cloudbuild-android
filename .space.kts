@@ -12,6 +12,7 @@ job("Build and push Docker image") {
                 rm -R ./screenshots
                 rm ./cloudbuild.yaml
                 rm ./gradlew.bat
+                rm ./.gitignore
                 rm ./README.md
                 rm ./LICENSE
             """
