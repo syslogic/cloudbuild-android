@@ -6,6 +6,12 @@
 
 job("Build and push Docker image") {
     host("Build Docker image") {
+        shellScript {
+            content = """
+                rm -R ./.github
+                rm ./cloudbuild.yaml
+            """
+        }
         dockerBuildPush {
 
             // build-time variables

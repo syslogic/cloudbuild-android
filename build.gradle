@@ -5,11 +5,14 @@ buildscript {
         agp_version = '8.1.0'
         kotlin_version = '1.8.22'
         gms_version = '4.3.15'
-        nav_version = '2.7.0'
+        nav_version = '2.7.1'
         appcompat_version = '1.6.1'
-        appdistribution_version = '4.0.0'
-        crashlytics_version = '2.9.5'
-        perf_version = '1.4.2'
+        constraintlayout_version = '2.1.4'
+        firebase_appdistribution_plugin_version = '4.0.0'
+        firebase_crashlytics_plugin_version = '2.9.5'
+        firebase_crashlytics_version = '18.4.1'
+        firebase_perf_plugin_version = '1.4.2'
+        firebase_perf_version = '20.4.1'
         junit_version = '4.13.2'
         test_junit_version = '1.1.5'
         test_core_version = '1.5.0'
@@ -33,9 +36,9 @@ plugins {
     id 'com.android.library' version "$agp_version" apply false
     id 'androidx.navigation.safeargs' version "$nav_version" apply false
     id 'com.google.gms.google-services' version "$gms_version" apply false
-    id 'com.google.firebase.appdistribution' version "$appdistribution_version" apply false
-    id 'com.google.firebase.crashlytics' version "$crashlytics_version" apply false
-    id 'com.google.firebase.firebase-perf' version "$perf_version" apply false
+    id 'com.google.firebase.appdistribution' version "$firebase_appdistribution_plugin_version" apply false
+    id 'com.google.firebase.crashlytics' version "$firebase_crashlytics_plugin_version" apply false
+    id 'com.google.firebase.firebase-perf' version "$firebase_perf_plugin_version" apply false
 }
 
 // Keystore Settings, loaded from keystore.properties

@@ -17,7 +17,6 @@ android {
         targetSdk 34
         versionCode 2
         versionName "1.0.1"
-        setProperty("archivesBaseName", "cloudbuild_" + versionName)
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testBuildType "debug"
         multiDexEnabled true
@@ -82,16 +81,20 @@ android {
     }
 }
 
+base {
+    archivesName = 'cloudbuild_' + android.defaultConfig.versionName
+}
+
 dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
     implementation "androidx.navigation:navigation-fragment:$nav_version"
     implementation "androidx.navigation:navigation-ui:$nav_version"
 
-    implementation "com.google.firebase:firebase-crashlytics:$crashlytics_version"
-    // implementation "com.google.firebase:firebase-crashlytics-ndk:$crashlytics_version"
+    implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
+    // implementation "com.google.firebase:firebase-crashlytics-ndk:$firebase_crashlytics_version"
 
-    implementation "com.google.firebase:firebase-perf:$perf_version"
+    implementation "com.google.firebase:firebase-perf:$firebase_perf_version"
 
     // jUnit
     testImplementation "junit:junit:$junit_version"
