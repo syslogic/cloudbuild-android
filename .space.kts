@@ -9,7 +9,11 @@ job("Build and push Docker image") {
         shellScript {
             content = """
                 rm -R ./.github
+                rm -R ./screenshots
                 rm ./cloudbuild.yaml
+                rm ./gradlew.bat
+                rm ./README.md
+                rm ./LICENSE
             """
         }
         dockerBuildPush {
