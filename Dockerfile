@@ -4,13 +4,26 @@ LABEL description="Android Builder" version="1.1.0" repository="https://github.c
 RUN apk add --no-cache wget unzip sed xxd
 ARG GRADLE_WRAPPER_VERSION
 ARG ANDROID_SDK_PACKAGES
+
 ENV CLI_TOOLS_VERSION=10406996
 ENV CLI_TOOLS_ZIP_FILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
-ENV ANDROID_HOME=/opt/android-sdk
-ENV PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/cmdline-tools/tools/bin:${PATH}"
+ENV CLI_TOOLS_URL=https://dl.google.com/android/repository/${CLI_TOOLS_ZIP_FILE}
 
-RUN pwd
-RUN ls -la
+ENV ANDROID_HOME=/opt/android-sdk
+ENV PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${PATH}"
+
+# Android command-line tools (has sdkmanager)
+# https://developer.android.com/studio#command-tools
+RUN wget -q "${CLI_TOOLS_URL}"
+RUN unzip -qq ${CLI_TOOLS_ZIP_FILE} -d "${ANDROID_HOME}"
+RUN rm ${CLI_TOOLS_ZIP_FILE}
+
+# Android SDK licenses
+# https://developer.android.com/studio/command-line/sdkmanager.html
+RUN yes | "${ANDROID_HOME}"/tools/bin/sdkmanager --sdk_root="${ANDROID_HOME}" --licenses >/dev/null
+
+# Installing all Android SDK Packages at once, in order to query the repository only once.
+RUN ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install ${ANDROID_SDK_PACKAGES}
 
 # default pre build script
 CMD ./scripts/pre_build.sh
