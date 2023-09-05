@@ -4,10 +4,8 @@
  * For more info, see https://www.jetbrains.com/help/space/automation.html
  */
 
-job("Build and push Docker") {
-
-    // both 'host.shellScript' and 'host.dockerBuildPush' run on the same host
-    host("Build artifacts and a Docker image") {
+job("Build and push Docker image") {
+    host("Build Docker image") {
         dockerBuildPush {
 
             // build-time variables
@@ -24,10 +22,9 @@ job("Build and push Docker") {
             // extraArgsForPushCommand = listOf("...")
 
             // image tags
-            val repo = "{{ project:DOCKER_IMAGE }}"
             tags {
-                +"$repo:0.${"$"}JB_SPACE_EXECUTION_NUMBER"
-                +"$repo:lts"
+                +"{{ project:DOCKER_IMAGE }}:0.${"$"}JB_SPACE_EXECUTION_NUMBER"
+                +"{{ project:DOCKER_IMAGE }}:lts"
             }
         }
     }
