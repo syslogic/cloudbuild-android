@@ -45,7 +45,7 @@ job("Build and push Docker") {
             // extraArgsForPushCommand = listOf("...")
 
             // image tags
-            val repo = {{ DOCKER_IMAGE }}
+            val repo = "{{ project:DOCKER_IMAGE }}"
             tags {
                 +"$repo:0.${"$"}JB_SPACE_EXECUTION_NUMBER"
                 +"$repo:lts"
