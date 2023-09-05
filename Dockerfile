@@ -5,9 +5,9 @@ RUN apk add --no-cache wget unzip sed xxd
 
 USER root
 ENV CLI_TOOLS_VERSION=10406996
-ENV CLI_TOOLS_ZIP_FILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip \
+ENV CLI_TOOLS_ZIP_FILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
 ENV ANDROID_HOME=/opt/android-sdk
-PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/cmdline-tools/tools/bin:${PATH}"
+ENV PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/cmdline-tools/tools/bin:${PATH}"
 
 ARG GRADLE_WRAPPER_VERSION
 ARG ANDROID_SDK_PACKAGES
