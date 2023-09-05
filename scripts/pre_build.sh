@@ -1,14 +1,14 @@
-#!/bin/bash
+#!/bin/sh
 # pre-build; written 2020-2023 by Martin Zeitler
 # https://developer.android.com/studio#command-tools
 CLI_TOOLS_VERSION=10406996
-CLI_TOOLS_ZIPFILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
+CLI_TOOLS_ZIP_FILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
 
 # A) Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
-wget -q https://dl.google.com/android/repository/${CLI_TOOLS_ZIPFILE}
-unzip -qq ${CLI_TOOLS_ZIPFILE} -d "${ANDROID_HOME}"
-rm ${CLI_TOOLS_ZIPFILE}
+wget -q https://dl.google.com/android/repository/${CLI_TOOLS_ZIP_FILE}
+unzip -qq ${CLI_TOOLS_ZIP_FILE} -d "${ANDROID_HOME}"
+rm ${CLI_TOOLS_ZIP_FILE}
 
 # Android SDK licenses
 # https://developer.android.com/studio/command-line/sdkmanager.html
