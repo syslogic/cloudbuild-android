@@ -21,6 +21,7 @@ job("Build and push Docker image") {
 
             // build-time variables
             // the underscore provides compatibility towards Cloud Build.
+            args["_CLI_TOOLS_VERSION"] = "{{ project:CLI_TOOLS_VERSION }}"
             args["_ANDROID_SDK_PACKAGES"] = "{{ project:ANDROID_SDK_PACKAGES }}"
 
             // image labels

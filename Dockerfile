@@ -3,9 +3,10 @@ FROM amazoncorretto:17-alpine as builder
 LABEL description="Android Builder" version="1.1.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 RUN apk add --no-cache wget unzip xxd
 ARG _ANDROID_SDK_PACKAGES
+ARG _CLI_TOOLS_VERSION
 
-ENV CLI_TOOLS_VERSION=10406996
-ENV CLI_TOOLS_ZIP=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
+#ENV CLI_TOOLS_VERSION=10406996
+ENV CLI_TOOLS_ZIP=commandlinetools-linux-${_CLI_TOOLS_VERSION}_latest.zip
 ENV CLI_TOOLS_URL=https://dl.google.com/android/repository/${CLI_TOOLS_ZIP}
 
 ENV ANDROID_HOME=/opt/android-sdk
