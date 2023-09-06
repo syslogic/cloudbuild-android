@@ -1,7 +1,7 @@
 # Dockerfile for building with Android SDK/NDK
 FROM amazoncorretto:17-al2-jdk as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
-RUN yum -y install wget unzip xxd
+RUN yum -y install wget unzip xxd libidn
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
