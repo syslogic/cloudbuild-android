@@ -1,7 +1,7 @@
 # Dockerfile for building with Android SDK/NDK
 FROM amazoncorretto:17-alpine-jdk as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
-RUN apk add --no-cache wget unzip xxd
+RUN apk add --no-cache bash wget unzip xxd
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
