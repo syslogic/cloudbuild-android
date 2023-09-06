@@ -119,7 +119,7 @@ steps:
 
 timeout: 1200s
 ````
-## Gradle Automation
+## Alternative: Cloud KMS Gradle Automation
 
 The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloud-kms-gradle-plugin), which depends on environmental variable `_CLOUD_KMS_KEY_PATH`. It does about the same as the above step `kms-decode` does, but at build time:
 ````shell

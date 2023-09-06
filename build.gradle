@@ -2,12 +2,12 @@
 
 buildscript {
     ext {
-        agp_version = '8.1.0'
-        kotlin_version = '1.8.22'
+        agp_version = '8.1.1'
+        kotlin_version = '1.9.0'
         gms_version = '4.3.15'
-        nav_version = '2.7.1'
-        appcompat_version = '1.6.1'
-        constraintlayout_version = '2.1.4'
+        androidx_nav_version = '2.7.2'
+        androidx_appcompat_version = '1.6.1'
+        androidx_constraintlayout_version = '2.1.4'
         firebase_appdistribution_plugin_version = '4.0.0'
         firebase_crashlytics_plugin_version = '2.9.5'
         firebase_crashlytics_version = '18.4.1'
@@ -23,7 +23,7 @@ buildscript {
         espresso_version = '3.5.1'
     }
 
-    // conditional remote dependency, when directory `buildSrc` is absent
+    // conditional remote dependency, when directory `buildSrc` is absent.
     if (! new File(getRootDir().absolutePath + "/buildSrc").exists()) {
         dependencies {
             classpath 'io.syslogic:google-cloud-kms-gradle-plugin:1.0.8'
@@ -34,7 +34,7 @@ buildscript {
 plugins {
     id 'com.android.application' version "$agp_version" apply false
     id 'com.android.library' version "$agp_version" apply false
-    id 'androidx.navigation.safeargs' version "$nav_version" apply false
+    id 'androidx.navigation.safeargs' version "$androidx_nav_version" apply false
     id 'com.google.gms.google-services' version "$gms_version" apply false
     id 'com.google.firebase.appdistribution' version "$firebase_appdistribution_plugin_version" apply false
     id 'com.google.firebase.crashlytics' version "$firebase_crashlytics_plugin_version" apply false
