@@ -35,8 +35,8 @@ RUN wget -q "${GRADLE_URL}" && unzip -qq ${GRADLE_ZIP} -d "/opt" && rm ${GRADLE_
 # Gradle User Home
 RUN mkdir -p ~/.gradle
 
-# Idle Timeout
-RUN echo "org.gradle.daemon.idletimeout=60000" >> ~/.gradle/gradle.properties
+# Daemon Idle Timeout (in milliseconds)
+RUN echo "org.gradle.daemon.idletimeout=300000" >> ~/.gradle/gradle.properties
 
 # Welcome message
 RUN echo "systemProp.org.gradle.internal.launcher.welcomeMessageEnabled=false" > ~/.gradle/gradle.properties
