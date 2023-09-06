@@ -23,7 +23,7 @@ RUN wget -q "${CLI_TOOLS_URL}" && \
 RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" --licenses > /dev/null
 
 # Installing all Android SDK üackages at once, in order to query the repository only once.
-RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES}
+RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /dev/null
 
 # run ./gradlew once in order to install the Gradle wrapper
-CMD [ "sh", "-c", "./gradlew" ]
+RUN ./gradlew
