@@ -23,7 +23,7 @@ RUN wget -q "${CLI_TOOLS_URL}" && unzip -qq ${CLI_TOOLS_ZIP} -d "${ANDROID_HOME}
 # https://developer.android.com/studio/command-line/sdkmanager.html
 RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" --licenses > /dev/null
 
-# Installing all Android SDK üackages at once, in order to query the repository only once.
+# Android SDK packages
 RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /dev/null
 
 # Gradle
