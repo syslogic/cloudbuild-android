@@ -1,11 +1,11 @@
 # Dockerfile for building with Android SDK/NDK
 FROM amazoncorretto:17-al2-jdk as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
-# RUN apk add --no-cache bash wget unzip xxd
 RUN yum -y install wget unzip xxd
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
+ARG _ANDROID_NDK_BUNDLE
 ARG _ANDROID_SDK_PACKAGES
 ARG _GRADLE_VERSION
 
@@ -26,6 +26,9 @@ RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses > /dev/null
 
 # Android SDK packages
 RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /dev/null
+
+# Android NDK Bundle
+RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_NDK_BUNDLE} > /dev/null
 
 # Gradle
 ENV GRADLE_ZIP=gradle-${_GRADLE_VERSION}-bin.zip
