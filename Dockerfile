@@ -5,8 +5,8 @@ RUN apk add --no-cache wget unzip xxd
 ARG _ANDROID_SDK_PACKAGES
 
 ENV CLI_TOOLS_VERSION=10406996
-ENV CLI_TOOLS_ZIP_FILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
-ENV CLI_TOOLS_URL=https://dl.google.com/android/repository/${CLI_TOOLS_ZIP_FILE}
+ENV CLI_TOOLS_ZIP=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
+ENV CLI_TOOLS_URL=https://dl.google.com/android/repository/${CLI_TOOLS_ZIP}
 
 ENV ANDROID_HOME=/opt/android-sdk
 ENV PATH="${ANDROID_HOME}/cmdline-tools/bin:${PATH}"
@@ -14,8 +14,8 @@ ENV PATH="${ANDROID_HOME}/cmdline-tools/bin:${PATH}"
 # Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
 RUN wget -q "${CLI_TOOLS_URL}" && \
-    unzip -qq ${CLI_TOOLS_ZIP_FILE} -d "${ANDROID_HOME}" && \
-    rm ${CLI_TOOLS_ZIP_FILE}
+    unzip -qq ${CLI_TOOLS_ZIP} -d "${ANDROID_HOME}" && \
+    rm ${CLI_TOOLS_ZIP}
 
 # Android SDK licenses
 # https://developer.android.com/studio/command-line/sdkmanager.html

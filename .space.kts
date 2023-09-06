@@ -20,8 +20,8 @@ job("Build and push Docker image") {
         dockerBuildPush {
 
             // build-time variables
+            // the underscore provides compatibility towards Cloud Build.
             args["_ANDROID_SDK_PACKAGES"] = "{{ project:ANDROID_SDK_PACKAGES }}"
-            args["_GRADLE_WRAPPER_VERSION"] = "{{ project:GRADLE_WRAPPER_VERSION }}"
 
             // image labels
             labels["vendor"] = "syslogic"
