@@ -1,17 +1,17 @@
 # Dockerfile for building with Android SDK/NDK
 FROM amazoncorretto:17-al2-jdk as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
-RUN yum -y install wget unzip xxd libidn
 
-ADD scripts/google_cloud_sdk.sh /root
-RUN ["/bin/bash", "-c", "chmod +x /root/google_cloud_sdk.sh && /root/google_cloud_sdk.sh"]
+# Packages
+ADD credentials/google_cloud.repo /etc/yum.repo.d
+RUN yum -y install google-cloud-sdk wget unzip xxd libidn
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
 ARG _ANDROID_SDK_PACKAGES
 ARG _GRADLE_VERSION
 
-# PATH
+# Path
 ENV ANDROID_HOME=/opt/android-sdk
 ENV GRADLE_HOME=/opt/gradle-${_GRADLE_VERSION}
 ENV PATH="${ANDROID_HOME}/cmdline-tools/bin:${GRADLE_HOME}/bin:${PATH}"
