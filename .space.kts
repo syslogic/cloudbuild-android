@@ -11,7 +11,6 @@ job("Build Docker image") {
             // build-time variables
             // the underscore provides compatibility towards Cloud Build.
             args["_CLI_TOOLS_VERSION"] = "{{ project:CLI_TOOLS_VERSION }}"
-            args["_ANDROID_NDK_BUNDLE"] = "ndk;{{ project:ANDROID_NDK_VERSION }}"
             args["_ANDROID_SDK_PACKAGES"] = "{{ project:ANDROID_SDK_PACKAGES }}"
             args["_GRADLE_VERSION"] = "{{ project:GRADLE_VERSION }}"
 

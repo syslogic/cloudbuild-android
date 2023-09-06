@@ -5,7 +5,6 @@ RUN yum -y install wget unzip xxd libidn
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
-ARG _ANDROID_NDK_BUNDLE
 ARG _ANDROID_SDK_PACKAGES
 ARG _GRADLE_VERSION
 
@@ -31,7 +30,3 @@ RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses > /dev/null
 
 # Android SDK packages
 RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /dev/null
-
-# Android NDK Bundle
-RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_NDK_BUNDLE} > /dev/null
-
