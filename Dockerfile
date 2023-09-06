@@ -17,9 +17,7 @@ RUN ls -la
 
 # Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
-RUN wget -q "${CLI_TOOLS_URL}" && \
-    unzip -qq ${CLI_TOOLS_ZIP} -d "${ANDROID_HOME}" && \
-    rm ${CLI_TOOLS_ZIP}
+RUN wget -q "${CLI_TOOLS_URL}" && unzip -qq ${CLI_TOOLS_ZIP} -d "${ANDROID_HOME}" && rm ${CLI_TOOLS_ZIP}
 
 # Android SDK licenses
 # https://developer.android.com/studio/command-line/sdkmanager.html
