@@ -26,4 +26,5 @@ RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" --licenses > /dev/null
 RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /dev/null
 
 # run ./gradlew once in order to install the Gradle wrapper
-RUN ./gradlew
+CMD [ "sh", "-c", "cd /mnt/space/work && ls -la" ]
+CMD [ "sh", "-c", "/mnt/space/work/android-builder/gradlew" ]
