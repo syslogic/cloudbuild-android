@@ -19,11 +19,6 @@
  
  - After having built the image, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild-android`.
  - This container can then be used <b>in another</b> Android project's (or another Git branch's) `cloudbuild.yaml`, in order not to build it every time.
- 
- An important difference is, that:
- 
- - when the `Dockerfile` runs `./gradlew build`, components and dependencies in `build.gradle` get pre-installed.
- - when the `Dockerfile` runs `./gradlew`, only the Gradle wrapper gets pre-installed (this is the current situation).
 
 ## Variable Substitutions
 
