@@ -2,7 +2,7 @@
 FROM amazoncorretto:17-al2-jdk as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 # RUN apk add --no-cache bash wget unzip xxd
-RUN yum -y install bash wget unzip xxd
+RUN yum -y install wget unzip xxd
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
