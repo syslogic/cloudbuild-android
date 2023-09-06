@@ -31,5 +31,9 @@ ENV GRADLE_ZIP=gradle-${_GRADLE_VERSION}-bin.zip
 ENV GRADLE_URL=https://downloads.gradle.org/distributions/${GRADLE_ZIP}
 RUN wget -q "${GRADLE_URL}" && unzip -qq ${GRADLE_ZIP} -d "/opt" && rm ${GRADLE_ZIP}
 
+RUN mkdir -p ~/.gradle
 # Disable welcome message
-RUN mkdir -p ~/.gradle && echo "systemProp.org.gradle.internal.launcher.welcomeMessageEnabled=false" >> ~/.gradle/gradle.properties
+RUN echo "systemProp.org.gradle.internal.launcher.welcomeMessageEnabled=false" >> ~/.gradle/gradle.properties
+
+# Idle Timeout
+RUN echo "org.gradle.daemon.idletimeout=60000" > ~/.gradle/gradle.properties
