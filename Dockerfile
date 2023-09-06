@@ -30,4 +30,4 @@ RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /
 ENV GRADLE_ZIP=gradle-${_GRADLE_VERSION}-bin.zip
 ENV GRADLE_URL=https://downloads.gradle.org/distributions/${GRADLE_ZIP}
 RUN wget -q "${GRADLE_URL}" && unzip -qq ${GRADLE_ZIP} -d "/opt" && rm ${GRADLE_ZIP}
-RUN mkdir -p ~/.gradle && echo "org.gradle.daemon=false" >> ~/.gradle/gradle.properties
+# RUN mkdir -p ~/.gradle && echo "org.gradle.daemon=false" >> ~/.gradle/gradle.properties
