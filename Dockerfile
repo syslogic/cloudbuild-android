@@ -20,6 +20,11 @@ ENV CLI_TOOLS_ZIP=commandlinetools-linux-${_CLI_TOOLS_VERSION}_latest.zip
 ENV CLI_TOOLS_URL=https://dl.google.com/android/repository/${CLI_TOOLS_ZIP}
 RUN wget -q "${CLI_TOOLS_URL}" && unzip -qq ${CLI_TOOLS_ZIP} -d "${ANDROID_HOME}" && rm ${CLI_TOOLS_ZIP}
 
+# Gradle
+ENV GRADLE_ZIP=gradle-${_GRADLE_VERSION}-bin.zip
+ENV GRADLE_URL=https://downloads.gradle.org/distributions/${GRADLE_ZIP}
+RUN wget -q ${GRADLE_URL} && unzip -qq ${GRADLE_ZIP} -d /opt && rm ${GRADLE_ZIP}
+
 # Android SDK licenses
 # https://developer.android.com/studio/command-line/sdkmanager.html
 RUN yes | sdkmanager --sdk_root=${ANDROID_HOME} --licenses > /dev/null
@@ -30,7 +35,3 @@ RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /
 # Android NDK Bundle
 RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_NDK_BUNDLE} > /dev/null
 
-# Gradle
-ENV GRADLE_ZIP=gradle-${_GRADLE_VERSION}-bin.zip
-ENV GRADLE_URL=https://downloads.gradle.org/distributions/${GRADLE_ZIP}
-RUN wget -q ${GRADLE_URL} && unzip -qq ${GRADLE_ZIP} -d /opt && rm ${GRADLE_ZIP}
