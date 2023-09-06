@@ -5,7 +5,6 @@
  */
 
 job("Build and push Docker image") {
-
     host("Build Docker image") {
         shellScript {
             content = """
