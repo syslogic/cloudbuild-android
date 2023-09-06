@@ -4,25 +4,15 @@
  * For more info, see https://www.jetbrains.com/help/space/automation.html
  */
 
-job("Build and push Docker image") {
+job("Build Docker image") {
     host("Build Docker image") {
-        shellScript {
-            content = """
-                rm -R ./.github
-                rm -R ./screenshots
-                rm ./cloudbuild.yaml
-                rm ./gradlew.bat
-                rm ./.gitignore
-                rm ./README.md
-                rm ./LICENSE
-            """
-        }
         dockerBuildPush {
 
             // build-time variables
             // the underscore provides compatibility towards Cloud Build.
             args["_CLI_TOOLS_VERSION"] = "{{ project:CLI_TOOLS_VERSION }}"
             args["_ANDROID_SDK_PACKAGES"] = "{{ project:ANDROID_SDK_PACKAGES }}"
+            args["_GRADLE_VERSION"] = "{{ project:GRADLE_VERSION }}"
 
             // image labels
             labels["vendor"] = "syslogic"
