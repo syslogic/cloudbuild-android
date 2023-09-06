@@ -23,7 +23,7 @@
 ## Variable Substitutions
 
 One can pre-install SDK packages with the `sdkmanager`, when passing `_ANDROID_SDK_PACKAGES`.<br/>
-And one can change the version of the Gradle wrapper, when passing `_GRADLE_WRAPPER_VERSION`.<br/>
+And one can pre-install Gradle by passing `_GRADLE_VERSION`.<br/>
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
  - `_CLI_TOOLS_VERSION` ~ `10406996`
