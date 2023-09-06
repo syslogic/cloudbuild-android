@@ -3,8 +3,8 @@ FROM amazoncorretto:17-al2-jdk as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 RUN yum -y install wget unzip xxd libidn
 
-RUN ["/bin/bash", "-c", "ls -la"]
-RUN ["/bin/bash", "-c", "./workspace/scripts/google_cloud_sdk.sh"]
+ADD scripts/google_cloud_sdk.sh /root
+RUN ["/bin/bash", "-c", "/root/google_cloud_sdk.sh"]
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
