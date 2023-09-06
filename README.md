@@ -121,9 +121,9 @@ timeout: 1200s
 ````
 ## Gradle Automation
 
-The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloud-kms-gradle-plugin), which depends on environmental variable `_CLOUD_KMS_KEY_PATH`.
-
-It does about the same as the above `cloudbuild.yaml` step `kms-decode` does, but at build time; for example:
+The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloud-kms-gradle-plugin),  
+which depends on environmental variable `_CLOUD_KMS_KEY_PATH`. It does about the same as the above `cloudbuild.yaml`  
+step `kms-decode` does, but at build time; for example:
 ````shell
 ./gradlew mobile:cloudKmsDecrypt mobile:assembleRelease mobile:appDistributionUploadRelease
 ````
@@ -135,7 +135,7 @@ While these substitutions use no underscore (being mapped at build-time: [`.spac
 
  ![Jetbrains Space - Screenshot 03](https://github.com/syslogic/cloudbuild-android/raw/master/screenshots/screenshot_03.png)
 
-The following example `.space.kts` uses `xxd` to revert hex-dumps of binary files.
+The following example `.space.kts` uses `xxd` (instead of `gcloud kms`) to revert hex-dumps of binary files.
 
 ````
 /**
