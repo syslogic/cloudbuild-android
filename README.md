@@ -4,7 +4,7 @@
 ## What it does?
 
 - It builds a Docker container from [Google Cloud Source Repositories](https://cloud.google.com/source-repositories) or [GitHub](https://github.com/marketplace/google-cloud-build) with [Google Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
-- It publishes the image to the [Container Registry](https://console.cloud.google.com/gcr/images)  as `eu.gcr.io/$PROJECT_ID/cloudbuild-android`.
+- It publishes the image to the [Container Registry](https://console.cloud.google.com/gcr/images)  as `eu.gcr.io/$PROJECT_ID/android-builder`.
 - It has OpenJDK, Android `sdkmanager`, Gradle, as well as a simple Android application for testing.
 - It supports publishing to Bucket & Firebase App Distribution with Cloud KMS decryption for credentials.
 - Android NDK and Firebase Crashlytics NDK crash reporting can be enabled by uncommenting a few lines.
@@ -33,6 +33,7 @@ At the moment these are both statically set in [`cloudbuild.yaml`](https://githu
 
  - `_CLI_TOOLS_VERSION` ~ `10406996`
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-34 build-tools;34.0.0`
+ - `_GRADLE_VERSION` ~ `8.2`
  - `_CLOUD_KMS_KEY_PATH`
 
 ## Usage examples
