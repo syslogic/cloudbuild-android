@@ -2,8 +2,8 @@
 FROM amazoncorretto:17-alpine as builder
 LABEL description="Android Builder" version="1.1.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 RUN apk add --no-cache wget unzip sed xxd
-ARG GRADLE_WRAPPER_VERSION
-ARG ANDROID_SDK_PACKAGES
+ARG _GRADLE_WRAPPER_VERSION
+ARG _ANDROID_SDK_PACKAGES
 
 ENV CLI_TOOLS_VERSION=10406996
 ENV CLI_TOOLS_ZIP_FILE=commandlinetools-linux-${CLI_TOOLS_VERSION}_latest.zip
@@ -23,7 +23,7 @@ RUN rm ${CLI_TOOLS_ZIP_FILE}
 RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" --licenses >/dev/null
 
 # Installing all Android SDK Packages at once, in order to query the repository only once.
-RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${ANDROID_SDK_PACKAGES}
+RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES}
 
 # default pre build script
 CMD ./scripts/pre_build.sh
