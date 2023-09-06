@@ -4,7 +4,7 @@ LABEL description="Android Builder" version="1.2.0" repository="https://github.c
 
 # Packages
 ADD credentials/google_cloud.repo /etc/yum.repo.d
-RUN yum -y install google-cloud-sdk wget unzip xxd libidn
+RUN yum -y update && yum -y install google-cloud-sdk wget unzip xxd libidn
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
