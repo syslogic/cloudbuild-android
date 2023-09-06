@@ -14,9 +14,9 @@ steps:
 
     # These are used by Cloud Build variable substitutions (as shown in screenshot_01.png):
     # https://cloud.google.com/cloud-build/docs/configuring-builds/substitute-variable-values
-    #'--build-arg', 'ANDROID_SDK_PACKAGES="${_ANDROID_SDK_PACKAGES"}',
-    #'--build-arg', 'CLI_TOOLS_VERSION="${_CLI_TOOLS_VERSION"}',
-    #'--build-arg', 'GRADLE_VERSION=${_GRADLE_VERSION}',
+    #'--build-arg', '_ANDROID_SDK_PACKAGES="${_ANDROID_SDK_PACKAGES"}',
+    #'--build-arg', '_CLI_TOOLS_VERSION="${_CLI_TOOLS_VERSION"}',
+    #'--build-arg', '_GRADLE_VERSION=${_GRADLE_VERSION}',
 
     # By default these static values are being used, without the NDK (build-trigger configuration not required.
     # Note: When commenting these out, one has to run `./gradlew build` to fetch the components instead.
