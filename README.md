@@ -5,13 +5,13 @@
 
 - It builds a Docker container from [Google Cloud Source Repositories](https://cloud.google.com/source-repositories) or [GitHub](https://github.com/marketplace/google-cloud-build) with [Google Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
 - It publishes the image to the [Container Registry](https://console.cloud.google.com/gcr/images)  as `eu.gcr.io/$PROJECT_ID/android-builder`.
-- It has OpenJDK, Android `sdkmanager`, Gradle, as well as a simple Android application for testing.
+- It's based upon `amazoncorretto:17-al2-jdk`, Android `sdkmanager`, Gradle, as well as a simple Android application for testing purposes.
 - It supports publishing to Bucket & Firebase App Distribution with Cloud KMS decryption for credentials.
 - Android NDK and Firebase Crashlytics NDK crash reporting can be enabled by uncommenting a few lines.
 
-## How to use it?
+## How to use it with Cloud Build?
 
- - This image first needs to be built itself, in order to build Android applications with it.
+ - The image first needs to be built itself (!), in order to build Android applications with it.
  - Hosting the built image would be a) less customizable and b) the traffic would be charged.
  - In order to get started, import to [Cloud Source Repositories](https://source.cloud.google.com/repo/new) and set up a build [trigger](https://console.cloud.google.com/cloud-build/triggers) there.
  
@@ -31,7 +31,7 @@ At the moment these are both statically set in [`cloudbuild.yaml`](https://githu
  - `_GRADLE_VERSION` ~ `8.2`
  - `_CLOUD_KMS_KEY_PATH`
 
-## Usage examples
+## Usage example: Google Cloud Build
 
 These examples assume that you already have the image in your project's private container registry.
 
@@ -121,16 +121,66 @@ timeout: 1200s
 ````
 ## Gradle Automation
 
-The example uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloud-kms-gradle-plugin), which depends on environmental variable `_CLOUD_KMS_KEY_PATH`.
+The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogic/google-cloud-kms-gradle-plugin), which depends on environmental variable `_CLOUD_KMS_KEY_PATH`.
 
 It does about the same as the above `cloudbuild.yaml` step `kms-decode` does, but at build time; for example:
 ````shell
 ./gradlew mobile:cloudKmsDecrypt mobile:assembleRelease mobile:appDistributionUploadRelease
 ````
 
+## Usage example: Jetbrains Space
+
+The variable substitutions look pretty much the same, being called "Parameters".<br/>
+While these substitutions use no underscore (being mapped at build-time: [`.space.kts`](https://github.com/syslogic/cloudbuild-android/blob/master/.space.kts)).
+
+ ![Jetbrains Space - Screenshot 03](https://github.com/syslogic/cloudbuild-android/raw/master/screenshots/screenshot_03.png)
+
+The following example `.space.kts` uses `xxd` to revert hex-dumps of binary files.
+
+````
+/**
+ * JetBrains Space Automation
+ * This Kotlin script file lets you automate build activities
+ * For more info, see https://www.jetbrains.com/help/space/automation.html
+ */
+
+job("Bundle application") {
+    startOn {
+        gitPush { enabled = false }
+    }
+    parameters {
+        text("GRADLE_TASKS", value = "mobile:bundleDebug", description = "Gradle tasks") {
+            options("mobile:bundleDebug", "mobile:bundleRelease") {
+                allowMultiple = false
+            }
+        }
+    }
+    container(displayName = "Gradle build", image = "{{ project:DOCKER_IMAGE }}:lts") {
+        env["KEYSTORE_PROPERTIES"] = "{{ project:KEYSTORE_PROPERTIES }}"
+        env["DEBUG_KEYSTORE"] = "{{ project:DEBUG_KEYSTORE }}"
+        env["RELEASE_KEYSTORE"] = "{{ project:RELEASE_KEYSTORE }}"
+        env["GRADLE_TASKS"] = "{{ GRADLE_TASKS }}"
+        shellScript {
+            content = """
+                echo ${'$'}KEYSTORE_PROPERTIES > keystore.properties.hex
+                xxd -plain -revert keystore.properties.hex keystore.properties
+                echo ${'$'}DEBUG_KEYSTORE > distribution/debug.keystore.hex
+                xxd -plain -revert distribution/debug.keystore.hex distribution/debug.keystore
+                echo ${'$'}RELEASE_KEYSTORE > distribution/release.keystore.hex
+                xxd -plain -revert distribution/release.keystore.hex distribution/release.keystore
+                rm ./keystore.properties.hex && rm ./distribution/*.hex
+                echo Running Gradle: ${'$'}GRADLE_TASKS
+                gradle --init-script $mountDir/system/gradle/init.gradle -Dorg.gradle.parallel=false ${'$'}GRADLE_TASKS
+            """
+        }
+    }
+}
+````
+
+
 ## Also see
  - [Creating a Serverless Mobile Delivery Pipeline](https://cloud.google.com/architecture/creating-serverless-mobile-delivery-pipeline)
  - [Simplify your CI processes with GitHub and Google Cloud Build](https://github.blog/2018-07-26-simplify-your-ci-process/)
  - Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
- - [Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
- 
+ - [GitHub: Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
+ - [Jetbrains Space: Automation (CI/CD)](https://www.jetbrains.com/help/space/automation.html).
