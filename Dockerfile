@@ -20,10 +20,10 @@ RUN rm ${CLI_TOOLS_ZIP_FILE}
 
 # Android SDK licenses
 # https://developer.android.com/studio/command-line/sdkmanager.html
-RUN yes | ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root="${ANDROID_HOME}" --licenses >/dev/null
+RUN yes | ${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --sdk_root="${ANDROID_HOME}" --licenses >/dev/null
 
 # Installing all Android SDK Packages at once, in order to query the repository only once.
-RUN ${ANDROID_HOME}/tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install ${ANDROID_SDK_PACKAGES}
+RUN ${ANDROID_HOME}/cmdline-tools/bin/sdkmanager --sdk_root=${ANDROID_HOME} --install ${ANDROID_SDK_PACKAGES}
 
 # default pre build script
 CMD ./scripts/pre_build.sh
