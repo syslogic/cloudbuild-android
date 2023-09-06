@@ -2,6 +2,7 @@
 FROM amazoncorretto:17-alpine as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 RUN apk add --no-cache wget unzip xxd
+EXPOSE 5005/tcp
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
