@@ -37,6 +37,3 @@ RUN mkdir -p ~/.gradle
 
 # Daemon Idle Timeout (in milliseconds)
 RUN echo "org.gradle.daemon.idletimeout=300000" >> ~/.gradle/gradle.properties
-
-# Welcome message
-RUN echo "systemProp.org.gradle.internal.launcher.welcomeMessageEnabled=false" > ~/.gradle/gradle.properties
