@@ -17,7 +17,7 @@
  
   ![Cloud Build - Screenshot 01](https://raw.githubusercontent.com/syslogic/cloudbuild-android-builder/master/screenshots/screenshot_01.png)
  
- - After having built the image, a new container should show up below `eu.gcr.io/$PROJECT_ID/cloudbuild-android`.
+ - After having built the image, a new container should show up below `eu.gcr.io/$PROJECT_ID/android-builder`.
  - This container can then be used <b>in another</b> Android project's (or another Git branch's) `cloudbuild.yaml`, in order not to build it every time.
 
 ## Variable Substitutions
