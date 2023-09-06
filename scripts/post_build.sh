@@ -9,4 +9,3 @@ rm -r /workspace/*
 if [ -d /root/.gradle/caches ]; then
     rm -r /root/.gradle/caches/*
 fi
-

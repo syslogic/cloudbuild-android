@@ -22,7 +22,7 @@ RUN rm ${CLI_TOOLS_ZIP_FILE}
 # https://developer.android.com/studio/command-line/sdkmanager.html
 RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" --licenses >/dev/null
 
-# Installing all Android SDK Packages at once, in order to query the repository only once.
+# Installing all Android SDK üackages at once, in order to query the repository only once.
 RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES}
 
 # default pre build script

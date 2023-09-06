@@ -5,6 +5,7 @@
  */
 
 job("Build and push Docker image") {
+
     host("Build Docker image") {
         shellScript {
             content = """
@@ -20,8 +21,8 @@ job("Build and push Docker image") {
         dockerBuildPush {
 
             // build-time variables
-            args["_ANDROID_SDK_PACKAGES"] = "platform-tools platforms;android-34 build-tools;34.0.0"
-            args["_GRADLE_WRAPPER_VERSION"] = "8.2"
+            args["_ANDROID_SDK_PACKAGES"] = "{{ project:ANDROID_SDK_PACKAGES }}"
+            args["_GRADLE_WRAPPER_VERSION"] = "{{ project:GRADLE_WRAPPER_VERSION }}"
 
             // image labels
             labels["vendor"] = "syslogic"
