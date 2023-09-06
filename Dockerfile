@@ -32,7 +32,7 @@ RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /
 
 ENV GRADLE_ZIP=gradle-${_GRADLE_VERSION}-bin.zip
 ENV GRADLE_URL=https://downloads.gradle.org/distributions/${GRADLE_ZIP}
-RUN wget -q "${GRADLE_URL}" && unzip -qq ${GRADLE_ZIP} -d "${GRADLE_HOME}" && rm ${GRADLE_ZIP} \
+RUN wget -q "${GRADLE_URL}" && unzip -qq ${GRADLE_ZIP} -d "${GRADLE_HOME}" && rm ${GRADLE_ZIP}
 
 RUN cd "${GRADLE_HOME}" && ls -la
 
