@@ -1,8 +1,8 @@
 # Dockerfile for building with Android SDK/NDK
 FROM amazoncorretto:17-alpine as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
+WORKDIR /mnt/space/work/android-builder
 RUN apk add --no-cache wget unzip xxd
-WORKDIR /mnt/space/work
 
 ARG _CLI_TOOLS_VERSION
 ARG _ANDROID_SDK_PACKAGES
