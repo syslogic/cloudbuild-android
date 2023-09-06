@@ -2,7 +2,6 @@
 FROM amazoncorretto:17-alpine as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 RUN apk add --no-cache wget unzip xxd
-EXPOSE 5005/tcp
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
@@ -11,8 +10,9 @@ ARG _GRADLE_VERSION
 
 # PATH
 ENV ANDROID_HOME=/opt/android-sdk
-ENV GRADLE_HOME=/opt/gradle-${_GRADLE_VERSION}
-ENV PATH="${ANDROID_HOME}/cmdline-tools/bin:${GRADLE_HOME}/bin:${PATH}"
+# ENV GRADLE_HOME=/opt/gradle-${_GRADLE_VERSION}
+# ENV PATH="${ANDROID_HOME}/cmdline-tools/bin:${GRADLE_HOME}/bin:${PATH}"
+ENV PATH="${ANDROID_HOME}/cmdline-tools/bin:${PATH}"
 
 # Android command-line tools (has sdkmanager)
 # https://developer.android.com/studio#command-tools
@@ -28,9 +28,9 @@ RUN yes | sdkmanager --sdk_root="${ANDROID_HOME}" --licenses > /dev/null
 RUN sdkmanager --sdk_root=${ANDROID_HOME} --install ${_ANDROID_SDK_PACKAGES} > /dev/null
 
 # Gradle
-ENV GRADLE_ZIP=gradle-${_GRADLE_VERSION}-bin.zip
-ENV GRADLE_URL=https://downloads.gradle.org/distributions/${GRADLE_ZIP}
-RUN wget -q "${GRADLE_URL}" && unzip -qq ${GRADLE_ZIP} -d "/opt" && rm ${GRADLE_ZIP}
+# ENV GRADLE_ZIP=gradle-${_GRADLE_VERSION}-bin.zip
+# ENV GRADLE_URL=https://downloads.gradle.org/distributions/${GRADLE_ZIP}
+# RUN wget -q "${GRADLE_URL}" && unzip -qq ${GRADLE_ZIP} -d "/opt" && rm ${GRADLE_ZIP}
 
 # Gradle User Home
 RUN mkdir -p ~/.gradle
