@@ -4,7 +4,6 @@ LABEL description="Android Builder" version="1.2.0" repository="https://github.c
 
 # Packages
 ADD credentials/google_cloud.repo /etc/yum.repos.d
-RUN cd /etc/yum.repos.d && ls -la
 RUN yum -y install deltarpm google-cloud-sdk wget unzip xxd libidn && yum -y upgrade
 
 # Arguments
