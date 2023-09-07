@@ -4,7 +4,11 @@ plugins {
     id 'com.google.firebase.appdistribution'
     id 'com.google.firebase.crashlytics'
     id 'androidx.navigation.safeargs'
-    id 'io.syslogic.cloudkms'
+}
+
+// conditional remote dependency, when directory `buildSrc` is present.
+if (new File(getRootDir().absolutePath + "/buildSrc").exists() || project.pluginManager.hasPlugin("io.syslogic.cloudkms")) {
+    apply plugin: "io.syslogic.cloudkms"
 }
 
 android {
@@ -130,22 +134,25 @@ if (project.file('google-services.json').exists()) {
 }
 
 /** Google Cloud KMS */
-if (System.getenv('_CLOUD_KMS_KEY_PATH') == null) {
-    logger.error('> Variable _CLOUD_KMS_KEY_PATH not set.')
-} else {
-    cloudKms {
+if (project.pluginManager.hasPlugin("io.syslogic.cloudkms")) {
+    if (System.getenv('_CLOUD_KMS_KEY_PATH') == null) {
+        logger.error('> Variable _CLOUD_KMS_KEY_PATH not set.')
+    } else {
+        logger.error('> _CLOUD_KMS_KEY_PATH: ' + System.getenv('_CLOUD_KMS_KEY_PATH'))
+        cloudKms {
 
-        // The leading underscore is required due to the CloudBuild environment.
-        kmsKeyPath = System.getenv('_CLOUD_KMS_KEY_PATH')
+            // The leading underscore is required due to the CloudBuild environment.
+            kmsKeyPath = System.getenv('_CLOUD_KMS_KEY_PATH')
 
-        plaintextFiles = [
-                /* 0 */ System.getProperty("user.home") + File.separator + ".android" + File.separator + "debug.keystore",
-                /* 1 */ System.getProperty("user.home") + File.separator + ".android" + File.separator + "release.keystore"
-        ]
+            plaintextFiles = [
+                    /* 0 */ rootProject.file(".android${File.separator}debug.keystore").path,
+                    /* 1 */ rootProject.file(".android${File.separator}release.keystore").path
+            ]
 
-        ciphertextFiles = [
-                /* 0 */ getRootDir().absolutePath + File.separator + 'credentials/debug.keystore.enc',
-                /* 1 */ getRootDir().absolutePath + File.separator + 'credentials/release.keystore.enc'
-        ]
+            ciphertextFiles = [
+                    /* 0 */ getRootDir().absolutePath + File.separator + 'credentials/debug.keystore.enc',
+                    /* 1 */ getRootDir().absolutePath + File.separator + 'credentials/release.keystore.enc'
+            ]
+        }
     }
 }
