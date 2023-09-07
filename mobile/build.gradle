@@ -134,7 +134,7 @@ if (project.file('google-services.json').exists()) {
 }
 
 /** Google Cloud KMS */
-if (project.pluginManager.hasPlugin("io.syslogic.cloudkms")) {
+if (project.getPluginManager().hasPlugin("io.syslogic.cloudkms")) {
     if (System.getenv('_CLOUD_KMS_KEY_PATH') == null) {
         logger.error('> Variable _CLOUD_KMS_KEY_PATH not set.')
     } else {
