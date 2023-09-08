@@ -124,7 +124,7 @@ The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogi
 ````shell
 ./gradlew mobile:cloudKmsDecrypt mobile:assembleRelease mobile:appDistributionUploadRelease
 ````
-## Usage example: Jetbrains Space
+## Usage example: JetBrains Space Automation
 
 The variable substitutions look pretty much the same, being called "Parameters".<br/>
 While these substitutions use no underscore (being mapped at build-time: [`.space.kts`](https://github.com/syslogic/cloudbuild-android/blob/master/.space.kts)).
