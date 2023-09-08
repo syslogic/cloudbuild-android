@@ -29,7 +29,6 @@ At the moment these are both statically set in [`cloudbuild.yaml`](https://githu
  - `_CLI_TOOLS_VERSION` ~ `10406996`
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-34 build-tools;34.0.0`
  - `_GRADLE_VERSION` ~ `8.2`
- - `_CLOUD_KMS_KEY_PATH`
 
 ## Usage example: Google Cloud Build
 
@@ -134,6 +133,8 @@ While these substitutions use no underscore (being mapped at build-time: [`.spac
  ![Jetbrains Space - Screenshot 03](https://github.com/syslogic/cloudbuild-android/raw/master/screenshots/screenshot_03.png)
 
 The following example `.space.kts` uses `xxd` (instead of `gcloud kms`) to revert hex-dumps of binary files.
+
+Where `{{ project:DOCKER_IMAGE }}:lts` refers to the Docker image previously built.
 
 ````
 /**
