@@ -20,7 +20,7 @@
  - After having built the image, a new container should show up below `eu.gcr.io/$PROJECT_ID/android-builder`.
  - This container can then be used <b>in another</b> Android project's (or another Git branch's) `cloudbuild.yaml`, in order not to build it every time.
 
-## Variable Substitutions
+## Cloud Build Variable Substitutions
 
 One can pre-install SDK packages with the `sdkmanager`, when passing `_ANDROID_SDK_PACKAGES`.<br/>
 And one can pre-install Gradle by passing `_GRADLE_VERSION`.<br/>
@@ -124,17 +124,17 @@ The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogi
 ````shell
 ./gradlew mobile:cloudKmsDecrypt mobile:assembleRelease mobile:appDistributionUploadRelease
 ````
-
 ## Usage example: Jetbrains Space
 
 The variable substitutions look pretty much the same, being called "Parameters".<br/>
 While these substitutions use no underscore (being mapped at build-time: [`.space.kts`](https://github.com/syslogic/cloudbuild-android/blob/master/.space.kts)).
 
- ![Jetbrains Space - Screenshot 03](https://github.com/syslogic/cloudbuild-android/raw/master/screenshots/screenshot_03.png)
+ - `CLI_TOOLS_VERSION` ~ `10406996`
+ - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-34 build-tools;34.0.0`
+ - `GRADLE_VERSION` ~ `8.2`
+ - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
 
 The following example `.space.kts` uses `xxd` (instead of `gcloud kms`) to revert hex-dumps of binary files.
-
-Where `{{ project:DOCKER_IMAGE }}:lts` refers to the Docker image previously built.
 
 ````
 /**
