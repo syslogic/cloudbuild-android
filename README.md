@@ -1,4 +1,4 @@
-# cloudbuild-android
+# Android Builder Image
 <img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg"/>
 
 ## What it does?
