@@ -11,7 +11,7 @@ job("Build Docker image") {
     host("Build Docker image") {
         dockerBuildPush {
 
-            // build-time variables
+            // mapping Dockerfile build-time variables
             // the underscore provides compatibility towards Cloud Build.
             args["_CLI_TOOLS_VERSION"] = "{{ project:CLI_TOOLS_VERSION }}"
             args["_ANDROID_SDK_PACKAGES"] = "{{ project:ANDROID_SDK_PACKAGES }}"
