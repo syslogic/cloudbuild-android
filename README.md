@@ -175,7 +175,10 @@ job("Bundle application") {
     }
 }
 ````
+## GCP Service Account
 
+- for Firebase AppDistribution, the service account needs IAM role "Firebase App Distribution Admin".
+- for Google Play Store, the "Google Play Android Developer API" needs to be enabled for the project.
 
 ## Also see
  - [Creating a Serverless Mobile Delivery Pipeline](https://cloud.google.com/architecture/creating-serverless-mobile-delivery-pipeline)
