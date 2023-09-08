@@ -5,6 +5,9 @@
  */
 
 job("Build Docker image") {
+    startOn {
+        gitPush { enabled = false }
+    }
     host("Build Docker image") {
         dockerBuildPush {
 
