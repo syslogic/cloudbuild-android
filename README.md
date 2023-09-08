@@ -186,3 +186,5 @@ job("Bundle application") {
  - Marketplace [Google Cloud Build](https://github.com/marketplace/google-cloud-build) for GitHub integration.
  - [GitHub: Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
  - [Jetbrains Space: Automation (CI/CD)](https://www.jetbrains.com/help/space/automation.html).
+ - [Jetbrains Space IDE plugin](https://plugins.jetbrains.com/plugin/13362-space)
+
