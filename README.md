@@ -3,7 +3,7 @@
 
 ## What it does?
 
-- It builds a Docker container from [Google Cloud Source Repositories](https://cloud.google.com/source-repositories) or [GitHub](https://github.com/marketplace/google-cloud-build) with [Google Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
+- It builds a Docker container from [Google Cloud Source Repositories](https://cloud.google.com/source-repositories) or [GitHub](https://github.com/marketplace/google-cloud-build) with eg. [Google Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
 - It publishes the image to the [Container Registry](https://console.cloud.google.com/gcr/images)  as `eu.gcr.io/$PROJECT_ID/android-builder`.
 - It's based upon `amazoncorretto:17-al2-jdk`, Android `sdkmanager`, Gradle, as well as a simple Android application for testing purposes.
 - It supports publishing to Bucket & Firebase App Distribution with Cloud KMS decryption for credentials.
