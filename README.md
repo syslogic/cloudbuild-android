@@ -156,9 +156,10 @@ job("Bundle application") {
     }
     container(displayName = "Gradle build", image = "{{ project:DOCKER_IMAGE }}:lts") {
         env["KEYSTORE_PROPERTIES"] = "{{ project:KEYSTORE_PROPERTIES }}"
-        env["DEBUG_KEYSTORE"] = "{{ project:DEBUG_KEYSTORE }}"
-        env["RELEASE_KEYSTORE"] = "{{ project:RELEASE_KEYSTORE }}"
-        env["GRADLE_TASKS"] = "{{ GRADLE_TASKS }}"
+        env["DEBUG_KEYSTORE"]      = "{{ project:DEBUG_KEYSTORE }}"
+        env["RELEASE_KEYSTORE"]    = "{{ project:RELEASE_KEYSTORE }}"
+        env["GRADLE_OPTIONS"]      = "--init-script $mountDir/system/gradle/init.gradle --warning-mode all -Dorg.gradle.parallel=false"
+        env["GRADLE_TASKS"]        = "{{ GRADLE_TASKS }}"
         shellScript {
             content = """
                 echo ${'$'}KEYSTORE_PROPERTIES > keystore.properties.hex
@@ -169,7 +170,7 @@ job("Bundle application") {
                 xxd -plain -revert distribution/release.keystore.hex distribution/release.keystore
                 rm ./keystore.properties.hex && rm ./distribution/*.hex
                 echo Running Gradle: ${'$'}GRADLE_TASKS
-                gradle --init-script $mountDir/system/gradle/init.gradle -Dorg.gradle.parallel=false ${'$'}GRADLE_TASKS
+                gradle ${'$'}GRADLE_OPTIONS ${'$'}GRADLE_TASKS
             """
         }
     }
