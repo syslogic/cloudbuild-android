@@ -156,19 +156,18 @@ job("Bundle application") {
     }
     container(displayName = "Gradle build", image = "{{ project:DOCKER_IMAGE }}:lts") {
         env["KEYSTORE_PROPERTIES"] = "{{ project:KEYSTORE_PROPERTIES }}"
-        env["DEBUG_KEYSTORE"]      = "{{ project:DEBUG_KEYSTORE }}"
         env["RELEASE_KEYSTORE"]    = "{{ project:RELEASE_KEYSTORE }}"
-        env["GRADLE_USER_HOME"]    = "/mnt/space/work/.gradle"
-        env["GRADLE_OPTIONS"]      = "--init-script $mountDir/system/gradle/init.gradle -Dorg.gradle.parallel=false"
+        env["DEBUG_KEYSTORE"]      = "{{ project:DEBUG_KEYSTORE }}"
+        env["GRADLE_USER_HOME"]    = "{{ project:GRADLE_USER_HOME }}"
         env["GRADLE_TASKS"]        = "{{ GRADLE_TASKS }}"
         cache {
-            location = CacheLocation.FileRepository(name = CacheLocation.DefaultRepositoryName, remoteBasePath = "gradle-cache")
+            location = CacheLocation.FileRepository(name = CacheLocation.DefaultRepositoryName, remoteBasePath = "android")
             storeKey = "gradle-{{ hashFiles('build.gradle') }}"
-            localPath = "/mnt/space/work/.gradle/caches"
+            localPath = "{{ project:GRADLE_USER_HOME }}/caches"
         }
         shellScript {
+            location = "{{ project:BUILD_SCRIPT }}"
             interpreter = "/bin/bash"
-            location = "./scripts/android_ci.sh"
         }
     }
 }
