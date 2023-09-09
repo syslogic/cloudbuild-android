@@ -158,8 +158,14 @@ job("Bundle application") {
         env["KEYSTORE_PROPERTIES"] = "{{ project:KEYSTORE_PROPERTIES }}"
         env["DEBUG_KEYSTORE"]      = "{{ project:DEBUG_KEYSTORE }}"
         env["RELEASE_KEYSTORE"]    = "{{ project:RELEASE_KEYSTORE }}"
+        env["GRADLE_USER_HOME"]    = "/mnt/space/work/.gradle"
         env["GRADLE_OPTIONS"]      = "--init-script $mountDir/system/gradle/init.gradle -Dorg.gradle.parallel=false"
         env["GRADLE_TASKS"]        = "{{ GRADLE_TASKS }}"
+        cache {
+            location = CacheLocation.FileRepository(name = CacheLocation.DefaultRepositoryName, remoteBasePath = "gradle-cache")
+            storeKey = "gradle-{{ hashFiles('build.gradle') }}"
+            localPath = "/mnt/space/work/.gradle/caches"
+        }
         shellScript {
             interpreter = "/bin/bash"
             location = "./scripts/android_ci.sh"
