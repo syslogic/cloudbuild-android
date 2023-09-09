@@ -158,20 +158,11 @@ job("Bundle application") {
         env["KEYSTORE_PROPERTIES"] = "{{ project:KEYSTORE_PROPERTIES }}"
         env["DEBUG_KEYSTORE"]      = "{{ project:DEBUG_KEYSTORE }}"
         env["RELEASE_KEYSTORE"]    = "{{ project:RELEASE_KEYSTORE }}"
-        env["GRADLE_OPTIONS"]      = "--init-script $mountDir/system/gradle/init.gradle --warning-mode all -Dorg.gradle.parallel=false"
+        env["GRADLE_OPTIONS"]      = "--init-script $mountDir/system/gradle/init.gradle -Dorg.gradle.parallel=false"
         env["GRADLE_TASKS"]        = "{{ GRADLE_TASKS }}"
         shellScript {
-            content = """
-                echo ${'$'}KEYSTORE_PROPERTIES > keystore.properties.hex
-                xxd -plain -revert keystore.properties.hex keystore.properties
-                echo ${'$'}DEBUG_KEYSTORE > distribution/debug.keystore.hex
-                xxd -plain -revert distribution/debug.keystore.hex distribution/debug.keystore
-                echo ${'$'}RELEASE_KEYSTORE > distribution/release.keystore.hex
-                xxd -plain -revert distribution/release.keystore.hex distribution/release.keystore
-                rm ./keystore.properties.hex && rm ./distribution/*.hex
-                echo Running Gradle: ${'$'}GRADLE_TASKS
-                gradle ${'$'}GRADLE_OPTIONS ${'$'}GRADLE_TASKS
-            """
+            interpreter = "/bin/bash"
+            location = "./scripts/android_ci.sh"
         }
     }
 }
