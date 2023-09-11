@@ -184,4 +184,3 @@ job("Bundle application") {
  - [GitHub: Google Cloud Build](https://github.com/GoogleCloudBuild) (official).
  - [Jetbrains Space: Automation (CI/CD)](https://www.jetbrains.com/help/space/automation.html).
  - [Jetbrains Space IDE plugin](https://plugins.jetbrains.com/plugin/13362-space)
-
