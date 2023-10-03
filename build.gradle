@@ -2,25 +2,25 @@
 
 buildscript {
     ext {
-        agp_version = '8.1.1'
         kotlin_version = '1.9.0'
-        gms_version = '4.3.15'
-        androidx_nav_version = '2.7.2'
-        androidx_appcompat_version = '1.6.1'
-        androidx_constraintlayout_version = '2.1.4'
+        junit_version = '4.13.2'
+        android_gradle_plugin_version = '8.1.2'
+        google_mobile_services_version = '4.3.15'
         firebase_appdistribution_plugin_version = '4.0.0'
         firebase_crashlytics_plugin_version = '2.9.5'
-        firebase_crashlytics_version = '18.4.1'
+        firebase_crashlytics_version = '18.4.3'
         firebase_perf_plugin_version = '1.4.2'
         firebase_perf_version = '20.4.1'
-        junit_version = '4.13.2'
-        test_junit_version = '1.1.5'
-        test_core_version = '1.5.0'
-        test_monitor_version = '1.6.1'
-        test_runner_version = '1.5.2'
-        test_rules_version = '1.5.0'
-        uiautomator_version = '2.2.0'
-        espresso_version = '3.5.1'
+        androidx_nav_version = '2.7.3'
+        androidx_appcompat_version = '1.6.1'
+        androidx_constraintlayout_version = '2.1.4'
+        androidx_test_junit_version = '1.1.5'
+        androidx_test_core_version = '1.5.0'
+        androidx_test_monitor_version = '1.6.1'
+        androidx_test_runner_version = '1.5.2'
+        androidx_test_rules_version = '1.5.0'
+        androidx_test_espresso_version = '3.5.1'
+        androidx_test_uiautomator_version = '2.2.0'
     }
 
     // conditional remote dependency, when directory `buildSrc` is absent.
@@ -32,10 +32,10 @@ buildscript {
 }
 
 plugins {
-    id 'com.android.application' version "$agp_version" apply false
-    id 'com.android.library' version "$agp_version" apply false
+    id 'com.android.application' version "$android_gradle_plugin_version" apply false
+    id 'com.android.library' version "$android_gradle_plugin_version" apply false
     id 'androidx.navigation.safeargs' version "$androidx_nav_version" apply false
-    id 'com.google.gms.google-services' version "$gms_version" apply false
+    id 'com.google.gms.google-services' version "$google_mobile_services_version" apply false
     id 'com.google.firebase.appdistribution' version "$firebase_appdistribution_plugin_version" apply false
     id 'com.google.firebase.crashlytics' version "$firebase_crashlytics_plugin_version" apply false
     id 'com.google.firebase.firebase-perf' version "$firebase_perf_plugin_version" apply false
