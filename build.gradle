@@ -9,10 +9,10 @@ buildscript {
         firebase_crashlytics_version = '18.5.1'
         firebase_perf_version = '20.5.0'
 
-        androidx_navigation_version = '2.7.4'
         androidx_appcompat_version = '1.6.1'
         androidx_constraintlayout_version = '2.1.4'
-
+        androidx_navigation_version = '2.7.4'
+        
         androidx_test_junit_version = '1.1.5'
         androidx_test_core_version = '1.5.0'
         androidx_test_monitor_version = '1.6.1'
