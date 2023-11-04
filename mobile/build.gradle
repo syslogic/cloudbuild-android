@@ -92,8 +92,8 @@ base {
 dependencies {
     implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
     implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout_version"
-    implementation "androidx.navigation:navigation-fragment:$androidx_nav_version"
-    implementation "androidx.navigation:navigation-ui:$androidx_nav_version"
+    implementation "androidx.navigation:navigation-fragment:$androidx_navigation_version"
+    implementation "androidx.navigation:navigation-ui:$androidx_navigation_version"
 
     implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
     // implementation "com.google.firebase:firebase-crashlytics-ndk:$firebase_crashlytics_version"
