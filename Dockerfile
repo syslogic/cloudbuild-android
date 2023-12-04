@@ -1,4 +1,4 @@
-# Dockerfile for building with Android SDK/NDK
+# Dockerfile for building with Android SDK/NDK, including Google Cloud SDK.
 FROM amazoncorretto:17-al2-jdk as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 
