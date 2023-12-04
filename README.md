@@ -131,7 +131,7 @@ While these substitutions use no underscore (being mapped at build-time: [`.spac
 
  - `CLI_TOOLS_VERSION` ~ `10406996`
  - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-34 build-tools;34.0.0`
- - `GRADLE_VERSION` ~ `8.2`
+ - `GRADLE_VERSION` ~ `8.5`
  - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
 
 The following example `.space.kts` uses `xxd` (instead of `gcloud kms`) to revert hex-dumps of binary files.
