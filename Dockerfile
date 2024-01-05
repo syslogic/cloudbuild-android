@@ -3,8 +3,9 @@ FROM amazoncorretto:17-al2-jdk as builder
 LABEL description="Android Builder" version="1.2.0" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 
 # Packages
-ADD credentials/google_cloud.repo /etc/yum.repos.d
-RUN yum -y install deltarpm google-cloud-sdk wget unzip xxd libidn && yum -y upgrade
+RUN yum -y install wget unzip xxd && yum -y upgrade
+# ADD credentials/google_cloud.repo /etc/yum.repos.d
+# RUN yum -y install deltarpm google-cloud-sdk wget unzip xxd libidn && yum -y upgrade
 
 # Arguments
 ARG _CLI_TOOLS_VERSION
