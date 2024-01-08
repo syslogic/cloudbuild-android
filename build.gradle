@@ -34,8 +34,8 @@ plugins {
     id 'com.android.application' version "$android_gradle_plugin_version" apply false
     // id 'com.android.library' version "$android_gradle_plugin_version" apply false
     id 'androidx.navigation.safeargs' version "$androidx_navigation_version" apply false
-    id 'com.google.gms.google-services' version "4.3.15" apply false
-    id 'com.google.firebase.appdistribution' version "4.0.0" apply false
+    id 'com.google.gms.google-services' version "4.4.0" apply false
+    id 'com.google.firebase.appdistribution' version "4.0.1" apply false
     id 'com.google.firebase.firebase-perf' version "1.4.2" apply false
     id 'com.google.firebase.crashlytics' version "2.9.9" apply false
 }
