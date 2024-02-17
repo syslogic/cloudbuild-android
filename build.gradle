@@ -2,16 +2,16 @@
 
 buildscript {
     ext {
-        android_gradle_plugin_version = '8.2.1'
+        android_gradle_plugin_version = '8.2.2'
         kotlin_version = '1.9.21'
         junit_version = '4.13.2'
 
-        firebase_crashlytics_version = '18.6.0'
-        firebase_perf_version = '20.5.1'
+        firebase_crashlytics_version = '18.6.2'
+        firebase_perf_version = '20.5.2'
 
         androidx_appcompat_version = '1.6.1'
         androidx_constraintlayout_version = '2.1.4'
-        androidx_navigation_version = '2.7.6'
+        androidx_navigation_version = '2.7.7'
         
         androidx_test_junit_version = '1.1.5'
         androidx_test_core_version = '1.5.0'
