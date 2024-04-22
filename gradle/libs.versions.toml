@@ -1,0 +1,53 @@
+[versions]
+kotlin                      = '1.9.23'
+android_gradle_plugin       = '8.3.2'
+google_mobile_services      = '4.4.1'
+firebase_appdistribution    = '4.2.0'
+firebase_crashlytics_plugin = '2.9.9'
+firebase_perf_plugin        = '1.4.2'
+
+junit                     = '4.13.2'
+androidx_appcompat        = '1.6.1'
+androidx_constraintlayout = '2.1.4'
+androidx_navigation       = '2.7.7'
+androidx_test_junit       = '1.1.5'
+androidx_test_core        = '1.5.0'
+androidx_test_rules       = '1.5.0'
+androidx_test_runner      = '1.5.2'
+androidx_test_monitor     = '1.6.1'
+androidx_test_uiautomator = '2.3.0'
+androidx_test_espresso    = '3.5.1'
+firebase_crashlytics      = '18.6.4'
+firebase_perf             = '20.5.2'
+
+[plugins]
+android_application             = { id = "com.android.application", version.ref = "android_gradle_plugin" }
+# android_library               = { id = "com.android.library", version.ref = "android_gradle_plugin" }
+androidx_navigation_safeargs    = { id = "androidx.navigation.safeargs", version.ref = "androidx_navigation" }
+google_mobile_services          = { id = "com.google.gms.google-services", version.ref = "google_mobile_services" }
+firebase_appdistribution        = { id = "com.google.firebase.appdistribution", version.ref = "firebase_appdistribution" }
+firebase_crashlytics            = { id = "com.google.firebase.crashlytics", version.ref = "firebase_crashlytics_plugin" }
+firebase_perf                   = { id = "com.google.firebase.firebase-perf", version.ref = "firebase_perf_plugin" }
+
+[libraries]
+androidx_appcompat                = { module = "androidx.appcompat:appcompat", version.ref = "androidx_appcompat" }
+androidx_constraintlayout         = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx_constraintlayout" }
+androidx_navigation_fragment      = { module = "androidx.navigation:navigation-fragment", version.ref = "androidx_navigation" }
+androidx_navigation_ui            = { module = "androidx.navigation:navigation-ui", version.ref = "androidx_navigation" }
+
+firebase_crashlytics              = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebase_crashlytics" }
+# firebase_crashlytics_ndk        = { module = "com.google.firebase:firebase-crashlytics-ndk", version.ref = "firebase_crashlytics" }
+firebase_perf                     = { module = "com.google.firebase:firebase-perf", version.ref = "firebase_perf" }
+
+junit                             = { module = "junit:junit", version.ref = "junit" }
+androidx_test_monitor             = { module = "androidx.test:monitor", version.ref = "androidx_test_monitor" }
+androidx_test_junit               = { module = "androidx.test.ext:junit", version.ref = "androidx_test_junit" }
+androidx_test_core                = { module = "androidx.test:core", version.ref = "androidx_test_core" }
+androidx_test_rules               = { module = "androidx.test:rules", version.ref = "androidx_test_rules" }
+androidx_test_runner              = { module = "androidx.test:runner", version.ref = "androidx_test_runner" }
+androidx_test_uiautomator         = { module = "androidx.test.uiautomator:uiautomator", version.ref = "androidx_test_uiautomator" }
+androidx_test_espresso_core       = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx_test_espresso" }
+androidx_test_espresso_web        = { module = "androidx.test.espresso:espresso-web", version.ref = "androidx_test_espresso" }
+androidx_test_espresso_contrib    = { module = "androidx.test.espresso:espresso-contrib", version.ref = "androidx_test_espresso" }
+androidx_test_espresso_intents    = { module = "androidx.test.espresso:espresso-intents", version.ref = "androidx_test_espresso" }
+androidx_test_espresso_idling_resource = { module = "androidx.test.espresso:espresso-idling-resource", version.ref = "androidx_test_espresso" }

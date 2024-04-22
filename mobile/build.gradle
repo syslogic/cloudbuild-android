@@ -1,9 +1,10 @@
 // Module :mobile
 plugins {
-    id 'com.android.application'
-    id 'com.google.firebase.appdistribution'
-    id 'com.google.firebase.crashlytics'
-    id 'androidx.navigation.safeargs'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.androidx.navigation.safeargs)
+    // alias(libs.plugins.google.mobile.services)
+    alias(libs.plugins.firebase.appdistribution)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 // conditional remote dependency, when directory `buildSrc` is present.
@@ -90,40 +91,40 @@ base {
 }
 
 dependencies {
-    implementation "androidx.appcompat:appcompat:$androidx_appcompat_version"
-    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout_version"
-    implementation "androidx.navigation:navigation-fragment:$androidx_navigation_version"
-    implementation "androidx.navigation:navigation-ui:$androidx_navigation_version"
+    implementation libs.androidx.appcompat
+    implementation libs.androidx.constraintlayout
+    implementation libs.androidx.navigation.fragment
+    implementation libs.androidx.navigation.ui
 
-    implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlytics_version"
-    // implementation "com.google.firebase:firebase-crashlytics-ndk:$firebase_crashlytics_version"
-
-    implementation "com.google.firebase:firebase-perf:$firebase_perf_version"
+    implementation libs.firebase.crashlytics
+    // implementation libs.firebase.crashlytics.ndk
+    implementation libs.firebase.perf
 
     // jUnit
-    testImplementation "junit:junit:$junit_version"
+    testImplementation libs.junit
 
     // Required for connected tests.
     // https://mvnrepository.com/artifact/androidx.test/monitor
-    debugImplementation "androidx.test:monitor:$androidx_test_monitor_version"
+    debugImplementation libs.androidx.test.monitor
 
     // https://mvnrepository.com/artifact/androidx.test.ext
-    androidTestImplementation "androidx.test.ext:junit:$androidx_test_junit_version"
+    androidTestImplementation libs.androidx.test.junit
 
     // https://mvnrepository.com/artifact/androidx.test
     // https://developer.android.com/jetpack/androidx/releases/test
-    androidTestImplementation "androidx.test:core:$androidx_test_core_version"
-    androidTestImplementation "androidx.test:runner:$androidx_test_runner_version"
-    androidTestImplementation "androidx.test:rules:$androidx_test_rules_version"
+    androidTestImplementation libs.androidx.test.core
+    androidTestImplementation libs.androidx.test.rules
+    androidTestImplementation libs.androidx.test.runner
 
     // https://mvnrepository.com/artifact/androidx.test.espresso
-    androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_test_espresso_version"
-    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:$androidx_test_espresso_version"
-    androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_test_espresso_version"
-    androidTestImplementation "androidx.test.espresso:espresso-intents:$androidx_test_espresso_version"
+    androidTestImplementation libs.androidx.test.espresso.core
+    androidTestImplementation libs.androidx.test.espresso.idling.resource
+    androidTestImplementation libs.androidx.test.espresso.contrib
+    androidTestImplementation libs.androidx.test.espresso.intents
+    androidTestImplementation libs.androidx.test.espresso.web
 
     // https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
-    androidTestImplementation "androidx.test.uiautomator:uiautomator:$androidx_test_uiautomator_version"
+    androidTestImplementation libs.androidx.test.uiautomator
 }
 
 /** Google Play Services */

@@ -11,11 +11,11 @@ job("Build Docker image") {
     host("Build Docker image") {
         dockerBuildPush {
 
-            // mapping Dockerfile build-time variables
-            // the underscore provides compatibility towards Cloud Build.
-            args["_CLI_TOOLS_VERSION"] = "{{ project:CLI_TOOLS_VERSION }}"
+            // Mapping Dockerfile build-time variables
+            // The leading underscore provides compatibility towards Google Cloud Build.
+            args["_CLI_TOOLS_VERSION"]    = "{{ project:CLI_TOOLS_VERSION }}"
             args["_ANDROID_SDK_PACKAGES"] = "{{ project:ANDROID_SDK_PACKAGES }}"
-            args["_GRADLE_VERSION"] = "{{ project:GRADLE_VERSION }}"
+            args["_GRADLE_VERSION"]       = "{{ project:GRADLE_VERSION }}"
 
             // image labels
             labels["vendor"] = "syslogic"
