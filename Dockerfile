@@ -15,6 +15,7 @@ ARG _GRADLE_VERSION
 # Path
 ENV ANDROID_HOME=/opt/android-sdk
 ENV GRADLE_HOME=/opt/gradle-${_GRADLE_VERSION}
+# ENV PATH="${ANDROID_HOME}/cmdline-tools/latest/bin:${GRADLE_HOME}/bin:${PATH}"
 ENV PATH="${ANDROID_HOME}/cmdline-tools/bin:${GRADLE_HOME}/bin:${PATH}"
 
 # Gradle
@@ -23,6 +24,7 @@ ENV GRADLE_URL=https://downloads.gradle.org/distributions/${GRADLE_ZIP}
 RUN wget -q ${GRADLE_URL} && unzip -qq ${GRADLE_ZIP} -d /opt && rm ${GRADLE_ZIP}
 
 # Android command-line tools (has sdkmanager)
+# The default location would be: "${ANDROID_HOME}/cmdline-tools/latest".
 # https://developer.android.com/studio#command-tools
 ENV CLI_TOOLS_ZIP=commandlinetools-linux-${_CLI_TOOLS_VERSION}_latest.zip
 ENV CLI_TOOLS_URL=https://dl.google.com/android/repository/${CLI_TOOLS_ZIP}
