@@ -1,6 +1,6 @@
 [versions]
 kotlin                      = '1.9.23'
-android_gradle_plugin       = '8.4.0'
+android_gradle_plugin       = '8.3.2'
 google_mobile_services      = '4.4.1'
 firebase_appdistribution    = '5.0.0'
 firebase_crashlytics_plugin = '3.0.0'
