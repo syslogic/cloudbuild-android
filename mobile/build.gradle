@@ -34,7 +34,7 @@ android {
 
     buildFeatures {
         buildConfig true
-        dataBinding true
+        dataBinding false
     }
 
     if (rootProject.file('keystore.properties').exists()) {
