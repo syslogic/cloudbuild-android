@@ -1,11 +1,10 @@
 [versions]
-kotlin                      = '2.0.0'
-android_gradle_plugin       = '8.3.2'
+android_gradle_plugin       = '8.5.2'
 google_mobile_services      = '4.4.2'
 firebase_appdistribution    = '5.0.0'
-firebase_crashlytics_plugin = '3.0.1'
+firebase_crashlytics_plugin = '3.0.2'
 firebase_perf_plugin        = '1.4.2'
-
+kotlin                      = '2.0.0'
 junit                       = '4.13.2'
 androidx_appcompat          = '1.7.0'
 androidx_constraintlayout   = '2.1.4'
@@ -15,9 +14,9 @@ androidx_test_core          = '1.5.0'
 androidx_test_rules         = '1.5.0'
 androidx_test_runner        = '1.5.2'
 androidx_test_monitor       = '1.6.1'
-androidx_test_uiautomator   = '2.3.0'
 androidx_test_espresso      = '3.5.1'
-firebase_crashlytics        = '19.0.1'
+androidx_test_uiautomator   = '2.3.0'
+firebase_crashlytics        = '19.0.3'
 firebase_perf               = '21.0.1'
 
 [plugins]
