@@ -4,6 +4,7 @@ google_mobile_services      = '4.4.2'
 firebase_appdistribution    = '5.0.0'
 firebase_crashlytics_plugin = '3.0.2'
 firebase_perf_plugin        = '1.4.2'
+
 kotlin                      = '2.0.0'
 junit                       = '4.13.2'
 androidx_appcompat          = '1.7.0'
@@ -49,4 +50,4 @@ androidx_test_espresso_core       = { module = "androidx.test.espresso:espresso-
 androidx_test_espresso_web        = { module = "androidx.test.espresso:espresso-web", version.ref = "androidx_test_espresso" }
 androidx_test_espresso_contrib    = { module = "androidx.test.espresso:espresso-contrib", version.ref = "androidx_test_espresso" }
 androidx_test_espresso_intents    = { module = "androidx.test.espresso:espresso-intents", version.ref = "androidx_test_espresso" }
-androidx_test_espresso_idling_resource = { module = "androidx.test.espresso:espresso-idling-resource", version.ref = "androidx_test_espresso" }
+androidx_test_espresso_idling_res = { module = "androidx.test.espresso:espresso-idling-resource", version.ref = "androidx_test_espresso" }
