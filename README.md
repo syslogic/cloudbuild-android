@@ -26,9 +26,9 @@ One can pre-install SDK packages with the `sdkmanager`, when passing `_ANDROID_S
 And one can pre-install Gradle by passing `_GRADLE_VERSION`.<br/>
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
- - `_CLI_TOOLS_VERSION` ~ `11479570`
+ - `_CLI_TOOLS_VERSION` ~ `12266719`
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-35 build-tools;35.0.0`
- - `_GRADLE_VERSION` ~ `8.10`
+ - `_GRADLE_VERSION` ~ `8.10.2`
 
 ## Usage example: Google Cloud Build
 
@@ -129,9 +129,9 @@ The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogi
 The variable substitutions look pretty much the same, being called "Parameters".<br/>
 While these substitutions use no underscore (being mapped at build-time: [`.space.kts`](https://github.com/syslogic/cloudbuild-android/blob/master/.space.kts)).
 
- - `CLI_TOOLS_VERSION` ~ `11479570`
+ - `CLI_TOOLS_VERSION` ~ `12266719`
  - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-35 build-tools;35.0.0`
- - `GRADLE_VERSION` ~ `8.10`
+ - `GRADLE_VERSION` ~ `8.10.2`
  - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
 
 The following example `.space.kts` uses `xxd` (instead of `gcloud kms`) to revert hex-dumps of binary files.
