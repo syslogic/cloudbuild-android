@@ -23,7 +23,7 @@ steps:
     # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-35 build-tools;35.0.0 ndk;25.1.8937393',
     '--build-arg', '_ANDROID_SDK_PACKAGES=platform-tools platforms;android-35 build-tools;35.0.0',
     '--build-arg', '_CLI_TOOLS_VERSION=12700392',
-    '--build-arg', '_GRADLE_VERSION=8.11.1',
+    '--build-arg', '_GRADLE_VERSION=8.12',
 
     # enable cloudbuild network
     '--network', 'cloudbuild',

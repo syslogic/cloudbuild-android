@@ -1,33 +1,33 @@
 [versions]
-android_gradle_plugin       = '8.7.3'
-google_mobile_services      = '4.4.2'
-firebase_appdistribution    = '5.0.0'
-firebase_crashlytics_plugin = '3.0.2'
-firebase_perf_plugin        = '1.4.2'
+android_gradle_plugin             = '8.7.3'
+google_mobile_services            = '4.4.2'
+firebase_appdistribution          = '5.0.0'
+firebase_crashlytics_plugin       = '3.0.2'
+firebase_perf_plugin              = '1.4.2'
 
-kotlin                      = '2.0.21'
-junit                       = '4.13.2'
-androidx_appcompat          = '1.7.0'
-androidx_constraintlayout   = '2.2.0'
-androidx_navigation         = '2.8.5'
-androidx_test_junit         = '1.2.1'
-androidx_test_core          = '1.6.1'
-androidx_test_rules         = '1.6.1'
-androidx_test_runner        = '1.6.2'
-androidx_test_monitor       = '1.7.2'
-androidx_test_espresso      = '3.6.1'
-androidx_test_uiautomator   = '2.3.0'
-firebase_crashlytics        = '19.3.0'
-firebase_perf               = '21.0.3'
+kotlin                            = '2.0.21'
+junit                             = '4.13.2'
+androidx_appcompat                = '1.7.0'
+androidx_constraintlayout         = '2.2.0'
+androidx_navigation               = '2.8.5'
+androidx_test_junit               = '1.2.1'
+androidx_test_core                = '1.6.1'
+androidx_test_rules               = '1.6.1'
+androidx_test_runner              = '1.6.2'
+androidx_test_monitor             = '1.7.2'
+androidx_test_espresso            = '3.6.1'
+androidx_test_uiautomator         = '2.3.0'
+firebase_crashlytics              = '19.3.0'
+firebase_perf                     = '21.0.3'
 
 [plugins]
-android_application             = { id = "com.android.application", version.ref = "android_gradle_plugin" }
-# android_library               = { id = "com.android.library", version.ref = "android_gradle_plugin" }
-androidx_navigation_safeargs    = { id = "androidx.navigation.safeargs", version.ref = "androidx_navigation" }
-google_mobile_services          = { id = "com.google.gms.google-services", version.ref = "google_mobile_services" }
-firebase_appdistribution        = { id = "com.google.firebase.appdistribution", version.ref = "firebase_appdistribution" }
-firebase_crashlytics            = { id = "com.google.firebase.crashlytics", version.ref = "firebase_crashlytics_plugin" }
-firebase_perf                   = { id = "com.google.firebase.firebase-perf", version.ref = "firebase_perf_plugin" }
+android_application               = { id = "com.android.application", version.ref = "android_gradle_plugin" }
+# android_library                 = { id = "com.android.library", version.ref = "android_gradle_plugin" }
+androidx_navigation_safeargs      = { id = "androidx.navigation.safeargs", version.ref = "androidx_navigation" }
+google_mobile_services            = { id = "com.google.gms.google-services", version.ref = "google_mobile_services" }
+firebase_appdistribution          = { id = "com.google.firebase.appdistribution", version.ref = "firebase_appdistribution" }
+firebase_crashlytics              = { id = "com.google.firebase.crashlytics", version.ref = "firebase_crashlytics_plugin" }
+firebase_perf                     = { id = "com.google.firebase.firebase-perf", version.ref = "firebase_perf_plugin" }
 
 [libraries]
 androidx_appcompat                = { module = "androidx.appcompat:appcompat", version.ref = "androidx_appcompat" }
