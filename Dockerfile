@@ -7,10 +7,10 @@ RUN yum -y install wget unzip xxd libidn && yum -y upgrade
 # ADD credentials/google_cloud.repo /etc/yum.repos.d
 # RUN yum -y install deltarpm google-cloud-sdk wget unzip xxd libidn && yum -y upgrade
 
-# Arguments
-ARG _CLI_TOOLS_VERSION
-ARG _ANDROID_SDK_PACKAGES
-ARG _GRADLE_VERSION
+# Arguments, now with default values.
+ARG _CLI_TOOLS_VERSION=12700392
+ARG _ANDROID_SDK_PACKAGES="platform-tools platforms;android-35 build-tools;35.0.0"
+ARG _GRADLE_VERSION=8.12
 
 # Path
 ENV ANDROID_HOME=/opt/android-sdk
