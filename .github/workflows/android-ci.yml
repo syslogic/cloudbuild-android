@@ -6,6 +6,8 @@ on:
 
 env:
   _GRADLE_VERSION: 8.12
+  _CLI_TOOLS_VERSION: 12700392
+  _ANDROID_SDK_PACKAGES: platform-tools platforms;android-35 build-tools;35.0.0
   IMAGE_NAME: ${{ github.repository }}
   REGISTRY: ghcr.io
 
