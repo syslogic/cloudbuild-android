@@ -1,11 +1,22 @@
 # Android Builder Image
 <img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg"/>
 
+## Docker Image
+
+One can meanwhile pull the ready-built image from GitHub Docker registry:
+
+    docker pull ghcr.io/syslogic/cloudbuild-android:latest
+
+ ---
+
 ## What it does?
 
 - It builds a Docker container from [Google Cloud Source Repositories](https://cloud.google.com/source-repositories) or [GitHub](https://github.com/marketplace/google-cloud-build) with eg. [Google Cloud Build](https://cloud.google.com/source-repositories/docs/integrating-with-cloud-build).
 - It publishes the image to the [Container Registry](https://console.cloud.google.com/gcr/images)  as `eu.gcr.io/$PROJECT_ID/android-builder`.
 - It's based upon `amazoncorretto:17-al2-jdk`, Android `sdkmanager`, Gradle, as well as a simple Android application for testing purposes.
+
+## The dummy Android app
+
 - It supports publishing to Bucket & Firebase App Distribution with Cloud KMS decryption for credentials.
 - Android NDK and Firebase Crashlytics NDK crash reporting can be enabled by uncommenting a few lines.
 
