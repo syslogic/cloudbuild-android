@@ -5,8 +5,9 @@ on:
     branches: ['master']
 
 env:
-  REGISTRY: ghcr.io
+  _GRADLE_VERSION: 8.12
   IMAGE_NAME: ${{ github.repository }}
+  REGISTRY: ghcr.io
 
 jobs:
 
