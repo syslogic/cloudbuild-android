@@ -140,7 +140,7 @@ The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogi
 The variable substitutions look pretty much the same, being called "Parameters".<br/>
 While these substitutions use no underscore (being mapped at build-time: [`.space.kts`](https://github.com/syslogic/cloudbuild-android/blob/master/.space.kts)).
 
- - `CLI_TOOLS_VERSION` ~ `12266719`
+ - `CLI_TOOLS_VERSION` ~ `12700392`
  - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-35 build-tools;35.0.0`
  - `GRADLE_VERSION` ~ `8.12`
  - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
