@@ -20,4 +20,4 @@ dependencyResolutionManagement {
 
 include ":mobile"
 
-rootProject.name = "CloudBuild"
+rootProject.name = "Android Builder"

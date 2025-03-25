@@ -1,5 +1,5 @@
 /**
- * JetBrains Space Automation
+ * JetBrains Space Automation (now obsolete).
  * This Kotlin script file lets you automate build activities
  * For more info, see https://www.jetbrains.com/help/space/automation.html
  */
