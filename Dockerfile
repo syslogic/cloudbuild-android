@@ -11,7 +11,7 @@ RUN yum -y install wget unzip xxd libidn && yum -y upgrade
 # Arguments, now with default values.
 ARG _CLI_TOOLS_VERSION=12700392
 ARG _ANDROID_SDK_PACKAGES="platform-tools platforms;android-35 build-tools;35.0.0"
-ARG _GRADLE_VERSION=8.12
+ARG _GRADLE_VERSION=8.13
 
 # Path
 ENV ANDROID_HOME=/opt/android-sdk
