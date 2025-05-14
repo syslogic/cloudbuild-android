@@ -37,7 +37,7 @@ One can pre-install SDK packages with the `sdkmanager`, when passing `_ANDROID_S
 And one can pre-install Gradle by passing `_GRADLE_VERSION`.<br/>
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
- - `_CLI_TOOLS_VERSION` ~ `12700392`
+ - `_CLI_TOOLS_VERSION` ~ `13114758`
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-35 build-tools;35.0.0`
  - `_GRADLE_VERSION` ~ `8.13`
 
@@ -140,48 +140,11 @@ The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogi
 The variable substitutions look pretty much the same, being called "Parameters".<br/>
 While these substitutions use no underscore (being mapped at build-time: [`.space.kts`](https://github.com/syslogic/cloudbuild-android/blob/master/.space.kts)).
 
- - `CLI_TOOLS_VERSION` ~ `12700392`
+ - `CLI_TOOLS_VERSION` ~ `13114758`
  - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-35 build-tools;35.0.0`
- - `GRADLE_VERSION` ~ `8.12`
+ - `GRADLE_VERSION` ~ `8.13`
  - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
 
-The following example `.space.kts` uses `xxd` (instead of `gcloud kms`) to revert hex-dumps of binary files.
-
-````
-/**
- * JetBrains Space Automation
- * This Kotlin script file lets you automate build activities
- * For more info, see https://www.jetbrains.com/help/space/automation.html
- */
-
-job("Bundle application") {
-    startOn {
-        gitPush { enabled = false }
-    }
-    parameters {
-        text("GRADLE_TASKS", value = "mobile:bundleDebug", description = "Gradle tasks") {
-            options("mobile:bundleDebug", "mobile:bundleRelease") {
-                allowMultiple = false
-            }
-        }
-    }
-    container(displayName = "Gradle build", image = "{{ project:DOCKER_IMAGE }}:lts") {
-        env["KEYSTORE_PROPERTIES"] = "{{ project:KEYSTORE_PROPERTIES }}"
-        env["RELEASE_KEYSTORE"]    = "{{ project:RELEASE_KEYSTORE }}"
-        env["DEBUG_KEYSTORE"]      = "{{ project:DEBUG_KEYSTORE }}"
-        env["GRADLE_USER_HOME"]    = "{{ project:GRADLE_USER_HOME }}"
-        env["GRADLE_TASKS"]        = "{{ GRADLE_TASKS }}"
-        cache {
-            location = CacheLocation.FileRepository(name = CacheLocation.DefaultRepositoryName, remoteBasePath = "android")
-            storeKey = "gradle-{{ hashFiles('build.gradle') }}"
-            localPath = "{{ project:GRADLE_USER_HOME }}/caches"
-        }
-        shellScript {
-            location = "{{ project:BUILD_SCRIPT }}"
-            interpreter = "/bin/bash"
-        }
-    }
-}
 ````
 ## GCP Service Account
 

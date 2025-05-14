@@ -1,5 +1,5 @@
 [versions]
-android_gradle_plugin             = '8.9.1'
+android_gradle_plugin             = "8.10.0"
 google_mobile_services            = '4.4.2'
 firebase_appdistribution          = '5.0.0'
 firebase_crashlytics_plugin       = '3.0.2'
