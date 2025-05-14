@@ -13,18 +13,18 @@ if (new File(getRootDir().absolutePath + "/buildSrc").exists() || project.plugin
 }
 
 android {
-    namespace 'io.syslogic.cloudbuild'
+    namespace = 'io.syslogic.cloudbuild'
     buildToolsVersion = '35.0.0'
     defaultConfig {
-        applicationId 'io.syslogic.cloudbuild'
-        minSdk 22
-        compileSdk 35
-        targetSdk 35
-        versionCode 2
-        versionName "1.0.1"
+        applicationId = 'io.syslogic.cloudbuild'
+        minSdk = 22
+        compileSdk = 35
+        targetSdk = 35
+        versionCode = 2
+        versionName = "1.0.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testBuildType "debug"
-        multiDexEnabled true
+        testBuildType = "debug"
+        multiDexEnabled = true
     }
 
     compileOptions {
@@ -33,8 +33,8 @@ android {
     }
 
     buildFeatures {
-        buildConfig true
-        dataBinding false
+        dataBinding = false
+        buildConfig = true
     }
 
     if (rootProject.file('keystore.properties').exists()) {
@@ -78,11 +78,11 @@ android {
     }
 
     lint {
-        lintConfig project.file('lint.xml')
-        checkAllWarnings true
-        warningsAsErrors true
-        abortOnError false
-        showAll false
+        lintConfig = project.file('lint.xml')
+        checkAllWarnings = true
+        warningsAsErrors = true
+        abortOnError = false
+        showAll = false
     }
 }
 
