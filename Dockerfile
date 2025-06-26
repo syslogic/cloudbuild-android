@@ -1,6 +1,6 @@
 # Dockerfile for building with Android SDK/NDK, including Google Cloud SDK.
 FROM amazoncorretto:17-al2-jdk AS builder
-LABEL description="Android Builder" version="1.2.3" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
+LABEL description="Android Builder" version="1.2.4" repository="https://github.com/syslogic/cloudbuild-android" maintainer="Martin Zeitler"
 LABEL org.opencontainers.image.description="Android Builder"
 
 # Packages
@@ -10,8 +10,8 @@ RUN yum -y install wget unzip xxd libidn && yum -y upgrade
 
 # Arguments, now with default values.
 ARG _CLI_TOOLS_VERSION=13114758
-ARG _ANDROID_SDK_PACKAGES="platform-tools platforms;android-35 build-tools;35.0.0"
-ARG _GRADLE_VERSION=8.13
+ARG _ANDROID_SDK_PACKAGES="platform-tools platforms;android-36 build-tools;36.0.0"
+ARG _GRADLE_VERSION=8.14.2
 
 # Path
 ENV ANDROID_HOME=/opt/android-sdk
