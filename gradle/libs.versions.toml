@@ -1,9 +1,9 @@
 [versions]
-android_gradle_plugin             = "8.11.1"
+android_gradle_plugin             = "8.12.0"
 google_mobile_services            = '4.4.3'
 firebase_appdistribution          = '5.1.1'
-firebase_crashlytics_plugin       = '3.0.5'
-firebase_perf_plugin              = '2.0.0'
+firebase_crashlytics_plugin       = '3.0.6'
+firebase_perf_plugin              = '2.0.1'
 
 kotlin                            = '2.2.0'
 junit                             = '4.13.2'
@@ -34,7 +34,6 @@ androidx_appcompat                = { module = "androidx.appcompat:appcompat", v
 androidx_constraintlayout         = { module = "androidx.constraintlayout:constraintlayout", version.ref = "androidx_constraintlayout" }
 androidx_navigation_fragment      = { module = "androidx.navigation:navigation-fragment", version.ref = "androidx_navigation" }
 androidx_navigation_ui            = { module = "androidx.navigation:navigation-ui", version.ref = "androidx_navigation" }
-
 firebase_crashlytics              = { module = "com.google.firebase:firebase-crashlytics", version.ref = "firebase_crashlytics" }
 # firebase_crashlytics_ndk        = { module = "com.google.firebase:firebase-crashlytics-ndk", version.ref = "firebase_crashlytics" }
 firebase_perf                     = { module = "com.google.firebase:firebase-perf", version.ref = "firebase_perf" }
