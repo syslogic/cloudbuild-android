@@ -1,5 +1,5 @@
 # Android Builder Image
-<img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg"/>
+<img src="https://storage.googleapis.com/cloudbuild-badges/cloudbuild-android-master.svg" alt=""/>
 
 ## Docker Image
 
@@ -38,8 +38,8 @@ And one can pre-install Gradle by passing `_GRADLE_VERSION`.<br/>
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
  - `_CLI_TOOLS_VERSION` ~ `13114758`
- - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-35 build-tools;35.0.0`
- - `_GRADLE_VERSION` ~ `8.13`
+ - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36 build-tools;36.0.0`
+ - `_GRADLE_VERSION` ~ `9.0.0`
 
 ## Usage example: Google Cloud Build
 
@@ -141,8 +141,8 @@ The variable substitutions look pretty much the same, being called "Parameters".
 While these substitutions use no underscore (being mapped at build-time: [`.space.kts`](https://github.com/syslogic/cloudbuild-android/blob/master/.space.kts)).
 
  - `CLI_TOOLS_VERSION` ~ `13114758`
- - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-35 build-tools;35.0.0`
- - `GRADLE_VERSION` ~ `8.13`
+ - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36 build-tools;36.0.0`
+ - `GRADLE_VERSION` ~ `9.0.0`
  - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
 
 ````

@@ -20,10 +20,10 @@ steps:
 
     # By default these static values are being used, without the NDK (build-trigger configuration not required.
     # Note: When commenting these out, one has to run `./gradlew build` to fetch the components instead.
-    # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-36 build-tools;36.0.0 ndk;25.1.8937393',
-    '--build-arg', '_ANDROID_SDK_PACKAGES=platform-tools platforms;android-36 build-tools;36.0.0',
+    # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-36 build-tools;36.0.0 emulator ndk;25.1.8937393',
+    '--build-arg', '_ANDROID_SDK_PACKAGES=platform-tools platforms;android-36 build-tools;36.0.0 emulator',
     '--build-arg', '_CLI_TOOLS_VERSION=13114758',
-    '--build-arg', '_GRADLE_VERSION=8.14.2',
+    '--build-arg', '_GRADLE_VERSION=9.0.0',
 
     # enable cloudbuild network
     '--network', 'cloudbuild',
