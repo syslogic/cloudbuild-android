@@ -38,7 +38,7 @@ And one can pre-install Gradle by passing `_GRADLE_VERSION`.<br/>
 At the moment these are both statically set in [`cloudbuild.yaml`](https://github.com/syslogic/cloudbuild-android/blob/master/cloudbuild.yaml), but the code is there.
 
  - `_CLI_TOOLS_VERSION` ~ `13114758`
- - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36 build-tools;36.0.0 emulator`
+ - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36.1 build-tools;36.1.0 emulator`
  - `_GRADLE_VERSION` ~ `9.1.0`
 
 ## Usage example: Google Cloud Build
@@ -140,7 +140,7 @@ The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogi
 These substitutions use no underscore.
 
  - `CLI_TOOLS_VERSION` ~ `13114758`
- - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36 build-tools;36.0.0 emulator`
+ - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36.1 build-tools;36.1.0 emulator`
  - `GRADLE_VERSION` ~ `9.1.0`
  - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
 
