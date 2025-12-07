@@ -39,7 +39,7 @@ At the moment these are both statically set in [`cloudbuild.yaml`](https://githu
 
  - `_CLI_TOOLS_VERSION` ~ `13114758`
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36.1 build-tools;36.1.0 emulator`
- - `_GRADLE_VERSION` ~ `9.1.0`
+ - `_GRADLE_VERSION` ~ `9.2.1`
 
 ## Usage example: Google Cloud Build
 
@@ -141,7 +141,7 @@ These substitutions use no underscore.
 
  - `CLI_TOOLS_VERSION` ~ `13114758`
  - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36.1 build-tools;36.1.0 emulator`
- - `GRADLE_VERSION` ~ `9.1.0`
+ - `GRADLE_VERSION` ~ `9.2.1`
  - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
 
 ## GCP Service Account
