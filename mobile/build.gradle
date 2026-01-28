@@ -14,7 +14,6 @@ if (new File(getRootDir().absolutePath + "/buildSrc").exists() || project.plugin
 
 android {
     namespace = "io.syslogic.cloudbuild"
-    buildToolsVersion = "36.0.0"
     defaultConfig {
         applicationId = "io.syslogic.cloudbuild"
         minSdk = 23
@@ -27,8 +26,8 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_17
-        targetCompatibility JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     buildFeatures {
@@ -88,44 +87,18 @@ android {
 }
 
 base {
-    archivesName = 'cloudbuild_' + android.defaultConfig.versionName
+    archivesName = 'demo_' + android.defaultConfig.versionName
 }
 
 dependencies {
-    implementation libs.androidx.appcompat
-    implementation libs.androidx.constraintlayout
-    implementation libs.androidx.navigation.fragment
-    implementation libs.androidx.navigation.ui
+    implementation(libs.bundles.androidx.libs)
+    implementation(libs.bundles.firebase.libs)
 
-    implementation libs.firebase.crashlytics
-    // implementation libs.firebase.crashlytics.ndk
-    implementation libs.firebase.perf
-
-    // jUnit
-    testImplementation libs.junit
-
+    testImplementation(libs.junit)
     // Required for connected tests.
-    // https://mvnrepository.com/artifact/androidx.test/monitor
-    debugImplementation libs.androidx.test.monitor
-
-    // https://mvnrepository.com/artifact/androidx.test.ext
-    androidTestImplementation libs.androidx.test.junit
-
-    // https://mvnrepository.com/artifact/androidx.test
-    // https://developer.android.com/jetpack/androidx/releases/test
-    androidTestImplementation libs.androidx.test.core
-    androidTestImplementation libs.androidx.test.rules
-    androidTestImplementation libs.androidx.test.runner
-
-    // https://mvnrepository.com/artifact/androidx.test.espresso
-    androidTestImplementation libs.androidx.test.espresso.core
-    androidTestImplementation libs.androidx.test.espresso.idling.res
-    androidTestImplementation libs.androidx.test.espresso.contrib
-    androidTestImplementation libs.androidx.test.espresso.intents
-    androidTestImplementation libs.androidx.test.espresso.web
-
-    // https://mvnrepository.com/artifact/androidx.test.uiautomator/uiautomator
-    androidTestImplementation libs.androidx.test.uiautomator
+    debugImplementation(libs.androidx.test.monitor)
+    androidTestImplementation(libs.bundles.androidx.test.libs)
+    androidTestImplementation(libs.bundles.androidx.test.espresso)
 }
 
 /** Google Play Services */
