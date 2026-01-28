@@ -139,9 +139,9 @@ The example app uses [Google Cloud KMS Gradle Plugin](https://github.com/syslogi
 
 These substitutions use no underscore.
 
- - `CLI_TOOLS_VERSION` ~ `13114758`
+ - `CLI_TOOLS_VERSION` ~ `14742923`
  - `ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36.1 build-tools;36.1.0 emulator`
- - `GRADLE_VERSION` ~ `9.2.1`
+ - `GRADLE_VERSION` ~ `9.3.1`
  - `DOCKER_IMAGE` ~  the location of the Docker image previously built.
 
 ## GCP Service Account
