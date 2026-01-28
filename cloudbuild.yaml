@@ -23,7 +23,7 @@ steps:
     # '--build-arg', 'ANDROID_SDK_PACKAGES=platform-tools platforms;android-36.1 build-tools;36.1.0  emulator ndk;25.1.8937393',
     '--build-arg', '_ANDROID_SDK_PACKAGES=platform-tools platforms;android-36.1 build-tools;36.1.0  emulator',
     '--build-arg', '_CLI_TOOLS_VERSION=13114758',
-    '--build-arg', '_GRADLE_VERSION=9.2.1',
+    '--build-arg', '_GRADLE_VERSION=9.3.0',
 
     # enable cloudbuild network
     '--network', 'cloudbuild',

@@ -14,7 +14,7 @@ if (new File(getRootDir().absolutePath + "/buildSrc").exists() || project.plugin
 
 android {
     namespace = "io.syslogic.cloudbuild"
-    buildToolsVersion = "36.0.0"
+    buildToolsVersion = "36.1.0"
     defaultConfig {
         applicationId = "io.syslogic.cloudbuild"
         minSdk = 23
