@@ -39,7 +39,7 @@ At the moment these are both statically set in [`cloudbuild.yaml`](https://githu
 
  - `_CLI_TOOLS_VERSION` ~ `13114758`
  - `_ANDROID_SDK_PACKAGES` ~ `platform-tools platforms;android-36.1 build-tools;36.1.0 emulator`
- - `_GRADLE_VERSION` ~ `9.2.1`
+ - `_GRADLE_VERSION` ~ `9.4.0`
 
 ## Usage example: Google Cloud Build
 
